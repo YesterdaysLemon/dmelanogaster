@@ -119,5 +119,5 @@ bpy.ops.export_scene.gltf(filepath=str(OUT/'banana.glb'),export_format='GLB',use
 (BASE/'assets').mkdir(exist_ok=True)
 bpy.ops.wm.save_as_mainfile(filepath=str(BASE/'assets/banana.blend'))
 manifest={'version':1,'author':'dmelanogaster / original procedural Blender model','license':'MIT','scale':'Illustrative miniature banana in mm; not measured botanical anatomy','position':[-3.5,-4,0],'rotationZ':-.25,'upAxis':'Z','visual':'banana.glb','visualSha256':hashlib.sha256((OUT/'banana.glb').read_bytes()).hexdigest(),'collision':'Short convex sections enclosing the authored surface; open spaces between peel flaps are preserved. Conservative local approximation, not triangle-level concave contact.','pieces':entries}
-(OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
+(OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8',newline='\n')
 print(f'BANANA: {len(parts)} visual parts, {len(entries)} convex pieces, {floor=}')

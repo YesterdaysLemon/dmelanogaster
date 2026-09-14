@@ -2035,7 +2035,7 @@
   ],
   "physics": {
     "timestep": 0.0001,
-    "gravity": "9801 mm/s^2",
+    "gravity": "0 0 -9810 mm/s^2",
     "scope": "Experimental NMF anatomy / muscle-driven free body",
     "forceUnit": "microNewton (g, mm, s model convention; uncalibrated strength)"
   },

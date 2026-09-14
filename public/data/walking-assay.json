@@ -1,6 +1,6 @@
 {
   "version": "0.4.0",
-  "generatedAt": "2026-09-14T21:56:57.785Z",
+  "generatedAt": "2026-09-14T22:03:44.234Z",
   "engine": "MuJoCo WASM 3.13.0",
   "scope": "Software intervention assays; not biological validation. Baseline sources and hand-specified experimental bridge.",
   "sourceFiles": [
@@ -34,11 +34,11 @@
     },
     {
       "path": "public/model/walking-manifest.json",
-      "sha256": "35bc56bda76a7abe866baa082f4cd83d03faaa0655d444a96f742ce8d7e07754"
+      "sha256": "021ec418e9b42bde4885f3433d9f5683f845e17f4dd05e90aac82a4015767740"
     },
     {
       "path": "public/props/banana/manifest.json",
-      "sha256": "2d4dda89a6ff41bc6fe4a872aa0370edaf2f8e60736990ab4b4a9ea49729cfcf"
+      "sha256": "477959675cf7ffced1819842bc1503771efa1a603d69d2e19b06d2e64640bbc9"
     },
     {
       "path": "public/model/walking.xml",
