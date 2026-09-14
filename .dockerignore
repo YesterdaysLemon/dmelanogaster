@@ -1,0 +1,8 @@
+node_modules
+dist
+work
+output
+.playwright-cli
+.env*
+*.log
+# .git intentionally reaches the build stage for exact commit attribution.

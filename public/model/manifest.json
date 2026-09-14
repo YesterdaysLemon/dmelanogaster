@@ -1,0 +1,1162 @@
+{
+  "version": 1,
+  "source": "https://github.com/gizemozd/FlyMimic",
+  "commit": "9ea1131626cd76f7203b74076ef8f0e9cab30bef",
+  "modelPath": "flymimic/assets/models/best_combined_arm_damping_stiff_cvt3.xml",
+  "license": "Apache-2.0",
+  "modifications": [],
+  "physics": {
+    "timestep": 0.0001,
+    "gravity": "0 0 -9801",
+    "scope": "Tethered left foreleg. Other legs passive or constrained. No neural controller.",
+    "forceUnit": "source model units; physical force scaling requires independent audit"
+  },
+  "files": [
+    {
+      "source": "flymimic/assets/models/best_combined_arm_damping_stiff_cvt3.xml",
+      "target": "fly.xml",
+      "bytes": 50218,
+      "sha256": "388ae76c99d685c16371223f0f60f88d3592d5b3c140e695dad63af221ca4e11"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/Thorax.stl",
+      "target": "meshes/stl/Thorax.stl",
+      "bytes": 281534,
+      "sha256": "61a091c49c87895f735fb63e42898128888a6f53ee60900bbf61f92edf5e42e6"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/A1A2.stl",
+      "target": "meshes/stl/A1A2.stl",
+      "bytes": 144334,
+      "sha256": "a8645b7b026f2736b08772bc2bca08ca79adc417bd613ed4d487c02ffcaa2903"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/A3.stl",
+      "target": "meshes/stl/A3.stl",
+      "bytes": 140084,
+      "sha256": "5717f47f1c426bdfa5d6f44e1d41bd4e8d997cda43075f0258d6162c8fe4c124"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/A4.stl",
+      "target": "meshes/stl/A4.stl",
+      "bytes": 143384,
+      "sha256": "ffc7a77b712b9f8f54982da0b65435680f4602184231f27b6c34d485cfcec0f5"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/A5.stl",
+      "target": "meshes/stl/A5.stl",
+      "bytes": 158834,
+      "sha256": "3e80fdb1fa9db4da41df9015162cdcc22e724a0e5ddb47400d025a3f5b88debb"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/A6.stl",
+      "target": "meshes/stl/A6.stl",
+      "bytes": 203134,
+      "sha256": "153bb1b802fd14c90bcbd9c56425bac7d49a1ef205afd5e18ac8c71b54ea336f"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/Head.stl",
+      "target": "meshes/stl/Head.stl",
+      "bytes": 864784,
+      "sha256": "27b97b890db42105b0a692b03d6b7ee014498da7f52b1523d8d5701264b31992"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LEye.stl",
+      "target": "meshes/stl/LEye.stl",
+      "bytes": 238084,
+      "sha256": "b4371603242f501020032c8f86d2bec9feef5501b8f3a347408ac49d16030fee"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LPedicel.stl",
+      "target": "meshes/stl/LPedicel.stl",
+      "bytes": 860484,
+      "sha256": "6dfd2255f674a937a85f12916ddc4af193b79757f4f29e48070a776d825a5616"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LFuniculus.stl",
+      "target": "meshes/stl/LFuniculus.stl",
+      "bytes": 869484,
+      "sha256": "3bf5a160aee8a87bb9776cf3b4e2cce26fa9c7586737054e0d7e06a91c2cddbf"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LArista.stl",
+      "target": "meshes/stl/LArista.stl",
+      "bytes": 568884,
+      "sha256": "89279377fa06a9d0a611b5fa46f3353bc528121a19c7e52b419bb754cf3696f4"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/REye.stl",
+      "target": "meshes/stl/REye.stl",
+      "bytes": 164784,
+      "sha256": "b9bb1a0137254acbf0c204d2ee9b55ab63f6dc4415dce55bfec95b225de97a3d"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RPedicel.stl",
+      "target": "meshes/stl/RPedicel.stl",
+      "bytes": 837884,
+      "sha256": "e555a9108c30c70b9c5e5117577153ecec2eecb66c857b78540a4c02b191f538"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RFuniculus.stl",
+      "target": "meshes/stl/RFuniculus.stl",
+      "bytes": 856284,
+      "sha256": "b0e4d9699f1f70d276186c9c7a90c51720c21ad56e99ceb70fd4219642d36275"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RArista.stl",
+      "target": "meshes/stl/RArista.stl",
+      "bytes": 580484,
+      "sha256": "025fe9065e92ab6be2dc311aeb6d38258c284b02724393b46d60b64c46d35cef"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/Rostrum.stl",
+      "target": "meshes/stl/Rostrum.stl",
+      "bytes": 189384,
+      "sha256": "672c49f10fc9294c047eaa017afd30c68037036446cb4a2b34f52455fa72854e"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/Haustellum.stl",
+      "target": "meshes/stl/Haustellum.stl",
+      "bytes": 215634,
+      "sha256": "09fda52eeef008ff4b6513d8fcc2906d3cbe8911393ff4e77ef687a66240b47d"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LFCoxa.stl",
+      "target": "meshes/stl/LFCoxa.stl",
+      "bytes": 103984,
+      "sha256": "9195e39b45975b58a631a281e53c3b8a6b3f0d8ee8dee09be7aad3342e7aa3bb"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LFTrochanter.stl",
+      "target": "meshes/stl/LFTrochanter.stl",
+      "bytes": 34784,
+      "sha256": "9eece5e88d044b53517bfe231edddbe8acc3f5cb50bbd2230168f799cfaee9f2"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LFFemur.stl",
+      "target": "meshes/stl/LFFemur.stl",
+      "bytes": 842284,
+      "sha256": "d4012dff9598fcf021d451b04d0b2bfce666fa8bc5369c7a6844699ff806f3cc"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LFTibia.stl",
+      "target": "meshes/stl/LFTibia.stl",
+      "bytes": 53684,
+      "sha256": "e48e96e254ac932ecb707364c31f4d1867ab2dd947a3fc257a3291bae5d10d5f"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LFTarsus1.stl",
+      "target": "meshes/stl/LFTarsus1.stl",
+      "bytes": 24484,
+      "sha256": "ad61cfec64816d669f1f4f89bddb818471344dd69f6443c184a3aa674ea2b62a"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LFTarsus2.stl",
+      "target": "meshes/stl/LFTarsus2.stl",
+      "bytes": 19784,
+      "sha256": "a5c00b6a936c0d61a70a9726082e569f9b7f72bce17bfce67cd406bb7ed840e5"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LFTarsus3.stl",
+      "target": "meshes/stl/LFTarsus3.stl",
+      "bytes": 17484,
+      "sha256": "c154a96be4927b0db54cbc713681e00ae62021a05d55ca3649c3e40069c65acb"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LFTarsus4.stl",
+      "target": "meshes/stl/LFTarsus4.stl",
+      "bytes": 14884,
+      "sha256": "622606f09a1a6598125bd534af675cfe50a8aae465b38fdf9148dda8b06a58f9"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LFTarsus5.stl",
+      "target": "meshes/stl/LFTarsus5.stl",
+      "bytes": 18084,
+      "sha256": "7f7e9f98c416f01c1114f38d22ba3fc0c7ed4ee2c5f799a2c59a447fbff308b3"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LHCoxa.stl",
+      "target": "meshes/stl/LHCoxa.stl",
+      "bytes": 199084,
+      "sha256": "cf8352af3217f5febd0574215b799faa38113ec8055079e751983071da53d4bc"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LHFemur.stl",
+      "target": "meshes/stl/LHFemur.stl",
+      "bytes": 165884,
+      "sha256": "9a8f7703c5939807d8894dc1e750997bdfb00b2a7c1698ab3e193544d07ba11b"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LHTibia.stl",
+      "target": "meshes/stl/LHTibia.stl",
+      "bytes": 37484,
+      "sha256": "15b3fcb4b0c14d12883daffc14f99415329f99614f14f1fd8cfd5e7b1fda4b37"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LHTarsus1.stl",
+      "target": "meshes/stl/LHTarsus1.stl",
+      "bytes": 38934,
+      "sha256": "bef10a44d00419f04f5373a6d80f8aa5a248e84f9b2a07408d35671ef8bc46d8"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LHTarsus2.stl",
+      "target": "meshes/stl/LHTarsus2.stl",
+      "bytes": 98684,
+      "sha256": "41cab7b9105f99d4db311c90fcbdda95b2cb53595b4a37b6ab494469eb0740b8"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LHTarsus3.stl",
+      "target": "meshes/stl/LHTarsus3.stl",
+      "bytes": 129584,
+      "sha256": "cfde4d0b603b0848dbc4ce85ab2e2954942da05da3429f2fb694819d3e77a0d1"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LHTarsus4.stl",
+      "target": "meshes/stl/LHTarsus4.stl",
+      "bytes": 130984,
+      "sha256": "c2eed9e0aa475353694d4cc209435bb5716d5a5862161bc1fd76a57bd72717c2"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LHTarsus5.stl",
+      "target": "meshes/stl/LHTarsus5.stl",
+      "bytes": 147084,
+      "sha256": "33556f4a7f538fc2d3e14913f50e756f6f88a33439dab455b3f5f300da5287ed"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LHaltere.stl",
+      "target": "meshes/stl/LHaltere.stl",
+      "bytes": 41284,
+      "sha256": "f10ce437255a1aede388e6375e32a6ea2d917c1cebb0347e95c93938a82afe46"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LMCoxa.stl",
+      "target": "meshes/stl/LMCoxa.stl",
+      "bytes": 130384,
+      "sha256": "1f531dd264b421f50218f948ca0520daedcec95b326848344472b87f99df38c4"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LMFemur.stl",
+      "target": "meshes/stl/LMFemur.stl",
+      "bytes": 41384,
+      "sha256": "cc7de1d5c273692c1092af22c64ac523ab9065e54c9867ae0e840028fe1f4489"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LMTibia.stl",
+      "target": "meshes/stl/LMTibia.stl",
+      "bytes": 33884,
+      "sha256": "121eb0503627adcb96f71701d1d12be0e6dafb8a842dd672cb23918094dae186"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LMTarsus1.stl",
+      "target": "meshes/stl/LMTarsus1.stl",
+      "bytes": 46284,
+      "sha256": "46c584345e52741d3e93c6053b63de72d84262a1db82651e9fe146ed4cfabd6a"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LMTarsus2.stl",
+      "target": "meshes/stl/LMTarsus2.stl",
+      "bytes": 77884,
+      "sha256": "6f0482bbc912995884caab40380645ac4846ae1b6d38b78f7d1190514cdaa399"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LMTarsus3.stl",
+      "target": "meshes/stl/LMTarsus3.stl",
+      "bytes": 92884,
+      "sha256": "bbb9f6caa201c9d177b4007011dabf0c87ad2d722f55f6aeef4c8cf98b772883"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LMTarsus4.stl",
+      "target": "meshes/stl/LMTarsus4.stl",
+      "bytes": 159584,
+      "sha256": "cef9504a68c0b054795dc1feaaad683df05cd47601db4c8a141bc6dc427fff61"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LMTarsus5.stl",
+      "target": "meshes/stl/LMTarsus5.stl",
+      "bytes": 49384,
+      "sha256": "83eaa926ff3a7b8452e2432033e4573752097ee08c9b3513b70482c084e29f7f"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/LWing.stl",
+      "target": "meshes/stl/LWing.stl",
+      "bytes": 996734,
+      "sha256": "9247992a96ba2f6ea69a13b2949c0be0ea51738bb0044cdaed34b262a926f256"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RFCoxa.stl",
+      "target": "meshes/stl/RFCoxa.stl",
+      "bytes": 42884,
+      "sha256": "e1849a7dbe5273cfd86ace2c14af0130775d00381e926e1736ed592cac63550a"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RFTrochanter.stl",
+      "target": "meshes/stl/RFTrochanter.stl",
+      "bytes": 19584,
+      "sha256": "a47df0bfd23d89aa8f1aa9a3652d86cc2fdfe39e9410485baa6bbe2140491c1b"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RFFemur.stl",
+      "target": "meshes/stl/RFFemur.stl",
+      "bytes": 60834,
+      "sha256": "77ee2146a08d8ef175bdc5bcb3a5a155a3e5317103e17e28903e415316ed5837"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RFTibia.stl",
+      "target": "meshes/stl/RFTibia.stl",
+      "bytes": 61834,
+      "sha256": "bd073bc9a7f598dbe1487d838da35273be58d84822222bd971ba5fabd88845ed"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RFTarsus1.stl",
+      "target": "meshes/stl/RFTarsus1.stl",
+      "bytes": 24484,
+      "sha256": "055adb1a90f1430b9edfd54f050da921ad816e3c212a66cc99a83118485cf805"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RFTarsus2.stl",
+      "target": "meshes/stl/RFTarsus2.stl",
+      "bytes": 19784,
+      "sha256": "4dfacd1cfd62d6984b93a7809d2e64527e97a5e9ccb95bc4729415fdcedb6cdd"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RFTarsus3.stl",
+      "target": "meshes/stl/RFTarsus3.stl",
+      "bytes": 17484,
+      "sha256": "402b2d148d2f079aa100ae2cc799919d4cf64fcfdb2e112ae05221a3247b86c0"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RFTarsus4.stl",
+      "target": "meshes/stl/RFTarsus4.stl",
+      "bytes": 14884,
+      "sha256": "1d9790cfd7949942e973e6de356989f90468acb0c9808458661d85afd6953c73"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RFTarsus5.stl",
+      "target": "meshes/stl/RFTarsus5.stl",
+      "bytes": 18084,
+      "sha256": "716f7a121e190f7c46df2b63968ea29cacc7d9951b864d657ed5b96f50f8bf3f"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RHCoxa.stl",
+      "target": "meshes/stl/RHCoxa.stl",
+      "bytes": 199084,
+      "sha256": "de2abbee97410931b6aecd8e904d622a225f1cfd1b475eb8c49da1b161eac736"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RHFemur.stl",
+      "target": "meshes/stl/RHFemur.stl",
+      "bytes": 165884,
+      "sha256": "219ef48acfab0bb2920e8a3d57537c23b0a4fcc133feff18fc72477baf550880"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RHTibia.stl",
+      "target": "meshes/stl/RHTibia.stl",
+      "bytes": 37484,
+      "sha256": "94830552615cb5cacaeb4eddaabde518bc1ab79fbc76e42a8cc654a54f8c6815"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RHTarsus1.stl",
+      "target": "meshes/stl/RHTarsus1.stl",
+      "bytes": 38934,
+      "sha256": "55a3db5944bb43a4bf970fcddba0b77a9cff1b37319b9d5b35d7c7ac933f06ec"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RHTarsus2.stl",
+      "target": "meshes/stl/RHTarsus2.stl",
+      "bytes": 98684,
+      "sha256": "ab7262e6d880ef8aee6208d03275ffaa8517b311dee5972a35d749af2dbdfbc2"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RHTarsus3.stl",
+      "target": "meshes/stl/RHTarsus3.stl",
+      "bytes": 129584,
+      "sha256": "9d4d07ebfdc32a8301c9e0a47c7c066fc144d5e75a947a0f69b6ef4fc4fdaf1e"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RHTarsus4.stl",
+      "target": "meshes/stl/RHTarsus4.stl",
+      "bytes": 130984,
+      "sha256": "dbb7b4b0dff7ce16ad67d799c5d8ac1c3067c2ca8a7a09c35bd1be552abf46c6"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RHTarsus5.stl",
+      "target": "meshes/stl/RHTarsus5.stl",
+      "bytes": 147084,
+      "sha256": "e4fbc4cf0ab91e6ca120f3b2a0e4f3b376c553f963759be9b067f1307b285f92"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RHaltere.stl",
+      "target": "meshes/stl/RHaltere.stl",
+      "bytes": 41284,
+      "sha256": "79f6fd1b7e390c68a518c5785c5a264d4fce6b6190f0c459e67b8a86e5b1d39d"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RMCoxa.stl",
+      "target": "meshes/stl/RMCoxa.stl",
+      "bytes": 130384,
+      "sha256": "3b1dadc1ac39b49ca1e7a67e5ce73b20765398d6ee36c58bd7a2da31b6495727"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RMFemur.stl",
+      "target": "meshes/stl/RMFemur.stl",
+      "bytes": 41384,
+      "sha256": "a09baaa03751f7e75b29dff72cbb41b8e6d4281e726aa25714d9568c8a24b484"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RMTibia.stl",
+      "target": "meshes/stl/RMTibia.stl",
+      "bytes": 33884,
+      "sha256": "5ae92d36789ae2666c52ebe56614de609c7a78b56610b3886662008fdf4b02dd"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RMTarsus1.stl",
+      "target": "meshes/stl/RMTarsus1.stl",
+      "bytes": 46284,
+      "sha256": "a52ffb792c22345983f1d2d068836765682975e3f209ad056cd08c62060ae5e1"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RMTarsus2.stl",
+      "target": "meshes/stl/RMTarsus2.stl",
+      "bytes": 77884,
+      "sha256": "3f52c7f9a5ce869098b8e29a7bc9a0d308b4833d4d17064c92a1ba4a58898502"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RMTarsus3.stl",
+      "target": "meshes/stl/RMTarsus3.stl",
+      "bytes": 92884,
+      "sha256": "e70d291cdd958d0a5a2ed6e3554b369b7170a6b9a110f912017c331afafa1d72"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RMTarsus4.stl",
+      "target": "meshes/stl/RMTarsus4.stl",
+      "bytes": 159584,
+      "sha256": "6e2d9ec053490b0649c756b9d1ca47394806d162f463659ed6117c16788ab40a"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RMTarsus5.stl",
+      "target": "meshes/stl/RMTarsus5.stl",
+      "bytes": 49384,
+      "sha256": "f6ac243379d2694e6161e28c2c9dc406cf6ac91363ac6bf7eb7e42da225b2f15"
+    },
+    {
+      "source": "flymimic/assets/models/meshes/stl/RWing.stl",
+      "target": "meshes/stl/RWing.stl",
+      "bytes": 996734,
+      "sha256": "a00cd68f368e9a51832a05ba869cade1ac65fa7b502c7c3e9f62da417b53ea43"
+    }
+  ],
+  "muscles": [
+    {
+      "index": 0,
+      "id": "LFC_tergopleural_promotor_a",
+      "label": "tergopleural promotor a",
+      "region": "Coxa",
+      "tendon": "LFC_tergopleural_promotor_a_tendon",
+      "sites": [
+        "LFC_tergopleural_promotor_a_LFC_Miller28a_p1",
+        "LFC_tergopleural_promotor_a_LFC_Miller28a_p296",
+        "LFC_tergopleural_promotor_a_LFC_Miller28a_p396"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.157941,
+        0.213637
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.774703,
+        1.39095,
+        14.2319,
+        1,
+        0,
+        2,
+        10,
+        0.358728,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 1,
+      "id": "LFC_tergopleural_promotor_b",
+      "label": "tergopleural promotor b",
+      "region": "Coxa",
+      "tendon": "LFC_tergopleural_promotor_b_tendon",
+      "sites": [
+        "LFC_tergopleural_promotor_b_LFC_Miller28b_p1",
+        "LFC_tergopleural_promotor_b_LFC_Miller28b_p296",
+        "LFC_tergopleural_promotor_b_LFC_Miller28b_p396"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.339805,
+        0.361902
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.944598,
+        1.01483,
+        67.764,
+        1,
+        0,
+        2,
+        10,
+        4.08279,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 2,
+      "id": "LFC_pleural_remotor_and_abductor",
+      "label": "pleural remotor and abductor",
+      "region": "Coxa",
+      "tendon": "LFC_pleural_remotor_and_abductor_tendon",
+      "sites": [
+        "LFC_pleural_remotor_and_abductor_LFC_Miller29_p1",
+        "LFC_pleural_remotor_and_abductor_LFC_Miller29_p296"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.216122,
+        0.299608
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.743435,
+        1.72008,
+        28.7481,
+        1,
+        0,
+        2,
+        10,
+        0.353216,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 3,
+      "id": "LFC_pleural_promotor",
+      "label": "pleural promotor",
+      "region": "Coxa",
+      "tendon": "LFC_pleural_promotor_tendon",
+      "sites": [
+        "LFC_pleural_promotor_LFC_Miller30_p1",
+        "LFC_pleural_promotor_LFC_Miller30_p296"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.0912448,
+        0.135751
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.859265,
+        1.59552,
+        30.6427,
+        1,
+        0,
+        2,
+        10,
+        0.283134,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 4,
+      "id": "LFC_sternal_anterior_rotator",
+      "label": "sternal anterior rotator",
+      "region": "Coxa",
+      "tendon": "LFC_sternal_anterior_rotator_tendon",
+      "sites": [
+        "LFC_sternal_anterior_rotator_LFC_Miller31_p1",
+        "LFC_sternal_anterior_rotator_LFC_Miller31_p296"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.126048,
+        0.202925
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.185296,
+        1.73386,
+        10.5807,
+        1,
+        0,
+        2,
+        10,
+        3.11328,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 5,
+      "id": "LFC_sternal_posterior_rotator",
+      "label": "sternal posterior rotator",
+      "region": "Coxa",
+      "tendon": "LFC_sternal_posterior_rotator_tendon",
+      "sites": [
+        "LFC_sternal_posterior_rotator_LFC_Miller32_p1",
+        "LFC_sternal_posterior_rotator_LFC_Miller32_p296"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.0715242,
+        0.147229
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.610817,
+        1.40821,
+        157.429,
+        1,
+        0,
+        2,
+        10,
+        0.0752654,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 6,
+      "id": "LFC_sternal_adductor",
+      "label": "sternal adductor",
+      "region": "Coxa",
+      "tendon": "LFC_sternal_adductor_tendon",
+      "sites": [
+        "LFC_sternal_adductor_LFC_Miller33_p1",
+        "LFC_sternal_adductor_LFC_Miller33_p296"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.0972302,
+        0.259683
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.244283,
+        1.48664,
+        12.9,
+        1,
+        0,
+        2,
+        10,
+        0.446817,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 7,
+      "id": "LFF_trochanter_flexor_b",
+      "label": "trochanter flexor b",
+      "region": "Trochanter",
+      "tendon": "LFF_trochanter_flexor_b_tendon",
+      "sites": [
+        "LFF_trochanter_flexor_b_lff_thco_flexb_p1",
+        "LFF_trochanter_flexor_b_lff_thco_flexb_p222",
+        "LFF_trochanter_flexor_b_lff_thco_flexb_p322"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.272991,
+        0.32626
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.537008,
+        1.04625,
+        77.9856,
+        1,
+        0,
+        2,
+        10,
+        2.85222,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 8,
+      "id": "LFF_sterno-tergo-trochanter_extensor_a",
+      "label": "sterno-tergo-trochanter extensor a",
+      "region": "Trochanter",
+      "tendon": "LFF_sterno-tergo-trochanter_extensor_a_tendon",
+      "sites": [
+        "LFF_sterno-tergo-trochanter_extensor_a_lff_thco_stta_p1",
+        "LFF_sterno-tergo-trochanter_extensor_a_lff_thco_stta_p222",
+        "LFF_sterno-tergo-trochanter_extensor_a_lff_thco_stta_p322"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.280895,
+        0.337649
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.727951,
+        1.5069,
+        159.153,
+        1,
+        0,
+        2,
+        10,
+        0.239629,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 9,
+      "id": "LFF_sterno-tergo-trochanter_extensor_b",
+      "label": "sterno-tergo-trochanter extensor b",
+      "region": "Trochanter",
+      "tendon": "LFF_sterno-tergo-trochanter_extensor_b_tendon",
+      "sites": [
+        "LFF_sterno-tergo-trochanter_extensor_b_LFF_sterno-tergo-trochanter_extensor_b_p1",
+        "LFF_sterno-tergo-trochanter_extensor_b_LFF_sterno-tergo-trochanter_extensor_b_p222",
+        "LFF_sterno-tergo-trochanter_extensor_b_LFF_sterno-tergo-trochanter_extensor_b_p322"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.24007,
+        0.320078
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.84831,
+        1.43402,
+        124.303,
+        1,
+        0,
+        2,
+        10,
+        0.0988153,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 10,
+      "id": "LFF_accesory_trochanter_flexor",
+      "label": "accessory trochanter flexor",
+      "region": "Trochanter",
+      "tendon": "LFF_accesory_trochanter_flexor_tendon",
+      "sites": [
+        "LFF_accesory_trochanter_flexor_LFF_roll_f_p1",
+        "LFF_accesory_trochanter_flexor_LFF_roll_f_p222"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.203418,
+        0.262616
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.638661,
+        1.51365,
+        24.8598,
+        1,
+        0,
+        2,
+        10,
+        0.210106,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 11,
+      "id": "LFF_trochanter_extensor",
+      "label": "trochanter extensor",
+      "region": "Trochanter",
+      "tendon": "LFF_trochanter_extensor_tendon",
+      "sites": [
+        "LFF_trochanter_extensor_LFF_roll_e_p1",
+        "LFF_trochanter_extensor_LFF_roll_e_p222"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.0912131,
+        0.1283
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.90157,
+        1.19258,
+        40.5728,
+        1,
+        0,
+        2,
+        10,
+        0.706553,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 12,
+      "id": "LFF_trochanter_flexor_a",
+      "label": "trochanter flexor a",
+      "region": "Trochanter",
+      "tendon": "LFF_trochanter_flexor_a_tendon",
+      "sites": [
+        "LFF_trochanter_flexor_a_LFF_flexa_p1",
+        "LFF_trochanter_flexor_a_LFF_flexa_p222"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.34225,
+        0.413396
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.830849,
+        1.58829,
+        46.8237,
+        1,
+        0,
+        2,
+        10,
+        0.507633,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 13,
+      "id": "LFTibia_flex_93434",
+      "label": "flexor",
+      "region": "Tibia",
+      "tendon": "LFTibia_flex_93434_tendon",
+      "sites": [
+        "LFTibia_flex_93434_bifemlh_r-P1",
+        "LFTibia_flex_93434_bifemlh_r-P2",
+        "LFTibia_flex_93434_pp21995"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.468973,
+        0.494701
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.958046,
+        1.04136,
+        68.1213,
+        1,
+        0,
+        2,
+        10,
+        3.23161,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    },
+    {
+      "index": 14,
+      "id": "LFTibia_extensor_93932",
+      "label": "extensor",
+      "region": "Tibia",
+      "tendon": "LFTibia_extensor_93932_tendon",
+      "sites": [
+        "LFTibia_extensor_93932_bifemlh_r-P1",
+        "LFTibia_extensor_93932_bifemlh_r-P2",
+        "LFTibia_extensor_93932_pp21995"
+      ],
+      "ctrlrange": [
+        0.0001,
+        1
+      ],
+      "lengthrange": [
+        0.533109,
+        0.586674
+      ],
+      "dynprm": [
+        0.0001,
+        0.0004,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gainprm": [
+        0.906629,
+        1.52523,
+        303.877,
+        1,
+        0,
+        2,
+        10,
+        0.183322,
+        1.4,
+        0
+      ],
+      "evidence": [
+        "flymimic"
+      ],
+      "neuralMapping": "unimplemented"
+    }
+  ]
+}

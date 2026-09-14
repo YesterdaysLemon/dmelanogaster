@@ -1,0 +1,29 @@
+# Managed by al-stack. Keep extended prose in AGENTS.md.
+"schema" = 1
+
+["project"]
+"id" = "6e4d7c83-f5d5-4224-986d-36853cde86cd"
+"name" = "dmelanogaster"
+"status" = "active"
+"profile" = "research"
+"purpose" = "Reconstruct Drosophila from anatomy and physiology; a public muscle bench and linked literature atlas."
+
+["stack"]
+"version" = "0.1.0"
+"revision" = "11eac15f6a8a0dc76f06ef97c7c3a27c7f668e0a+dirty.6fb7933644af4e9c"
+
+["commands"]
+"dev" = "npm run dev"
+"test" = "npm test"
+"build" = "npm run build"
+"verify" = "npm run verify"
+
+[["tools"]]
+"name" = "node"
+"kind" = "cli"
+"command" = "node"
+
+[["tools"]]
+"name" = "npm"
+"kind" = "cli"
+"command" = "npm"
