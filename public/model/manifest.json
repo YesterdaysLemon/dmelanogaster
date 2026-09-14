@@ -15,8 +15,8 @@
     {
       "source": "flymimic/assets/models/best_combined_arm_damping_stiff_cvt3.xml",
       "target": "fly.xml",
-      "bytes": 50218,
-      "sha256": "388ae76c99d685c16371223f0f60f88d3592d5b3c140e695dad63af221ca4e11"
+      "bytes": 49670,
+      "sha256": "04f6070d6733940357be005ca72c02ba0d9455538ff018da70c74de7458e9531"
     },
     {
       "source": "flymimic/assets/models/meshes/stl/Thorax.stl",

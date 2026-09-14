@@ -1,0 +1,4 @@
+* text=auto eol=lf
+public/model/fly.xml -text
+public/model/meshes/stl/*.stl -text
+public/model/LICENSE-FlyMimic.txt -text
