@@ -1,0 +1,1176 @@
+{
+  "version": 1,
+  "source": "https://github.com/NeLy-EPFL/flygym",
+  "commit": "cedd204e0c3bc70bab8ccdf1d0520f2b77b2619b",
+  "modelPath": "motion.xml",
+  "runtimeModel": "motion.xml",
+  "license": "Apache-2.0",
+  "files": [
+    {
+      "target": "meshes/Thorax.stl",
+      "source": "flygym/data/mesh/Thorax.stl",
+      "bytes": 281534,
+      "sha256": "0ac93168a38e8feb80f544ee25c2c03272072f00048f041b77966ad450fb0fc9"
+    },
+    {
+      "target": "meshes/A1A2.stl",
+      "source": "flygym/data/mesh/A1A2.stl",
+      "bytes": 144334,
+      "sha256": "aed84b41c264a93755678df79a99ce8ea399cf2674fdd6a8fe7e2dcfec6c6d6b"
+    },
+    {
+      "target": "meshes/A3.stl",
+      "source": "flygym/data/mesh/A3.stl",
+      "bytes": 140084,
+      "sha256": "07c5b43e2f91a9262cbfbcea4d0beabb0e5a1381afe01260df95548bf3cfefbc"
+    },
+    {
+      "target": "meshes/A4.stl",
+      "source": "flygym/data/mesh/A4.stl",
+      "bytes": 143384,
+      "sha256": "010667e71500c425eea1307004833c5990a0f76ceb0b57957e39c52bd9e6a52d"
+    },
+    {
+      "target": "meshes/A5.stl",
+      "source": "flygym/data/mesh/A5.stl",
+      "bytes": 158834,
+      "sha256": "0b83e74ef96eac7c944c74062b224e1ecaef356ed490dad1a2c6a78f2618d008"
+    },
+    {
+      "target": "meshes/A6.stl",
+      "source": "flygym/data/mesh/A6.stl",
+      "bytes": 203134,
+      "sha256": "6ec06369174ff0fec5ce2dd5129aa5291ae81d1b624c0cb3e2e1986bf76c7ea7"
+    },
+    {
+      "target": "meshes/Head.stl",
+      "source": "flygym/data/mesh/Head.stl",
+      "bytes": 4117984,
+      "sha256": "aafc2196f1bdcd94f29378b6aec39943d6c4baddeed24502fb0381f8e0430150"
+    },
+    {
+      "target": "meshes/REye.stl",
+      "source": "flygym/data/mesh/REye.stl",
+      "bytes": 2616284,
+      "sha256": "a6057f98a73a8b91cc65a1cae0c83b3f0a66def10f9a15b6a271c4bb4b5af0a6"
+    },
+    {
+      "target": "meshes/Rostrum.stl",
+      "source": "flygym/data/mesh/Rostrum.stl",
+      "bytes": 189384,
+      "sha256": "9616109271847e638de093e85553903b81e4db67b06d237a70abae5994d1c4c9"
+    },
+    {
+      "target": "meshes/Haustellum.stl",
+      "source": "flygym/data/mesh/Haustellum.stl",
+      "bytes": 215634,
+      "sha256": "9498e99c33324fbc6b3381ceb1bb13b874f919b9deccc7a5cfce618fb42d742f"
+    },
+    {
+      "target": "meshes/RPedicel.stl",
+      "source": "flygym/data/mesh/RPedicel.stl",
+      "bytes": 862884,
+      "sha256": "1bf370fed2fca4b1a1c275a78a1ece1ac3df6e62a542a9331238d23dd5fd46a5"
+    },
+    {
+      "target": "meshes/RFuniculus.stl",
+      "source": "flygym/data/mesh/RFuniculus.stl",
+      "bytes": 26784,
+      "sha256": "5b9fbc5111e5da82d1c1c106d2e4036205e464a9227f24fbdbe587c95e631377"
+    },
+    {
+      "target": "meshes/RArista.stl",
+      "source": "flygym/data/mesh/RArista.stl",
+      "bytes": 2662884,
+      "sha256": "cf4701d9502a6287578378aa5a894ed0579ff34185ac37446d7f4812294a9e3d"
+    },
+    {
+      "target": "meshes/RFCoxa.stl",
+      "source": "flygym/data/mesh/RFCoxa.stl",
+      "bytes": 184034,
+      "sha256": "fb8aecfd0cf4ea7bbe4e7bb0512fb984eaaf5ec09b92a457200c14bec4121d5e"
+    },
+    {
+      "target": "meshes/RFFemur.stl",
+      "source": "flygym/data/mesh/RFFemur.stl",
+      "bytes": 80984,
+      "sha256": "9deda28d4c0cb903792468a4fcacb36e07c0ac8deefd3c836703686ebc901a2e"
+    },
+    {
+      "target": "meshes/RFTibia.stl",
+      "source": "flygym/data/mesh/RFTibia.stl",
+      "bytes": 85534,
+      "sha256": "cfea07f978588affdc760ac9eb047c4bb03f6f5976151178de883bd8cc9b5858"
+    },
+    {
+      "target": "meshes/RFTarsus1.stl",
+      "source": "flygym/data/mesh/RFTarsus1.stl",
+      "bytes": 89584,
+      "sha256": "a8cc8e23209eb6405d50e5fdc40a4e28f0a74c9cca3da880e36e58e0c6843bf8"
+    },
+    {
+      "target": "meshes/RFTarsus2.stl",
+      "source": "flygym/data/mesh/RFTarsus2.stl",
+      "bytes": 89884,
+      "sha256": "5a916893bb14604ff8600e7607864be6328e04d6db3907882b08b828ee7f1649"
+    },
+    {
+      "target": "meshes/RFTarsus3.stl",
+      "source": "flygym/data/mesh/RFTarsus3.stl",
+      "bytes": 152584,
+      "sha256": "d0288babd00488f735e1caa392bee5da7524edcf063b8eb059b9b152c606be44"
+    },
+    {
+      "target": "meshes/RFTarsus4.stl",
+      "source": "flygym/data/mesh/RFTarsus4.stl",
+      "bytes": 164234,
+      "sha256": "e0343859c3eab8fa79579e5f0c48aa0dafde245ae0c2bf54472d7ca483d07c20"
+    },
+    {
+      "target": "meshes/RFTarsus5.stl",
+      "source": "flygym/data/mesh/RFTarsus5.stl",
+      "bytes": 142184,
+      "sha256": "e4dd5405ec5b22d28c08b6b50e99b9de28ba54768817a49c2f966e80a8eeb30b"
+    },
+    {
+      "target": "meshes/RHaltere.stl",
+      "source": "flygym/data/mesh/RHaltere.stl",
+      "bytes": 41284,
+      "sha256": "01bf5200bcba3051660926a092466b06464b801d21fd93645a68993ecacf929a"
+    },
+    {
+      "target": "meshes/RHCoxa.stl",
+      "source": "flygym/data/mesh/RHCoxa.stl",
+      "bytes": 199084,
+      "sha256": "0298272dc088ebcb964eb9ac4d13b16121e1ee90ba45337781bdadfba096dbaf"
+    },
+    {
+      "target": "meshes/RHFemur.stl",
+      "source": "flygym/data/mesh/RHFemur.stl",
+      "bytes": 165884,
+      "sha256": "fb717ea9d5a2eb436262bfc42688f5297bc972290d12d7b5b6dd83dfdfba25dd"
+    },
+    {
+      "target": "meshes/RHTibia.stl",
+      "source": "flygym/data/mesh/RHTibia.stl",
+      "bytes": 37484,
+      "sha256": "688cda77697232e5c2cd62bcfcb1b994693c2518d2ee8862d546863e92954992"
+    },
+    {
+      "target": "meshes/RHTarsus1.stl",
+      "source": "flygym/data/mesh/RHTarsus1.stl",
+      "bytes": 38934,
+      "sha256": "28c6287e3349116c21fd264b9d775d2d68207db98e7032e3203158fd61c36fa1"
+    },
+    {
+      "target": "meshes/RHTarsus2.stl",
+      "source": "flygym/data/mesh/RHTarsus2.stl",
+      "bytes": 98684,
+      "sha256": "ffce858b2321c5871ef0109c44e6aa2f17db27ef136dcff998385cad583f4686"
+    },
+    {
+      "target": "meshes/RHTarsus3.stl",
+      "source": "flygym/data/mesh/RHTarsus3.stl",
+      "bytes": 129584,
+      "sha256": "4335fffd3834d9964e86199c056243ba05fff27b58c5de34c91784e838a8ccdd"
+    },
+    {
+      "target": "meshes/RHTarsus4.stl",
+      "source": "flygym/data/mesh/RHTarsus4.stl",
+      "bytes": 130984,
+      "sha256": "1a0d68dddf33caaaf9278f1650b2018690b68453732d0e46e862f5e522889753"
+    },
+    {
+      "target": "meshes/RHTarsus5.stl",
+      "source": "flygym/data/mesh/RHTarsus5.stl",
+      "bytes": 147084,
+      "sha256": "4043963e5561f033e887491dfa4085fa5c43233b48d6796c99fb8c49932fb874"
+    },
+    {
+      "target": "meshes/RMCoxa.stl",
+      "source": "flygym/data/mesh/RMCoxa.stl",
+      "bytes": 130384,
+      "sha256": "25fc3f1dcb1c767bd42cdf82321c05c0f4d92bc09ee448cbe1acef9263a37449"
+    },
+    {
+      "target": "meshes/RMFemur.stl",
+      "source": "flygym/data/mesh/RMFemur.stl",
+      "bytes": 41384,
+      "sha256": "939eb30b456bb3dc72ca081542760c6acf5c75a7316b6463453cc282a978f97d"
+    },
+    {
+      "target": "meshes/RMTibia.stl",
+      "source": "flygym/data/mesh/RMTibia.stl",
+      "bytes": 33884,
+      "sha256": "17662ff1636431e5c5399e71dbe31fb48b389f06b2a40783bcc1c513cade8b8f"
+    },
+    {
+      "target": "meshes/RMTarsus1.stl",
+      "source": "flygym/data/mesh/RMTarsus1.stl",
+      "bytes": 46284,
+      "sha256": "cb1606bb2b6d3a3713fde86f4fca6c737b74c8be45e7584e569d95ffab8af8c9"
+    },
+    {
+      "target": "meshes/RMTarsus2.stl",
+      "source": "flygym/data/mesh/RMTarsus2.stl",
+      "bytes": 77884,
+      "sha256": "49272c7e82f7c28a09bc79d339d22c15e3585ecd21de88748417bd8409310afb"
+    },
+    {
+      "target": "meshes/RMTarsus3.stl",
+      "source": "flygym/data/mesh/RMTarsus3.stl",
+      "bytes": 92884,
+      "sha256": "b80f1f7d2380e8b85bc7958399ac5d3dd0c0b9c8cfb655cb7517d0086d098c0d"
+    },
+    {
+      "target": "meshes/RMTarsus4.stl",
+      "source": "flygym/data/mesh/RMTarsus4.stl",
+      "bytes": 159584,
+      "sha256": "53b914a75fb54c27a1fc03f4210bc273795de76f336a5429ce89cf31ca927a89"
+    },
+    {
+      "target": "meshes/RMTarsus5.stl",
+      "source": "flygym/data/mesh/RMTarsus5.stl",
+      "bytes": 49384,
+      "sha256": "222297c3ea6c513db2dabb82d4efe831409b2d0f2a32e38500ac9266c7279214"
+    },
+    {
+      "target": "meshes/RWing.stl",
+      "source": "flygym/data/mesh/RWing.stl",
+      "bytes": 996734,
+      "sha256": "7c6fad3ec5ce3b59f9a448ff6d8aff2857979afc56d846fbb22c483bf4e44edc"
+    },
+    {
+      "target": "motion.xml",
+      "source": "scripts/vendor-motion.py",
+      "bytes": 75447,
+      "sha256": "baef06d7335fb3e53f24218e12d3d57de7ee1b32fe7e927ecdea4114674c0147"
+    }
+  ],
+  "muscles": [
+    {
+      "index": 0,
+      "id": "joint_LFCoxa_yaw_positive",
+      "joint": "joint_LFCoxa_yaw",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 1,
+      "id": "joint_LFCoxa_yaw_negative",
+      "joint": "joint_LFCoxa_yaw",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 2,
+      "id": "joint_LFCoxa_positive",
+      "joint": "joint_LFCoxa",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 3,
+      "id": "joint_LFCoxa_negative",
+      "joint": "joint_LFCoxa",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 4,
+      "id": "joint_LFCoxa_roll_positive",
+      "joint": "joint_LFCoxa_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 5,
+      "id": "joint_LFCoxa_roll_negative",
+      "joint": "joint_LFCoxa_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 6,
+      "id": "joint_LFFemur_positive",
+      "joint": "joint_LFFemur",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 7,
+      "id": "joint_LFFemur_negative",
+      "joint": "joint_LFFemur",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 8,
+      "id": "joint_LFFemur_roll_positive",
+      "joint": "joint_LFFemur_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 9,
+      "id": "joint_LFFemur_roll_negative",
+      "joint": "joint_LFFemur_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 10,
+      "id": "joint_LFTibia_positive",
+      "joint": "joint_LFTibia",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 11,
+      "id": "joint_LFTibia_negative",
+      "joint": "joint_LFTibia",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 12,
+      "id": "joint_LFTarsus1_positive",
+      "joint": "joint_LFTarsus1",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 13,
+      "id": "joint_LFTarsus1_negative",
+      "joint": "joint_LFTarsus1",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 14,
+      "id": "joint_LMCoxa_yaw_positive",
+      "joint": "joint_LMCoxa_yaw",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 15,
+      "id": "joint_LMCoxa_yaw_negative",
+      "joint": "joint_LMCoxa_yaw",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 16,
+      "id": "joint_LMCoxa_positive",
+      "joint": "joint_LMCoxa",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 17,
+      "id": "joint_LMCoxa_negative",
+      "joint": "joint_LMCoxa",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 18,
+      "id": "joint_LMCoxa_roll_positive",
+      "joint": "joint_LMCoxa_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 19,
+      "id": "joint_LMCoxa_roll_negative",
+      "joint": "joint_LMCoxa_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 20,
+      "id": "joint_LMFemur_positive",
+      "joint": "joint_LMFemur",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 21,
+      "id": "joint_LMFemur_negative",
+      "joint": "joint_LMFemur",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 22,
+      "id": "joint_LMFemur_roll_positive",
+      "joint": "joint_LMFemur_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 23,
+      "id": "joint_LMFemur_roll_negative",
+      "joint": "joint_LMFemur_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 24,
+      "id": "joint_LMTibia_positive",
+      "joint": "joint_LMTibia",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 25,
+      "id": "joint_LMTibia_negative",
+      "joint": "joint_LMTibia",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 26,
+      "id": "joint_LMTarsus1_positive",
+      "joint": "joint_LMTarsus1",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 27,
+      "id": "joint_LMTarsus1_negative",
+      "joint": "joint_LMTarsus1",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 28,
+      "id": "joint_LHCoxa_yaw_positive",
+      "joint": "joint_LHCoxa_yaw",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 29,
+      "id": "joint_LHCoxa_yaw_negative",
+      "joint": "joint_LHCoxa_yaw",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 30,
+      "id": "joint_LHCoxa_positive",
+      "joint": "joint_LHCoxa",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 31,
+      "id": "joint_LHCoxa_negative",
+      "joint": "joint_LHCoxa",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 32,
+      "id": "joint_LHCoxa_roll_positive",
+      "joint": "joint_LHCoxa_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 33,
+      "id": "joint_LHCoxa_roll_negative",
+      "joint": "joint_LHCoxa_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 34,
+      "id": "joint_LHFemur_positive",
+      "joint": "joint_LHFemur",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 35,
+      "id": "joint_LHFemur_negative",
+      "joint": "joint_LHFemur",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 36,
+      "id": "joint_LHFemur_roll_positive",
+      "joint": "joint_LHFemur_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 37,
+      "id": "joint_LHFemur_roll_negative",
+      "joint": "joint_LHFemur_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 38,
+      "id": "joint_LHTibia_positive",
+      "joint": "joint_LHTibia",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 39,
+      "id": "joint_LHTibia_negative",
+      "joint": "joint_LHTibia",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 40,
+      "id": "joint_LHTarsus1_positive",
+      "joint": "joint_LHTarsus1",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 41,
+      "id": "joint_LHTarsus1_negative",
+      "joint": "joint_LHTarsus1",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 42,
+      "id": "joint_RFCoxa_yaw_positive",
+      "joint": "joint_RFCoxa_yaw",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 43,
+      "id": "joint_RFCoxa_yaw_negative",
+      "joint": "joint_RFCoxa_yaw",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 44,
+      "id": "joint_RFCoxa_positive",
+      "joint": "joint_RFCoxa",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 45,
+      "id": "joint_RFCoxa_negative",
+      "joint": "joint_RFCoxa",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 46,
+      "id": "joint_RFCoxa_roll_positive",
+      "joint": "joint_RFCoxa_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 47,
+      "id": "joint_RFCoxa_roll_negative",
+      "joint": "joint_RFCoxa_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 48,
+      "id": "joint_RFFemur_positive",
+      "joint": "joint_RFFemur",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 49,
+      "id": "joint_RFFemur_negative",
+      "joint": "joint_RFFemur",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 50,
+      "id": "joint_RFFemur_roll_positive",
+      "joint": "joint_RFFemur_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 51,
+      "id": "joint_RFFemur_roll_negative",
+      "joint": "joint_RFFemur_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 52,
+      "id": "joint_RFTibia_positive",
+      "joint": "joint_RFTibia",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 53,
+      "id": "joint_RFTibia_negative",
+      "joint": "joint_RFTibia",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 54,
+      "id": "joint_RFTarsus1_positive",
+      "joint": "joint_RFTarsus1",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 55,
+      "id": "joint_RFTarsus1_negative",
+      "joint": "joint_RFTarsus1",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 56,
+      "id": "joint_RMCoxa_yaw_positive",
+      "joint": "joint_RMCoxa_yaw",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 57,
+      "id": "joint_RMCoxa_yaw_negative",
+      "joint": "joint_RMCoxa_yaw",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 58,
+      "id": "joint_RMCoxa_positive",
+      "joint": "joint_RMCoxa",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 59,
+      "id": "joint_RMCoxa_negative",
+      "joint": "joint_RMCoxa",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 60,
+      "id": "joint_RMCoxa_roll_positive",
+      "joint": "joint_RMCoxa_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 61,
+      "id": "joint_RMCoxa_roll_negative",
+      "joint": "joint_RMCoxa_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 62,
+      "id": "joint_RMFemur_positive",
+      "joint": "joint_RMFemur",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 63,
+      "id": "joint_RMFemur_negative",
+      "joint": "joint_RMFemur",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 64,
+      "id": "joint_RMFemur_roll_positive",
+      "joint": "joint_RMFemur_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 65,
+      "id": "joint_RMFemur_roll_negative",
+      "joint": "joint_RMFemur_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 66,
+      "id": "joint_RMTibia_positive",
+      "joint": "joint_RMTibia",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 67,
+      "id": "joint_RMTibia_negative",
+      "joint": "joint_RMTibia",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 68,
+      "id": "joint_RMTarsus1_positive",
+      "joint": "joint_RMTarsus1",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 69,
+      "id": "joint_RMTarsus1_negative",
+      "joint": "joint_RMTarsus1",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 70,
+      "id": "joint_RHCoxa_yaw_positive",
+      "joint": "joint_RHCoxa_yaw",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 71,
+      "id": "joint_RHCoxa_yaw_negative",
+      "joint": "joint_RHCoxa_yaw",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 72,
+      "id": "joint_RHCoxa_positive",
+      "joint": "joint_RHCoxa",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 73,
+      "id": "joint_RHCoxa_negative",
+      "joint": "joint_RHCoxa",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 74,
+      "id": "joint_RHCoxa_roll_positive",
+      "joint": "joint_RHCoxa_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 75,
+      "id": "joint_RHCoxa_roll_negative",
+      "joint": "joint_RHCoxa_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 76,
+      "id": "joint_RHFemur_positive",
+      "joint": "joint_RHFemur",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 77,
+      "id": "joint_RHFemur_negative",
+      "joint": "joint_RHFemur",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 78,
+      "id": "joint_RHFemur_roll_positive",
+      "joint": "joint_RHFemur_roll",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 79,
+      "id": "joint_RHFemur_roll_negative",
+      "joint": "joint_RHFemur_roll",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 80,
+      "id": "joint_RHTibia_positive",
+      "joint": "joint_RHTibia",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 81,
+      "id": "joint_RHTibia_negative",
+      "joint": "joint_RHTibia",
+      "sign": -1,
+      "sites": []
+    },
+    {
+      "index": 82,
+      "id": "joint_RHTarsus1_positive",
+      "joint": "joint_RHTarsus1",
+      "sign": 1,
+      "sites": []
+    },
+    {
+      "index": 83,
+      "id": "joint_RHTarsus1_negative",
+      "joint": "joint_RHTarsus1",
+      "sign": -1,
+      "sites": []
+    }
+  ],
+  "joints": [
+    {
+      "name": "joint_LFCoxa_yaw",
+      "leg": "LF",
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0"
+    },
+    {
+      "name": "joint_LFCoxa",
+      "leg": "LF",
+      "kind": "Coxa",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_LFCoxa_roll",
+      "leg": "LF",
+      "kind": "Coxa_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_LFFemur",
+      "leg": "LF",
+      "kind": "Femur",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_LFFemur_roll",
+      "leg": "LF",
+      "kind": "Femur_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_LFTibia",
+      "leg": "LF",
+      "kind": "Tibia",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_LFTarsus1",
+      "leg": "LF",
+      "kind": "Tarsus1",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_LMCoxa_yaw",
+      "leg": "LM",
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0"
+    },
+    {
+      "name": "joint_LMCoxa",
+      "leg": "LM",
+      "kind": "Coxa",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_LMCoxa_roll",
+      "leg": "LM",
+      "kind": "Coxa_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_LMFemur",
+      "leg": "LM",
+      "kind": "Femur",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_LMFemur_roll",
+      "leg": "LM",
+      "kind": "Femur_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_LMTibia",
+      "leg": "LM",
+      "kind": "Tibia",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_LMTarsus1",
+      "leg": "LM",
+      "kind": "Tarsus1",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_LHCoxa_yaw",
+      "leg": "LH",
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0"
+    },
+    {
+      "name": "joint_LHCoxa",
+      "leg": "LH",
+      "kind": "Coxa",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_LHCoxa_roll",
+      "leg": "LH",
+      "kind": "Coxa_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_LHFemur",
+      "leg": "LH",
+      "kind": "Femur",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_LHFemur_roll",
+      "leg": "LH",
+      "kind": "Femur_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_LHTibia",
+      "leg": "LH",
+      "kind": "Tibia",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_LHTarsus1",
+      "leg": "LH",
+      "kind": "Tarsus1",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RFCoxa_yaw",
+      "leg": "RF",
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0"
+    },
+    {
+      "name": "joint_RFCoxa",
+      "leg": "RF",
+      "kind": "Coxa",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RFCoxa_roll",
+      "leg": "RF",
+      "kind": "Coxa_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_RFFemur",
+      "leg": "RF",
+      "kind": "Femur",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RFFemur_roll",
+      "leg": "RF",
+      "kind": "Femur_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_RFTibia",
+      "leg": "RF",
+      "kind": "Tibia",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RFTarsus1",
+      "leg": "RF",
+      "kind": "Tarsus1",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RMCoxa_yaw",
+      "leg": "RM",
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0"
+    },
+    {
+      "name": "joint_RMCoxa",
+      "leg": "RM",
+      "kind": "Coxa",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RMCoxa_roll",
+      "leg": "RM",
+      "kind": "Coxa_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_RMFemur",
+      "leg": "RM",
+      "kind": "Femur",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RMFemur_roll",
+      "leg": "RM",
+      "kind": "Femur_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_RMTibia",
+      "leg": "RM",
+      "kind": "Tibia",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RMTarsus1",
+      "leg": "RM",
+      "kind": "Tarsus1",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RHCoxa_yaw",
+      "leg": "RH",
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0"
+    },
+    {
+      "name": "joint_RHCoxa",
+      "leg": "RH",
+      "kind": "Coxa",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RHCoxa_roll",
+      "leg": "RH",
+      "kind": "Coxa_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_RHFemur",
+      "leg": "RH",
+      "kind": "Femur",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RHFemur_roll",
+      "leg": "RH",
+      "kind": "Femur_roll",
+      "axis": "0 0 1"
+    },
+    {
+      "name": "joint_RHTibia",
+      "leg": "RH",
+      "kind": "Tibia",
+      "axis": "0 1 0"
+    },
+    {
+      "name": "joint_RHTarsus1",
+      "leg": "RH",
+      "kind": "Tarsus1",
+      "axis": "0 1 0"
+    }
+  ],
+  "landmarks": [
+    "LF-ThC",
+    "LF-CTr",
+    "LF-FTi",
+    "LF-TiTa",
+    "LF-Claw",
+    "LM-ThC",
+    "LM-CTr",
+    "LM-FTi",
+    "LM-TiTa",
+    "LM-Claw",
+    "LH-ThC",
+    "LH-CTr",
+    "LH-FTi",
+    "LH-TiTa",
+    "LH-Claw",
+    "RF-ThC",
+    "RF-CTr",
+    "RF-FTi",
+    "RF-TiTa",
+    "RF-Claw",
+    "RM-ThC",
+    "RM-CTr",
+    "RM-FTi",
+    "RM-TiTa",
+    "RM-Claw",
+    "RH-ThC",
+    "RH-CTr",
+    "RH-FTi",
+    "RH-TiTa",
+    "RH-Claw"
+  ],
+  "dataset": {
+    "doi": "10.7910/DVN/3MCEYR",
+    "version": "3.1",
+    "license": "CC0-1.0"
+  },
+  "sourceFiles": [
+    {
+      "target": "source/annotations.csv",
+      "source": "https://dataverse.harvard.edu/api/access/datafile/10407643",
+      "bytes": 72358,
+      "sha256": "cf73a19c2833cc96ef21d73fa05d5fc0737fac10277d0c4701dc94eee151b982"
+    },
+    {
+      "target": "source/recorded_steps.mp4",
+      "source": "https://dataverse.harvard.edu/api/access/datafile/10407644",
+      "bytes": 347082,
+      "sha256": "f0c30e128f7ddf96e35db061ec03d910767e3809e308dfd858519c7e0e7aeaf7"
+    },
+    {
+      "target": "source/single_steps_untethered.pkl",
+      "source": "flygym/data/behavior/single_steps_untethered.pkl",
+      "bytes": 18024,
+      "sha256": "1e5b28bb6b3f50ac95a04773ea37af28d05e26d03bd90fdba57fa1b3eacfaf8c"
+    },
+    {
+      "target": "source/neuromechfly.xml",
+      "source": "flygym/data/mjcf/neuromechfly_seqik_kinorder_ypr.xml",
+      "bytes": 78816,
+      "sha256": "09ae2dd68213dd6d1ec7af95c9a00e9acfe5e7fe6024b7d38625a3d0e934b4fd"
+    },
+    {
+      "target": "source/dataverse-metadata.json",
+      "source": "https://dataverse.harvard.edu/api/datasets/:persistentId?persistentId=doi:10.7910/DVN/3MCEYR",
+      "bytes": 13471,
+      "sha256": "c63fad6b459e1cd38a8dfb7083444afd6cfa2539f1a4e829608a5c3ccf0156cf"
+    }
+  ],
+  "modifications": [
+    "Fixed thorax for an isolated motion/force bench; no locomotion claim",
+    "Source seven active joint DOFs per leg retained; distal tarsi and other appendages fixed",
+    "Source geometry and joint axes retained, no calibrated muscle attachment reconstruction",
+    "84 experimental antagonistic Hill actuators: 180 uN, 0.05 mm constant moment arm, 8/25 ms activation/deactivation",
+    "No contact or adhesion; gravity acts on the tethered leg chains",
+    "Claw marker 0.09 mm distal to Tarsus5 origin is an explicit registration assumption"
+  ],
+  "physics": {
+    "timestep": 0.0001,
+    "forceUnit": "microNewton",
+    "scope": "tethered trajectory-tracking assay"
+  }
+}

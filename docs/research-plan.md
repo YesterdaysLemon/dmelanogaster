@@ -6,6 +6,8 @@ Build an anatomically and physiologically constrained adult fly whose actions ar
 
 ## Current frontier
 
+V0.3 adds the [recorded-motion comparison](motion.md): published NMF v2 video/landmarks, SeqIKPy full/reduced pose fitting and an experimental fixed-thorax muscle tracker. It constrains future anatomy and coordination work; it does not replace the terrarium controller. The main next milestone is held-out calibrated recordings plus an identified foreleg muscle/motor-unit model, followed by contact-aware free-body validation.
+
 Implemented: preserved FlyMimic foreleg bench plus a separate free-body terrarium with a 532-cell MANC rate network, 10,279 observed-count edges and an experimental recruitment / coordination bridge driving 36 reduced muscle groups. The network-only control does not sustain walking. Most muscle recruitment still comes from ideal feedback and a movement template. See [the v0.2 methods](wiring.md) before interpreting locomotion as a biological result.
 
 The body is a composite modelling reference, not a single fully observed animal. The current neural substrate is a pinned MANC adult-male data snapshot; the anatomy is a different specimen. Do not silently combine MaleCNS, FANC/BANC and different anatomical specimens as one measured individual.

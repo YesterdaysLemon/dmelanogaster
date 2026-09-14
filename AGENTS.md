@@ -39,4 +39,6 @@ Use frontend-quality and playwright for interface work; credentials-access for a
 
 ## Ownership
 
+V0.3 Motion lab uses separate NMF v2 anatomy, the original manually annotated 37-frame episode, SeqIKPy fitting and an experimental fixed-thorax muscle tracker. Read `docs/motion.md` before extending it. Do not call its 84 actuators anatomical muscle identities or its replay reconstructed control. Preserve raw data and distinguish registration errors from tracking errors. Refresh `node scripts/assay-motion.mjs` after changes to its engine/model/data. Keep source bytes and upstream licenses intact.
+
 Our UI, integration and research notes are MIT. FlyMimic XML and meshes remain Apache-2.0 with their original notice and pinned manifest. Keep runtime dependency attribution in public/licenses. Follow exact data licenses for any future connectome download.

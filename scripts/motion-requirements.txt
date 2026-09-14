@@ -1,0 +1,7 @@
+# Offline environment; install pinned work/seqik after these dependencies.
+mujoco==3.3.7
+numpy==2.5.3
+scipy==1.18.1
+pandas==2.3.3
+ikpy==3.4.2
+opencv-python==4.14.0.94

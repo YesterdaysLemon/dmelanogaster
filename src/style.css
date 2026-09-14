@@ -11,6 +11,432 @@
   --accent: #af4d2c;
   --serif: "Libre Caslon Display", Georgia, serif;
 }
+
+/* The shared recording is the working surface of the motion lab. */
+.motion-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 32px 0 24px;
+}
+.motion-heading h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 46px;
+  letter-spacing: -1px;
+  margin: 8px 0;
+}
+.motion-heading p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+.motion-heading > a {
+  font-size: 12px;
+  white-space: nowrap;
+  margin-bottom: 5px;
+}
+.motion-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-top: 1px solid var(--line);
+  padding: 18px 0 12px;
+}
+.motion-transport {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.motion-transport .primary {
+  min-width: 157px;
+}
+.motion-transport label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.motion-toolbar output {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+#motion select {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #f9f9f3;
+  color: var(--ink);
+  padding: 7px 9px;
+  font-size: 12px;
+  max-width: 100%;
+}
+.motion-scrub-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 8px 0;
+}
+.motion-scrub-label span {
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.motion-scrub {
+  width: 100%;
+  margin: 6px 0 22px;
+  accent-color: var(--ink);
+}
+.motion-triptych {
+  display: grid;
+  grid-template-columns: 0.84fr 1fr 1.18fr;
+  border: 1px solid var(--line);
+  background: #fbfcf5;
+}
+.motion-pane {
+  min-width: 0;
+  padding: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+.motion-pane + .motion-pane {
+  border-left: 1px solid var(--line);
+}
+.motion-pane-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 0 15px 14px;
+  min-height: 38px;
+}
+.motion-pane .tiny-label {
+  font-size: 9px;
+  letter-spacing: 0.8px;
+}
+.evidence-pill {
+  font-size: 9px;
+  white-space: nowrap;
+  color: #406850;
+  background: #e4edde;
+  border-radius: 3px;
+  padding: 4px 6px;
+}
+.evidence-pill.ochre {
+  background: #f4e9d6;
+  color: #886434;
+}
+.motion-stage,
+.motion-media {
+  height: 390px;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  background: radial-gradient(ellipse at 50% 65%, #e1e7d8, #f4f6ed 75%);
+}
+.motion-media {
+  background: #141915;
+}
+.motion-stage canvas {
+  display: block;
+  touch-action: none;
+}
+#motion-video-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+#motion-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 30px;
+  font-size: 13px;
+  z-index: 2;
+}
+.motion-pane-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px 0;
+  min-height: 50px;
+  font-size: 11px;
+}
+.motion-pane-caption label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+.motion-pane-caption .text-button {
+  font-size: 11px;
+  padding: 8px 0;
+  white-space: nowrap;
+}
+.motion-pane > .microcopy {
+  padding: 0 15px;
+  margin: 9px 0 17px;
+  line-height: 1.6;
+  font-size: 11px;
+  min-height: 54px;
+}
+.motion-legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+}
+.motion-leg {
+  background: transparent;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  color: var(--muted);
+  border-radius: 3px;
+}
+.motion-leg.active {
+  border-color: #bbc8b3;
+  background: #e6eddf;
+  color: var(--ink);
+}
+.motion-leg i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.motion-legend > span {
+  color: var(--muted);
+  margin-left: 10px;
+}
+.motion-legend > label {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.motion-readouts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.motion-readouts > div {
+  padding: 0 20px;
+  border-left: 1px solid var(--line);
+}
+.motion-readouts > div:first-child {
+  padding-left: 0;
+  border: 0;
+}
+.motion-readouts span,
+.motion-readouts small {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+}
+.motion-readouts strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 32px;
+  margin: 6px 0;
+}
+.motion-readouts small {
+  font-size: 10px;
+}
+.motion-plots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  margin: 24px 0 20px;
+}
+.motion-plots canvas {
+  display: block;
+  width: 100%;
+  height: 180px;
+  margin: 15px 0 5px;
+}
+.motion-plots .microcopy {
+  font-size: 10px;
+  line-height: 1.7;
+}
+.plot-key {
+  display: inline-block;
+  width: 15px;
+  height: 2px;
+  vertical-align: middle;
+  margin: 0 4px 0 7px;
+}
+.plot-key.measured {
+  background: #9caaa0;
+}
+.plot-key.fitted {
+  background: #317c96;
+}
+.plot-key.driven {
+  background: #b65d27;
+}
+.motion-scope {
+  border-left: 3px solid #bb9461;
+  padding: 14px 20px;
+  background: #ececde;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.motion-scope p {
+  margin: 6px 0 0;
+  color: #64705e;
+}
+.motion-scope a,
+.motion-methods a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.motion-methods {
+  border-block: 1px solid var(--line);
+  padding: 20px 0;
+  margin-top: 24px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.motion-methods summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+.motion-method-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+}
+.motion-method-grid h3 {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+@media (max-width: 1100px) {
+  .motion-pane-title {
+    flex-wrap: wrap;
+    min-height: 65px;
+  }
+  .motion-stage,
+  .motion-media {
+    height: 340px;
+  }
+  .motion-pane-caption {
+    flex-wrap: wrap;
+  }
+  .motion-heading > a {
+    white-space: normal;
+    max-width: 180px;
+  }
+  .masthead nav {
+    gap: 14px;
+  }
+}
+@media (max-width: 850px) {
+  .motion-triptych {
+    grid-template-columns: 1fr 1fr;
+  }
+  .motion-pane:first-child {
+    grid-column: 1/-1;
+    border-bottom: 1px solid var(--line);
+  }
+  .motion-pane:nth-child(2) {
+    border-left: 0;
+  }
+  .motion-pane:first-child .motion-media {
+    height: 320px;
+  }
+  .motion-pane-title {
+    min-height: 38px;
+  }
+  .motion-readouts {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .motion-readouts > div:nth-child(3) {
+    padding-left: 0;
+    border: 0;
+  }
+  .motion-toolbar {
+    flex-wrap: wrap;
+  }
+  .motion-heading h1 {
+    font-size: 38px;
+  }
+}
+@media (max-width: 540px) {
+  .motion-heading {
+    display: block;
+    margin-top: 24px;
+  }
+  .motion-heading > a {
+    display: block;
+    max-width: none;
+    margin-top: 16px;
+  }
+  .motion-transport {
+    flex-wrap: wrap;
+  }
+  .motion-transport label {
+    margin-left: 0;
+  }
+  .motion-triptych {
+    grid-template-columns: 1fr;
+  }
+  .motion-pane + .motion-pane {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  .motion-pane:first-child {
+    border-bottom: 0;
+  }
+  .motion-stage {
+    height: 340px;
+  }
+  .motion-pane > .microcopy {
+    min-height: 0;
+  }
+  .motion-plots,
+  .motion-method-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .motion-legend > span {
+    order: 2;
+    width: 100%;
+    margin: 3px 0;
+  }
+  .motion-legend > label {
+    margin: 5px 0;
+  }
+  .motion-readouts strong {
+    font-size: 28px;
+  }
+  .motion-readouts span {
+    font-size: 10px;
+  }
+  .motion-scrub-label {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
 * {
   box-sizing: border-box;
 }

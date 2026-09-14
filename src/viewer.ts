@@ -4,6 +4,13 @@ import type { FlyEngine } from "./engine";
 import type { Terrarium } from "./terrarium";
 import { addHabitat } from "./habitat";
 
+type DisplayEngine = Pick<
+  FlyEngine,
+  "mujoco" | "model" | "data" | "selected"
+> & {
+  manifest: { muscles: { id: string; sites: string[] }[] };
+};
+
 /** Displays the compiled physics geometry. Poses always come from MuJoCo. */
 export class FlyViewer {
   readonly renderer: THREE.WebGLRenderer;
@@ -19,8 +26,9 @@ export class FlyViewer {
   follow = false;
   constructor(
     private host: HTMLElement,
-    private engine: FlyEngine,
+    private engine: DisplayEngine,
     world?: Terrarium,
+    private motionStage = false,
   ) {
     this.world = world;
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -134,6 +142,7 @@ export class FlyViewer {
       this.geoms.push({ id: i, mesh, wing });
     }
     for (const muscle of engine.manifest.muscles) {
+      if (!muscle.sites.length) continue;
       const sites = muscle.sites.map((name) =>
         mj.mj_name2id(m, mj.mjtObj.mjOBJ_SITE.value, name),
       );
@@ -172,7 +181,7 @@ export class FlyViewer {
       }),
     );
     tether.computeLineDistances();
-    if (!world) this.scene.add(tether);
+    if (!world && !motionStage) this.scene.add(tether);
     this.observer = new ResizeObserver(() => this.resize());
     this.observer.observe(host);
     this.focus("body");
@@ -187,6 +196,12 @@ export class FlyViewer {
     this.camera.updateProjectionMatrix();
   }
   focus(view: "body" | "leg") {
+    if (this.motionStage) {
+      this.controls.target.set(-0.35, 0, 0.95);
+      this.camera.position.set(3.5, 5, 3.8);
+      this.controls.update();
+      return;
+    }
     if (this.world) {
       const d = this.engine.data;
       this.controls.target.set(

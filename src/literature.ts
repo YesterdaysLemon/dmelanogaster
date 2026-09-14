@@ -15,6 +15,55 @@ export interface Paper {
 }
 export const papers: Paper[] = [
   {
+    id: "nmf2-motion",
+    year: "2024",
+    type: "Modelling",
+    title:
+      "NeuroMechFly v2: simulating embodied sensorimotor control in adult Drosophila",
+    authors:
+      "Wang-Chen, Stimpfling, Lam, Özdil, Genoud, Hurtak & Ramdya · Nature Methods",
+    url: "https://www.nature.com/articles/s41592-024-02497-y",
+    claim:
+      "Methods: Stepping pattern and Extended Data Fig. 2 describe manually annotated untethered walking, whole-leg registration and inverse kinematics. The model retains seven moving coordinates per leg.",
+    use: "Motion lab reuses the pinned NMF anatomy and original 37-frame video/CSV episode from Harvard Dataverse (10.7910/DVN/3MCEYR, CC0). It compares registered landmarks, seven-axis versus three-axis fits, and a separate experimental muscle tracker.",
+    limit:
+      "The processed reusable step template is time-normalized, mirrored, forced closed and selected for simulated displacement. It is preserved as provenance but does not control this bench. The original recording has no published muscle activity or reconstructed motor circuit; exact timestamp and camera calibration metadata are absent.",
+    next: "Add independent recordings with camera calibration and contact measurements before testing free-body replay or identifying a coordination mechanism.",
+    status: "Implemented · original recording and anatomical reference",
+  },
+  {
+    id: "seqik",
+    year: "2026",
+    type: "Modelling",
+    title: "SeqIKPy: a Python package for inverse kinematics in insects",
+    authors:
+      "Özdil, Wang-Chen, Ning, Ijspeert & Ramdya · Journal of Open Source Software",
+    url: "https://doi.org/10.21105/joss.08557",
+    claim:
+      "Sequential inverse kinematics estimates joint rotations from tracked insect landmarks under an explicit kinematic chain.",
+    use: "The actual pinned SeqIKPy package performs whole-leg registration and sequential IK offline. We refine the result against NMF's XML offsets with least squares and retain raw coordinates, fitted poses, residuals, seeds and assumptions.",
+    limit:
+      "A pose fit is an inference from geometry, not a measured neural command or muscle activation. Our additional offset refinement and reduced-DOF comparison are project derivations. No held-out biological validation has been performed.",
+    next: "Quantify landmark uncertainty, branch ambiguity and sensitivity to alignment before treating fitted angles as physiological targets.",
+    status: "Implemented · pinned upstream registration and IK",
+  },
+  {
+    id: "nmf-replay",
+    year: "2026",
+    type: "Modelling",
+    title:
+      "Replaying experimental recordings and inferring dynamical quantities",
+    authors: "NeuroMechFly / FlyGym authors · official tutorial",
+    url: "https://neuromechfly.org/tutorials/2_replaying_experimental_recordings/",
+    claim:
+      "The current tutorial distinguishes pose-estimator coordinates, anatomically fitted coordinates and position-actuator replay. Its example uses Spotlight recordings and PoseForge/SeqIKPy processing.",
+    use: "Informs the explicit measured → fitted → simulated comparison and residual plots. This project uses the older manually annotated episode and its matching pinned model, with a separate hypothetical Hill-muscle tracker.",
+    limit:
+      "We do not use the tutorial's pose-estimator weights, trained policies or newer joint-sign convention. Neither position servos nor our muscle tracker establish reconstructed neural control.",
+    next: "Evaluate calibrated longer recordings as independent validation data while retaining their measurement-model provenance.",
+    status: "Read · comparison workflow precedent",
+  },
+  {
     id: "walking-cpg",
     year: "2025–2026",
     type: "Modelling",

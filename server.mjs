@@ -3,6 +3,7 @@ import { readFile, stat } from "node:fs/promises";
 import { createReadStream } from "node:fs";
 import { resolve, extname, sep } from "node:path";
 import { fileURLToPath } from "node:url";
+import { byteRange } from "./scripts/byte-range.mjs";
 const root = fileURLToPath(new URL("./dist/", import.meta.url));
 const build = JSON.parse(await readFile(resolve(root, "build.json"), "utf8"));
 const types = {
@@ -15,6 +16,8 @@ const types = {
   ".xml": "application/xml",
   ".txt": "text/plain; charset=utf-8",
   ".stl": "model/stl",
+  ".mp4": "video/mp4",
+  ".csv": "text/csv; charset=utf-8",
 };
 const server = createServer(async (req, res) => {
   res.setHeader("X-Content-Type-Options", "nosniff");
@@ -62,15 +65,30 @@ const server = createServer(async (req, res) => {
       res.writeHead(304).end();
       return;
     }
-    res.writeHead(200, {
+    res.setHeader("Accept-Ranges", "bytes");
+    // Ignore Range for HEAD or an If-Range validator we cannot establish.
+    const range =
+      req.method === "GET" && !req.headers["if-range"]
+        ? byteRange(req.headers.range, info.size)
+        : null;
+    if (range === false) {
+      res.writeHead(416, { "Content-Range": `bytes */${info.size}` }).end();
+      return;
+    }
+    if (range)
+      res.setHeader(
+        "Content-Range",
+        `bytes ${range.start}-${range.end}/${info.size}`,
+      );
+    res.writeHead(range ? 206 : 200, {
       "Content-Type": types[extname(file)] || "application/octet-stream",
-      "Content-Length": info.size,
+      "Content-Length": range ? range.end - range.start + 1 : info.size,
     });
     if (req.method === "HEAD") {
       res.end();
       return;
     }
-    createReadStream(file)
+    createReadStream(file, range || undefined)
       .on("error", () => res.destroy())
       .pipe(res);
   } catch (error) {

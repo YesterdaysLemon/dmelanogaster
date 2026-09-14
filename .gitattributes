@@ -2,3 +2,6 @@
 public/model/fly.xml -text
 public/model/meshes/stl/*.stl -text
 public/model/LICENSE-FlyMimic.txt -text
+# Preserve the exact upstream bytes identified in the provenance manifest.
+public/motion/source/** -text
+*.stl binary
