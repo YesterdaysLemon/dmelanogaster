@@ -1,4 +1,5 @@
 <!-- al-stack:project:start -->
+
 ## Al-stack project
 
 Project: dmelanogaster. Profile: research. Status: active.
@@ -8,12 +9,14 @@ Reconstruct Drosophila from anatomy and physiology; a public muscle bench and li
 `al-stack.toml` records this project's setup and dependencies. Work from the checkout selected for the task; other branches/worktrees are optional history. Use `al-stack register .` once when starting work here. Local registration does not change the project's lifecycle.
 
 Project commands:
+
 - dev: `npm run dev`
 - test: `npm test`
 - build: `npm run build`
 - verify: `npm run verify`
 
 Declared tools (verify availability in the intended agent):
+
 - node (cli): `node`.
 - npm (cli): `npm`.
 
@@ -24,11 +27,13 @@ Edit project guidance outside this managed section. Use `al-stack configure` for
 
 Read README.md, docs/research-plan.md and docs/evidence-contract.md before substantive work. Reconstruct Drosophila from observations with explicit hypotheses for missing physiology. No pretrained, RL, imitation or task-reward policy may control the fly. Parameter fitting to biological measurements must retain provenance, uncertainty and independent validation.
 
-The v0 contains a tethered foreleg mechanical bench, not a completed neural or whole-animal simulation. Never describe inherited fitted muscle properties as direct measurements, or model units as calibrated force. Preserve the source XML/meshes and their hashes; derive future models in separate versioned files.
+The preserved v0 bench remains tethered. V0.2 adds a partial MANC network and experimental six-leg walking bridge. Read `docs/wiring.md` and `docs/environment.md` before extending it. Most recruitment, inter-leg timing and proprioception remain designed hypotheses; walking does not establish reconstructed motor circuitry. Never describe inherited fitted muscle properties as direct measurements, or model units as calibrated force. Preserve the source XML/meshes and their hashes; derive future models in separate versioned files.
 
 ## Commands and acceptance
 
 Node 24. `npm ci`; `npm run dev`; `npm run verify` (types, physical/provenance tests, production build). A meaningful physics change requires intervention and passive controls. Frontend changes require actual desktop/mobile browser inspection and error checks. Publication requires a successful CI deployment receipt, matching public/container SHA and live browser verification.
+
+After changing circuit, body or bridge implementation, run `node scripts/assay-walking.mjs` after final formatting to refresh `public/data/walking-assay.json`; its source hashes must match. Keep the original bench's replay format separate from the terrarium's current-state export. Environment reward never updates neural connections.
 
 Use frontend-quality and playwright for interface work; credentials-access for authenticated service access; vps-operations for host/deployment changes. Public hosting uses the existing Deploy Manager and Caddy. Read docs/deployment.md. Keep secrets out of files committed to Git and browser output.
 

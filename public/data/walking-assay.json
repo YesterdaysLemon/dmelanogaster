@@ -1,0 +1,120 @@
+{
+  "version": "0.2.0",
+  "generatedAt": "2026-09-14T19:38:51.065Z",
+  "engine": "MuJoCo WASM 3.13.0",
+  "scope": "Software intervention assays; not biological validation. Baseline sources and hand-specified experimental bridge.",
+  "sourceFiles": [
+    {
+      "path": "src/circuit.ts",
+      "sha256": "1076c84aed926b76579db74b0ab0ebe87a2b354c0991a190de4f169c7bebd13f"
+    },
+    {
+      "path": "src/terrarium.ts",
+      "sha256": "408912df931a46dc9e0f4e83f6de01d08ba28141143f2fefd4bc2ecaac25ac20"
+    },
+    {
+      "path": "src/engine.ts",
+      "sha256": "91e80cd331948642989e517ddbef3300b2b29d5678d02bb1862f58f8159484f6"
+    },
+    {
+      "path": "public/model/walking.xml",
+      "sha256": "35a2c2e18bcdb9708b727e9292dedf1724b39a3f2606138b2405a1ff2e1f679c"
+    },
+    {
+      "path": "public/data/manc-walking.json",
+      "sha256": "efb0ddc779fefcccf99b2ecdb5d06c95bb0b5223a9337c363c03851a18a961e3"
+    }
+  ],
+  "runs": [
+    {
+      "mode": "bridge",
+      "duration": 3,
+      "timestep": 0.0002,
+      "position": [
+        2.5001383046665584,
+        0.9952832712070461,
+        1.7276584591544881
+      ],
+      "netDistance": 2.690962714792899,
+      "travel": 8.2112164118263,
+      "neuralCycles": 27,
+      "minHeight": 1.5801739128408452,
+      "minUp": 0.9950828094009914,
+      "maxContacts": 6,
+      "finite": true,
+      "externalForcesZero": true
+    },
+    {
+      "mode": "E1-silenced",
+      "duration": 3,
+      "timestep": 0.0002,
+      "position": [
+        -0.0800203873916603,
+        -0.0016091562163037323,
+        1.7277177435236595
+      ],
+      "netDistance": 0.08003656528137534,
+      "travel": 0.3677222629071285,
+      "neuralCycles": 0,
+      "minHeight": 1.6980098956807348,
+      "minUp": 0.9950828095359315,
+      "maxContacts": 6,
+      "finite": true,
+      "externalForcesZero": true
+    },
+    {
+      "mode": "passive",
+      "duration": 3,
+      "timestep": 0.0002,
+      "position": [
+        -0.14606358024871438,
+        0.01369121580004636,
+        0.45819284247666014
+      ],
+      "netDistance": 0.14670384747904897,
+      "travel": 0.46726061774996724,
+      "neuralCycles": 27,
+      "minHeight": 0.10155748171007113,
+      "minUp": 0.9344129732337977,
+      "maxContacts": 7,
+      "finite": true,
+      "externalForcesZero": true
+    },
+    {
+      "mode": "observed-network-only",
+      "duration": 3,
+      "timestep": 0.0002,
+      "position": [
+        -0.20824357830048726,
+        0.46158181116400854,
+        0.40781668729141524
+      ],
+      "netDistance": 0.5063824210029784,
+      "travel": 1.418095576196704,
+      "neuralCycles": 27,
+      "minHeight": 0.10120293967778161,
+      "minUp": 0.9344110681828403,
+      "maxContacts": 7,
+      "finite": true,
+      "externalForcesZero": true
+    },
+    {
+      "mode": "half-timestep",
+      "duration": 3,
+      "timestep": 0.0001,
+      "position": [
+        2.450546964126303,
+        0.9497025192002241,
+        1.7316193271046776
+      ],
+      "netDistance": 2.6281391322309955,
+      "travel": 8.132610709598252,
+      "neuralCycles": 27,
+      "minHeight": 1.5782706835562939,
+      "minUp": 0.9951076288123679,
+      "maxContacts": 6,
+      "finite": true,
+      "externalForcesZero": true
+    }
+  ]
+}

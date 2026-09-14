@@ -1213,3 +1213,449 @@ footer a:hover {
     animation: none;
   }
 }
+/* The habitat is the working surface; experiment controls stay beside the specimen. */
+.habitat-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 22px;
+  align-items: start;
+}
+.habitat-panel {
+  overflow: hidden;
+}
+.habitat-inspector h2 {
+  margin-top: 20px;
+}
+#habitat-view {
+  height: 540px;
+  position: relative;
+  background: radial-gradient(ellipse at 50% 40%, #f4f2dc, #d9dfce);
+  overflow: hidden;
+}
+#habitat-view canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+#world-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  z-index: 2;
+  background: #e8ecde;
+}
+#world-loading span:last-child {
+  font-size: 13px;
+  color: #6a735f;
+}
+.habitat-legend {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  z-index: 1;
+  display: flex;
+  gap: 15px;
+  font-size: 11px;
+  color: #4b5946;
+  background: #f7f8ecdf;
+  border: 1px solid #fff9;
+  border-radius: 6px;
+  padding: 10px 13px;
+  pointer-events: none;
+}
+.habitat-legend i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+.food-dot {
+  background: #c19347;
+}
+.odor-dot {
+  background: #9358a8;
+}
+.water-dot {
+  background: #8abbc9;
+}
+.habitat-panel .view-tools {
+  flex-wrap: wrap;
+}
+.habitat-panel .view-tools .quiet {
+  font-size: 11px;
+  margin-left: auto;
+}
+.world-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0;
+}
+.world-values span {
+  display: block;
+  font-size: 11px;
+  color: #6b765f;
+}
+.world-values b {
+  display: block;
+  font-size: 23px;
+  font-weight: 500;
+  margin-top: 5px;
+  font-variant-numeric: tabular-nums;
+}
+.leg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+.leg-grid > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #dce1d4;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 11px;
+}
+.leg-grid b {
+  margin-left: auto;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.leg-grid i {
+  width: 6px;
+  height: 6px;
+  background: #d5d8d0;
+  border-radius: 50%;
+}
+.leg-grid i.contact {
+  background: #708451;
+}
+.experiment-toggle {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 15px 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+.experiment-toggle input {
+  accent-color: #687d50;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+}
+.experiment-toggle small {
+  display: block;
+  font-size: 10px;
+  color: #7d8474;
+  line-height: 1.5;
+  margin-top: 3px;
+}
+.mode-note {
+  font-size: 11px;
+  background: #eee7d2;
+  padding: 12px;
+  border-left: 2px solid #b38b3b;
+  line-height: 1.5;
+}
+.habitat-bottom {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 35px;
+  margin: 30px 0;
+}
+.habitat-bottom section {
+  padding: 25px 28px;
+  border: 1px solid #dce1d5;
+  border-radius: 8px;
+  background: #fcfdf6;
+}
+.habitat-bottom h3 {
+  font-size: 21px;
+  font-weight: 500;
+  margin: 14px 0;
+}
+.habitat-bottom p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #69755d;
+}
+.habitat-stimuli .action-row {
+  flex-wrap: wrap;
+}
+.habitat-bottom .microcopy {
+  font-size: 11px;
+}
+#neural-trace {
+  width: 100%;
+  height: 130px;
+  display: block;
+}
+.wiring-levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.wiring-levels article {
+  padding: 24px;
+  background: #fafbf4;
+  border: 1px solid #dce1d5;
+  border-radius: 8px;
+}
+.wiring-levels h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.wiring-levels p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #68755d;
+}
+.evidence-tag {
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  font-weight: 600;
+  border-radius: 3px;
+  padding: 5px 8px;
+}
+.observed {
+  background: #e4eddb;
+  color: #4c673a;
+}
+.inferred {
+  background: #f0e8cf;
+  color: #947033;
+}
+.experimental {
+  background: #ecdde5;
+  color: #845371;
+}
+.circuit-strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 28px 0;
+  padding: 24px;
+  background: #e9edde;
+  border-radius: 8px;
+}
+.circuit-strip > span {
+  font-size: 12px;
+  flex: 1;
+  min-width: 135px;
+}
+.circuit-strip small {
+  display: block;
+  font-size: 10px;
+  color: #728063;
+  margin-top: 6px;
+}
+.circuit-strip b {
+  color: #8e9a80;
+}
+.circuit-strip .hypothesis-node {
+  border: 1px dashed #b790a4;
+  padding: 12px;
+  border-radius: 4px;
+}
+.wiring-browser {
+  display: grid;
+  grid-template-columns: 310px minmax(0, 1fr);
+  gap: 25px;
+  margin: 25px 0;
+}
+.wiring-browser aside {
+  padding: 22px;
+  background: #f2f4e9;
+  border-radius: 8px;
+}
+.wiring-browser input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 11px;
+  margin: 12px 0;
+  border: 1px solid #cfd7c2;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 12px;
+}
+.wiring-browser select {
+  width: 100%;
+  padding: 4px;
+  height: 430px;
+  font-size: 11px;
+  border: 1px solid #d9dfd0;
+  border-radius: 4px;
+  background: #fffef8;
+}
+.wiring-browser option {
+  padding: 9px 7px;
+}
+.wiring-browser article {
+  border: 1px solid #dce1d5;
+  padding: 25px;
+  border-radius: 8px;
+  min-width: 0;
+}
+.wiring-browser article h2 {
+  font-size: 25px;
+  font-weight: 500;
+}
+.wiring-browser article p {
+  font-size: 13px;
+  line-height: 1.65;
+}
+.wiring-browser article .microcopy {
+  font-size: 11px;
+}
+.edge-scroll {
+  max-height: 430px;
+  overflow: auto;
+}
+.wiring-browser table,
+.wiring-assumptions table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 11px;
+}
+.wiring-browser th,
+.wiring-browser td,
+.wiring-assumptions th,
+.wiring-assumptions td {
+  border-bottom: 1px solid #e1e5d9;
+  padding: 11px 8px;
+  vertical-align: top;
+}
+.wiring-browser th,
+.wiring-assumptions th {
+  font-weight: 500;
+  color: #737e67;
+  font-size: 10px;
+}
+.wiring-browser td small {
+  font-size: 9px;
+  color: #869078;
+  white-space: nowrap;
+}
+.wiring-assumptions {
+  border: 1px solid #dce1d5;
+  padding: 25px;
+  border-radius: 8px;
+  margin: 25px 0;
+  overflow-x: auto;
+}
+.wiring-assumptions summary {
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.wiring-assumptions td {
+  line-height: 1.6;
+}
+.wiring-assumptions td:first-child {
+  white-space: nowrap;
+  font-weight: 600;
+  color: #85566e;
+}
+@media (max-width: 1100px) {
+  .habitat-layout {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+  #habitat-view {
+    height: 500px;
+  }
+  .masthead nav {
+    gap: 15px;
+  }
+  .repo-link {
+    display: none;
+  }
+}
+@media (max-width: 850px) {
+  .habitat-layout {
+    grid-template-columns: 1fr;
+  }
+  .habitat-inspector {
+    display: block;
+  }
+  .habitat-bottom {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .wiring-levels {
+    grid-template-columns: 1fr;
+  }
+  .wiring-browser {
+    grid-template-columns: 1fr;
+  }
+  .wiring-browser select {
+    height: 220px;
+  }
+  .masthead {
+    flex-wrap: wrap;
+  }
+  .masthead nav {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 3px;
+    gap: 22px;
+  }
+  .masthead nav a {
+    white-space: nowrap;
+  }
+  .habitat-layout .inspector {
+    padding: 25px;
+  }
+  .habitat-panel .scope-note {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 540px) {
+  #habitat-view {
+    height: 420px;
+  }
+  .habitat-legend {
+    gap: 10px;
+    font-size: 9px;
+    left: 10px;
+    bottom: 10px;
+  }
+  .habitat-panel .view-tools .quiet {
+    width: 100%;
+    margin: 0;
+  }
+  .habitat-bottom section {
+    padding: 22px 18px;
+  }
+  .wiring-browser article {
+    padding: 18px;
+  }
+  .circuit-strip {
+    gap: 9px;
+    padding: 17px;
+  }
+  .circuit-strip > span {
+    min-width: 120px;
+  }
+  .page-heading h1 {
+    font-size: 36px;
+  }
+  .wiring-assumptions {
+    padding: 18px;
+  }
+  .habitat-stimuli .secondary {
+    font-size: 11px;
+  }
+}

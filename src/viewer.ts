@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import type { FlyEngine } from "./engine";
+import type { Terrarium } from "./terrarium";
+import { addHabitat } from "./habitat";
 
 /** Displays the compiled physics geometry. Poses always come from MuJoCo. */
 export class FlyViewer {
@@ -12,16 +14,25 @@ export class FlyViewer {
   private paths: { line: THREE.Line; sites: number[] }[] = [];
   private observer: ResizeObserver;
   private xray = false;
+  private habitatUpdate?: () => void;
+  private world?: Terrarium;
+  follow = false;
   constructor(
     private host: HTMLElement,
     private engine: FlyEngine,
+    world?: Terrarium,
   ) {
+    this.world = world;
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     this.renderer.setClearColor(0xebece2, 0);
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.3;
+    if (world) {
+      this.renderer.shadowMap.enabled = true;
+      this.renderer.shadowMap.type = THREE.PCFShadowMap;
+    }
     this.renderer.domElement.setAttribute(
       "aria-label",
       "Interactive anatomical fly model. Drag to orbit; scroll to zoom.",
@@ -31,11 +42,21 @@ export class FlyViewer {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = true;
     this.controls.minDistance = 0.65;
-    this.controls.maxDistance = 19;
+    this.controls.maxDistance = world ? 40 : 19;
     this.controls.maxPolarAngle = Math.PI * 0.88;
     this.scene.add(new THREE.HemisphereLight(0xfff8df, 0x5b6652, 2));
     const key = new THREE.DirectionalLight(0xfff4d3, 3);
     key.position.set(2, 3, 9);
+    if (world) {
+      key.castShadow = true;
+      key.shadow.mapSize.set(2048, 2048);
+      key.shadow.camera.left = -12;
+      key.shadow.camera.right = 12;
+      key.shadow.camera.top = 12;
+      key.shadow.camera.bottom = -12;
+      key.shadow.bias = -0.0002;
+      key.shadow.normalBias = 0.015;
+    }
     this.scene.add(key);
     const fill = new THREE.DirectionalLight(0xc1d6cf, 1.8);
     fill.position.set(-5, -3, 5);
@@ -46,19 +67,20 @@ export class FlyViewer {
     );
     platform.rotation.x = Math.PI / 2;
     platform.position.z = -0.06;
-    this.scene.add(platform);
+    if (!world) this.scene.add(platform);
     const grid = new THREE.GridHelper(8, 16, 0x97a38d, 0xb6beaa);
     grid.rotation.x = Math.PI / 2;
     grid.position.z = 0.002;
     (grid.material as THREE.Material).transparent = true;
     (grid.material as THREE.Material).opacity = 0.3;
-    this.scene.add(grid);
+    if (!world) this.scene.add(grid);
     const ring = new THREE.Mesh(
       new THREE.RingGeometry(4.57, 4.59, 96),
       new THREE.MeshBasicMaterial({ color: 0x829277, side: THREE.DoubleSide }),
     );
     ring.position.z = 0.005;
-    this.scene.add(ring);
+    if (!world) this.scene.add(ring);
+    if (world) this.habitatUpdate = addHabitat(this.scene, world);
     const { model: m, data: d, mujoco: mj } = engine;
     for (let i = 0; i < m.ngeom; i++) {
       if (m.geom_type[i] !== 7) continue;
@@ -106,6 +128,8 @@ export class FlyViewer {
       });
       const mesh = new THREE.Mesh(geometry, material);
       mesh.matrixAutoUpdate = false;
+      mesh.castShadow = Boolean(world) && !wing;
+      mesh.receiveShadow = Boolean(world);
       this.scene.add(mesh);
       this.geoms.push({ id: i, mesh, wing });
     }
@@ -148,7 +172,7 @@ export class FlyViewer {
       }),
     );
     tether.computeLineDistances();
-    this.scene.add(tether);
+    if (!world) this.scene.add(tether);
     this.observer = new ResizeObserver(() => this.resize());
     this.observer.observe(host);
     this.focus("body");
@@ -163,6 +187,21 @@ export class FlyViewer {
     this.camera.updateProjectionMatrix();
   }
   focus(view: "body" | "leg") {
+    if (this.world) {
+      const d = this.engine.data;
+      this.controls.target.set(
+        d.qpos[0] - 0.5,
+        d.qpos[1] + (view === "body" ? 1 : 0),
+        1,
+      );
+      this.camera.position.set(
+        d.qpos[0] + (view === "body" ? 6 : 3),
+        d.qpos[1] + (view === "body" ? 10 : 4),
+        view === "body" ? 9 : 4,
+      );
+      this.controls.update();
+      return;
+    }
     if (view === "body") {
       this.controls.target.set(-0.45, 0, 3.5);
       this.camera.position.set(5, 6.2, 6.6);
@@ -184,6 +223,13 @@ export class FlyViewer {
   }
   update() {
     const d = this.engine.data;
+    this.habitatUpdate?.();
+    if (this.world && this.follow) {
+      const target = new THREE.Vector3(d.qpos[0] - 0.5, d.qpos[1], 1);
+      const delta = target.sub(this.controls.target).multiplyScalar(0.08);
+      this.controls.target.add(delta);
+      this.camera.position.add(delta);
+    }
     for (const { id: i, mesh } of this.geoms) {
       const p = i * 3,
         r = i * 9,

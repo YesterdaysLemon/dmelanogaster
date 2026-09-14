@@ -6,9 +6,9 @@ Build an anatomically and physiologically constrained adult fly whose actions ar
 
 ## Current frontier
 
-Implemented: unmodified FlyMimic foreleg XML/meshes, real browser MuJoCo dynamics, direct excitation bench, anatomical tendon overlays, trial export, a source atlas and CI checks. No simulated neuronal cells or neural connections are wired to the muscles yet.
+Implemented: preserved FlyMimic foreleg bench plus a separate free-body terrarium with a 532-cell MANC rate network, 10,279 observed-count edges and an experimental recruitment / coordination bridge driving 36 reduced muscle groups. The network-only control does not sustain walking. Most muscle recruitment still comes from ideal feedback and a movement template. See [the v0.2 methods](wiring.md) before interpreting locomotion as a biological result.
 
-The body is a composite modelling reference, not a single fully observed animal. Dataset and sex choices for the CNS remain open. Do not silently combine MaleCNS, FANC/BANC and different anatomical specimens as one measured individual.
+The body is a composite modelling reference, not a single fully observed animal. The current neural substrate is a pinned MANC adult-male data snapshot; the anatomy is a different specimen. Do not silently combine MaleCNS, FANC/BANC and different anatomical specimens as one measured individual.
 
 ## First falsifiable bridge
 
@@ -28,6 +28,6 @@ Then add the smallest supported proprioceptive loop, using position/movement/vib
 
 ## Expansion criteria
 
-Multiple validated local loops precede walking. Feeding requires explicit mouthpart mechanics, sensory input and an internal-state model. Flight requires separate synchronous steering and asynchronous power-muscle treatment, stretch activation, thoracic deformation, haltere feedback and aerodynamics. A wingbeat animation is not a substitute.
+Multiple validated local loops are required before claiming reconstructed walking circuitry. The v0.2 walking bridge is an explicitly hypothetical test scaffold. Feeding requires explicit mouthpart mechanics, sensory input and an internal-state model. Flight requires separate synchronous steering and asynchronous power-muscle treatment, stretch activation, thoracic deformation, haltere feedback and aerodynamics. A wingbeat animation is not a substitute.
 
 Success is an independently supported intervention response whose failure is informative. It is not how convincingly a fly-shaped object performs a task.

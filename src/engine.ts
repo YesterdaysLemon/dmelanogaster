@@ -19,6 +19,8 @@ export interface Muscle {
   neuralMapping: string;
 }
 export interface Manifest {
+  runtimeModel?: string;
+  initialQpos?: number[];
   version: number;
   source: string;
   commit: string;
@@ -54,6 +56,7 @@ export class FlyEngine {
   history: Sample[] = [];
   private remaining = 0;
   private previousSample = -1;
+  beforeStep?: (dt: number) => void;
   constructor(mujoco: MainModule, model: MjModel, manifest: Manifest) {
     this.mujoco = mujoco;
     this.model = model;
@@ -62,7 +65,11 @@ export class FlyEngine {
     this.reset();
   }
   reset() {
-    this.mujoco.mj_resetDataKeyframe(this.model, this.data, 0);
+    if (this.model.nkey)
+      this.mujoco.mj_resetDataKeyframe(this.model, this.data, 0);
+    else this.mujoco.mj_resetData(this.model, this.data);
+    if (this.manifest.initialQpos)
+      this.data.qpos.set(this.manifest.initialQpos);
     this.data.ctrl.fill(0.0001);
     this.pulseEnd = -1;
     this.remaining = 0;
@@ -96,6 +103,7 @@ export class FlyEngine {
   step(count = 1) {
     for (let i = 0; i < count; i++) {
       if (this.pulseEnd >= 0 && this.data.time >= this.pulseEnd) this.release();
+      this.beforeStep?.(this.model.opt.timestep);
       this.mujoco.mj_step(this.model, this.data);
       if (!Number.isFinite(this.data.qpos[0])) {
         this.running = false;
@@ -123,7 +131,12 @@ export class FlyEngine {
       activation: this.data.act[i],
       force: this.data.actuator_force[i],
       length: this.data.actuator_length[i],
-      angle: (this.data.qpos[6] * 180) / Math.PI,
+      angle:
+        (this.data.qpos[
+          this.manifest.runtimeModel ? 7 + Math.floor(i / 2) : 6
+        ] *
+          180) /
+        Math.PI,
     };
   }
   record() {
@@ -158,7 +171,9 @@ export async function createEngine(
       fs.writeFile("/fly/" + f.target, await read(f.target)),
     ),
   );
-  const model = mujoco.MjModel.from_xml_path("/fly/fly.xml");
+  const model = mujoco.MjModel.from_xml_path(
+    "/fly/" + (manifest.runtimeModel || "fly.xml"),
+  );
   if (model.nu !== manifest.muscles.length)
     throw new Error("Actuator roster differs from anatomical manifest");
   return new FlyEngine(mujoco, model, manifest);
