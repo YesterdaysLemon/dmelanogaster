@@ -6,37 +6,37 @@ import type { Wiring } from "./circuit";
 
 export const terrariumMarkup = `
 <section id="terrarium" class="page" hidden>
- <div class="page-heading"><div><div class="eyebrow"><span class="status-dot"></span> V0.2 / FIRST CIRCUIT â†’ BODY EXPERIMENT</div><h1>Small steps. Open questions.</h1><p>A living experiment in rebuilding a fly, one evidenced connection at a time.</p></div><div class="specimen-stamp">DROSOPHILA MELANOGASTER<br><b>Six legs Â· muscle-driven physics</b></div></div>
+ <div class="page-heading"><div><div class="eyebrow"><span class="status-dot"></span> V0.2 / FIRST CIRCUIT → BODY EXPERIMENT</div><h1>Small steps. Open questions.</h1><p>A living experiment in rebuilding a fly, one evidenced connection at a time.</p></div><div class="specimen-stamp">DROSOPHILA MELANOGASTER<br><b>Six legs · muscle-driven physics</b></div></div>
  <div class="habitat-layout"><div class="viewport-panel habitat-panel">
-  <div class="viewport-top"><span class="tiny-label">01 / THE TERRARIUM</span><span id="world-clock" class="quiet">Preparingâ€¦</span></div>
-  <div id="habitat-view"><div id="world-loading" role="status"><span class="loader"></span><b>Connecting the specimen</b><span>Anatomy, MANC wiring, muscle mechanicsâ€¦</span></div><div class="habitat-legend"><span><i class="food-dot"></i> Yeast / food</span><span><i class="odor-dot"></i> Geosmin / repellent</span><span><i class="water-dot"></i> Water</span></div></div>
-  <div class="view-tools"><button id="world-focus" class="chip" disabled>Find the fly</button><button id="world-follow" class="chip" aria-pressed="false" disabled>Follow fly</button><button id="world-xray" class="chip" aria-pressed="false" disabled>See through cuticle</button><span class="quiet">Drag to orbit Â· scroll to zoom</span></div>
-  <div class="scope-note"><span class="scope-icon">â†³</span><div><b>Observed wiring. Experimental walking bridge.</b> The circuit supplies rhythm; assumed coordination and recruitment rules bridge the missing biology. Wings and organs are not simulated.</div><a href="#wiring">Inspect every layer â†—</a></div>
+  <div class="viewport-top"><span class="tiny-label">01 / THE TERRARIUM</span><span id="world-clock" class="quiet">Preparing…</span></div>
+  <div id="habitat-view"><div id="world-loading" role="status"><span class="loader"></span><b>Connecting the specimen</b><span>Anatomy, MANC wiring, muscle mechanics…</span></div><div class="habitat-legend"><span><i class="food-dot"></i> Yeast / food</span><span><i class="odor-dot"></i> Geosmin / repellent</span><span><i class="water-dot"></i> Water</span></div></div>
+  <div class="view-tools"><button id="world-focus" class="chip" disabled>Find the fly</button><button id="world-follow" class="chip" aria-pressed="false" disabled>Follow fly</button><button id="world-xray" class="chip" aria-pressed="false" disabled>See through cuticle</button><span class="quiet">Drag to orbit · scroll to zoom</span></div>
+  <div class="scope-note"><span class="scope-icon">↳</span><div><b>Observed wiring. Experimental walking bridge.</b> The circuit supplies rhythm; assumed coordination and recruitment rules bridge the missing biology. Wings and organs are not simulated.</div><a href="#wiring">Inspect every layer ↗</a></div>
  </div><aside class="inspector habitat-inspector"><div class="tiny-label">02 / LIVE EXPERIMENT</div><h2>Let the circuit move.</h2><p class="inspector-description">No learned policy. Native muscle activation and force act on a free body.</p>
- <div class="action-row"><button id="world-play" class="primary" disabled>Start walking <span>â†—</span></button><button id="world-reset" class="secondary" disabled>Reset</button></div>
+ <div class="action-row"><button id="world-play" class="primary" disabled>Start walking <span>↗</span></button><button id="world-reset" class="secondary" disabled>Reset</button></div>
  <div class="world-values"><div><span>Travel</span><b id="world-travel">0.00 mm</b></div><div><span>Neural cycles</span><b id="world-cycles">0</b></div></div>
- <div class="leg-grid" id="leg-grid">${legs.map((l) => `<div><span>${l}</span><i id="foot-${l}"></i><b id="rate-${l}">0.0</b></div>`).join("")}</div><p class="microcopy">Foot contact proxy Â· E2 model rate in Hz. Contact feedback is not yet reconstructed.</p>
+ <div class="leg-grid" id="leg-grid">${legs.map((l) => `<div><span>${l}</span><i id="foot-${l}"></i><b id="rate-${l}">0.0</b></div>`).join("")}</div><p class="microcopy">Foot contact proxy · E2 model rate in Hz. Contact feedback is not yet reconstructed.</p>
  <div class="section-rule"></div><label class="experiment-toggle"><input id="bridge-toggle" type="checkbox" checked disabled><span>Experimental walking bridge<small>Assumed timing, posture and motor recruitment</small></span></label>
  <label class="experiment-toggle"><input id="ablate-toggle" type="checkbox" disabled><span>Silence candidate CPG<small>Suppress all six IN17A001 cells</small></span></label>
- <label class="experiment-toggle"><input id="sensory-toggle" type="checkbox" checked disabled><span>Experimental sensory steering<small>Idealized antenna signals â†’ stride asymmetry</small></span></label>
+ <label class="experiment-toggle"><input id="sensory-toggle" type="checkbox" checked disabled><span>Experimental sensory steering<small>Idealized antenna signals → stride asymmetry</small></span></label>
  <label class="experiment-toggle"><input id="passive-toggle" type="checkbox" disabled><span>All muscles passive<small>Remove excitation; keep gravity and contact</small></span></label>
- <p id="world-mode" class="mode-note">Bridge enabled Â· hypothesis layer visible</p>
- <label class="speed-label">Simulation speed <select id="world-speed"><option value=".1">0.1Ã—</option><option value=".25" selected>0.25Ã—</option><option value=".5">0.5Ã—</option></select></label>
+ <p id="world-mode" class="mode-note">Bridge enabled · hypothesis layer visible</p>
+ <label class="speed-label">Simulation speed <select id="world-speed"><option value=".1">0.1×</option><option value=".25" selected>0.25×</option><option value=".5">0.5×</option></select></label>
  </aside></div>
- <div class="habitat-bottom"><section class="habitat-stimuli"><div class="tiny-label">03 / CHANGE THE WORLD</div><h3>Something sweet. Something suspicious.</h3><p>Move the food, switch off the repellent, and compare the two antenna signals. Odor fields and concentrations are uncalibrated model proxies.</p><div class="action-row"><button id="food-ahead" class="secondary" disabled>Place food ahead</button><button id="repellent-toggle" class="secondary" aria-pressed="true" disabled>Repellent: on</button><button id="world-export" class="text-button" disabled>Export state & evidence â†“</button></div><p id="odor-reading" class="microcopy">Antenna signals will appear here.</p><p class="microcopy">The half-open banana peel is original procedural scenery. Water is an environment object; drinking and digestion remain open.</p></section><section class="neural-chart"><div class="tiny-label">04 / A RHYTHM FROM CONNECTIVITY</div><h3>INXXX466 Â· left foreleg</h3><canvas id="neural-trace" aria-label="Model firing-rate trace for MANC neuron 11751"></canvas><p class="microcopy">MANC body ID 11751 Â· model Hz Â· last 3 simulated seconds<br><a href="#literature/walking-cpg">Candidate CPG source & limitations â†—</a></p></section></div>
+ <div class="habitat-bottom"><section class="habitat-stimuli"><div class="tiny-label">03 / CHANGE THE WORLD</div><h3>Something sweet. Something suspicious.</h3><p>Move the food, switch off the repellent, and compare the two antenna signals. Odor fields and concentrations are uncalibrated model proxies.</p><div class="action-row"><button id="food-ahead" class="secondary" disabled>Place food ahead</button><button id="repellent-toggle" class="secondary" aria-pressed="true" disabled>Repellent: on</button><button id="world-export" class="text-button" disabled>Export state & evidence ↓</button></div><p id="odor-reading" class="microcopy">Antenna signals will appear here.</p><p class="microcopy">The half-open banana peel is original procedural scenery. Water is an environment object; drinking and digestion remain open.</p></section><section class="neural-chart"><div class="tiny-label">04 / A RHYTHM FROM CONNECTIVITY</div><h3>INXXX466 · left foreleg</h3><canvas id="neural-trace" aria-label="Model firing-rate trace for MANC neuron 11751"></canvas><p class="microcopy">MANC body ID 11751 · model Hz · last 3 simulated seconds<br><a href="#literature/walking-cpg">Candidate CPG source & limitations ↗</a></p></section></div>
 </section>
 <section id="wiring" class="page" hidden><div class="page-heading"><div><div class="eyebrow">THE WIRING LEDGER</div><h1>What connects to what?</h1><p>Keep the measurements. Name the assumptions. Make both inspectable.</p></div></div>
  <div class="wiring-levels"><article><span class="evidence-tag observed">OBSERVED</span><h3 id="wiring-count">MANC graph slice</h3><p>Identified cells and EM synapse counts. An anatomical subset of one adult male nerve cord.</p></article><article><span class="evidence-tag inferred">INFERRED</span><h3>Rates, signs, dynamics</h3><p>Predicted transmitters and assumed electrical gains. Muscle module assignments include homology-based matches.</p></article><article><span class="evidence-tag experimental">EXPERIMENTAL</span><h3>The walking bridge</h3><p>Shared timing, ideal proprioception, recruitment, muscle moment arms and odor steering. Switchable in the terrarium.</p></article></div>
- <div class="circuit-strip"><span>DNg100<small>Descending drive</small></span><b>â†’</b><span>IN17A001 â†” INXXX466<small>IN16B036 inhibitory feedback</small></span><b>â†’</b><span>Leg motor pools<small>Observed partial pathways</small></span><b>â‡¢</b><span class="hypothesis-node">H-posture / H-coordination<small>Experimental bridge</small></span><b>â‡¢</b><span>36 muscle groups<small>Inferred reduced mechanics</small></span></div>
+ <div class="circuit-strip"><span>DNg100<small>Descending drive</small></span><b>→</b><span>IN17A001 ↔ INXXX466<small>IN16B036 inhibitory feedback</small></span><b>→</b><span>Leg motor pools<small>Observed partial pathways</small></span><b>⇢</b><span class="hypothesis-node">H-posture / H-coordination<small>Experimental bridge</small></span><b>⇢</b><span>36 muscle groups<small>Inferred reduced mechanics</small></span></div>
  <p class="atlas-note">This is a selected network, not the whole VNC or brain. The bridge still supplies most motor recruitment. Disabling it exposes the missing motor circuitry. Anatomical counts are unchanged; model weights use a separately declared gain.</p>
- <div class="wiring-browser"><aside><label class="input-label" for="neuron-search">FIND A CELL</label><input id="neuron-search" type="search" placeholder="Name, body ID, leg, muscle moduleâ€¦"><select id="neuron-list" size="12" aria-label="Matching neurons"></select></aside><article id="neuron-detail"><p>Loading the public wiring datasetâ€¦</p></article></div>
+ <div class="wiring-browser"><aside><label class="input-label" for="neuron-search">FIND A CELL</label><input id="neuron-search" type="search" placeholder="Name, body ID, leg, muscle module…"><select id="neuron-list" size="12" aria-label="Matching neurons"></select></aside><article id="neuron-detail"><p>Loading the public wiring dataset…</p></article></div>
  <details class="wiring-assumptions" open><summary>Hypotheses currently in the control path</summary><table><thead><tr><th>Stable ID</th><th>Connection / parameter</th><th>Evidence boundary</th></tr></thead><tbody>
- <tr><td>H-coordination</td><td>LF E2 peaks â†’ shared six-leg timing; two neural cycles per stride</td><td>Designed hypothesis. No claim that this cell coordinates all legs in vivo.</td></tr>
- <tr><td>H-posture</td><td>Ideal joint feedback â†’ antagonistic recruitment</td><td>Engineering closure of the missing reflex/NMJ pathways. No identified sensory neuron mapping.</td></tr>
+ <tr><td>H-coordination</td><td>LF E2 peaks → shared six-leg timing; two neural cycles per stride</td><td>Designed hypothesis. No claim that this cell coordinates all legs in vivo.</td></tr>
+ <tr><td>H-posture</td><td>Ideal joint feedback → antagonistic recruitment</td><td>Engineering closure of the missing reflex/NMJ pathways. No identified sensory neuron mapping.</td></tr>
  <tr><td>H-muscle</td><td>36 groups, constant 0.05 mm moment arms; Hill dynamics</td><td>Reduced mechanics; attachments, strengths and time constants are not reconstructed measurements.</td></tr>
- <tr><td>H-odor</td><td>Bilateral scalar fields â†’ stride asymmetry</td><td>Behavior-inspired steering; receptor and descending pathways remain unimplemented.</td></tr>
- <tr><td>U-navigation</td><td>hÎ” synaptic path-integration hypothesis</td><td>Tracked from the supplied reference. Not implemented or treated as proven plasticity.</td></tr>
- </tbody></table></details><p class="atlas-note"><a href="/data/manc-walking.json" target="_blank" rel="noopener">Download the complete node/edge ledger â†—</a> Â· <a href="/model/walking-manifest.json" target="_blank" rel="noopener">Derived body manifest â†—</a> Â· <a href="https://github.com/YesterdaysLemon/dmelanogaster/blob/main/docs/wiring.md" target="_blank" rel="noopener">Methods, assumptions and assays â†—</a></p>
+ <tr><td>H-odor</td><td>Bilateral scalar fields → stride asymmetry</td><td>Behavior-inspired steering; receptor and descending pathways remain unimplemented.</td></tr>
+ <tr><td>U-navigation</td><td>hΔ synaptic path-integration hypothesis</td><td>Tracked from the supplied reference. Not implemented or treated as proven plasticity.</td></tr>
+ </tbody></table></details><p class="atlas-note"><a href="/data/manc-walking.json" target="_blank" rel="noopener">Download the complete node/edge ledger ↗</a> · <a href="/model/walking-manifest.json" target="_blank" rel="noopener">Derived body manifest ↗</a> · <a href="https://github.com/YesterdaysLemon/dmelanogaster/blob/main/docs/wiring.md" target="_blank" rel="noopener">Methods, assumptions and assays ↗</a></p>
 </section>`;
 
 export function initTerrarium() {
@@ -62,7 +62,7 @@ export function initTerrarium() {
       .filter((edge) => edge.pre === i || edge.post === i)
       .sort((a, b) => b.count - a.count);
     $("neuron-detail").innerHTML =
-      `<span class="tiny-label">MANC Â· BODY ID ${escape(n.id)}</span><h2>${escape(n.name)}</h2><p>${escape(n.role)} Â· ${escape(n.leg)} Â· ${escape(n.module)}</p><p><b>Transmitter prediction:</b> ${escape(n.nt)} (${n.ntProbability === null ? "confidence not reported" : (n.ntProbability * 100).toFixed(1) + "%"}). Its model sign is an inference; synapse count is an observation.</p><p class="microcopy">${edges.length} retained incident connections. Muscle-module identity is a published annotation, not a verified one-to-one assignment to our derived actuators.</p><div class="edge-scroll"><table><thead><tr><th>Pre â†’ post</th><th>Synapses</th><th>Model sign</th></tr></thead><tbody>${edges.map((edge) => `<tr><td>${escape(wiring!.nodes[edge.pre].name)} <small>${escape(wiring!.nodes[edge.pre].id)}</small> â†’ ${escape(wiring!.nodes[edge.post].name)} <small>${escape(wiring!.nodes[edge.post].id)}</small></td><td>${edge.count}</td><td>${edge.sign > 0 ? "+ excitatory" : "âˆ’ inhibitory"} <small>inferred</small></td></tr>`).join("")}</tbody></table></div><p><a href="#literature/manc-pathways">Motor annotations & matching method â†—</a> Â· <a href="#literature/walking-cpg">Circuit model & data â†—</a></p>`;
+      `<span class="tiny-label">MANC · BODY ID ${escape(n.id)}</span><h2>${escape(n.name)}</h2><p>${escape(n.role)} · ${escape(n.leg)} · ${escape(n.module)}</p><p><b>Transmitter prediction:</b> ${escape(n.nt)} (${n.ntProbability === null ? "confidence not reported" : (n.ntProbability * 100).toFixed(1) + "%"}). Its model sign is an inference; synapse count is an observation.</p><p class="microcopy">${edges.length} retained incident connections. Muscle-module identity is a published annotation, not a verified one-to-one assignment to our derived actuators.</p><div class="edge-scroll"><table><thead><tr><th>Pre → post</th><th>Synapses</th><th>Model sign</th></tr></thead><tbody>${edges.map((edge) => `<tr><td>${escape(wiring!.nodes[edge.pre].name)} <small>${escape(wiring!.nodes[edge.pre].id)}</small> → ${escape(wiring!.nodes[edge.post].name)} <small>${escape(wiring!.nodes[edge.post].id)}</small></td><td>${edge.count}</td><td>${edge.sign > 0 ? "+ excitatory" : "− inhibitory"} <small>inferred</small></td></tr>`).join("")}</tbody></table></div><p><a href="#literature/manc-pathways">Motor annotations & matching method ↗</a> · <a href="#literature/walking-cpg">Circuit model & data ↗</a></p>`;
   };
   const renderList = () => {
     if (!wiring) return;
@@ -77,7 +77,7 @@ export function initTerrarium() {
       ...found.map(({ n, i }) => {
         const o = document.createElement("option");
         o.value = String(i);
-        o.textContent = `${n.name} Â· ${n.id} Â· ${n.leg || "DN"}`;
+        o.textContent = `${n.name} · ${n.id} · ${n.leg || "DN"}`;
         return o;
       }),
     );
@@ -93,14 +93,14 @@ export function initTerrarium() {
     $("world-clock").textContent = `${e.data.time.toFixed(2)} s simulated`;
     $("world-travel").textContent = world.travel.toFixed(2) + " mm";
     $("world-cycles").textContent = String(world.cycles);
-    $("world-play").textContent = e.running ? "â…¡ Pause" : "â–¶ Run";
+    $("world-play").textContent = e.running ? "Ⅱ Pause" : "▶ Run";
     $("world-mode").textContent = world.passive
-      ? "Passive control Â· all excitation removed"
+      ? "Passive control · all excitation removed"
       : !world.bridge
-        ? "Observed network only Â· missing recruitment remains visible"
+        ? "Observed network only · missing recruitment remains visible"
         : world.circuit.silenced.size
-          ? "Candidate CPG silenced Â· posture bridge remains active"
-          : "Walking bridge enabled Â· hypotheses remain explicit";
+          ? "Candidate CPG silenced · posture bridge remains active"
+          : "Walking bridge enabled · hypotheses remain explicit";
     legs.forEach((l, i) => {
       const idx = wiring!.nodes.findIndex(
         (n) => n.name === "INXXX466" && n.leg === l,
@@ -111,7 +111,7 @@ export function initTerrarium() {
       $("foot-" + l).classList.toggle("contact", world!.contacts[i]);
     });
     $("odor-reading").textContent =
-      `Food L/R ${world.odor.map((v) => v.toFixed(3)).join(" / ")} Â· Repellent L/R ${world.aversion.map((v) => v.toFixed(3)).join(" / ")} Â· Food contact ${world.foodContact ? "yes" : "no"} Â· Energy proxy ${(world.energy * 100).toFixed(0)}%`;
+      `Food L/R ${world.odor.map((v) => v.toFixed(3)).join(" / ")} · Repellent L/R ${world.aversion.map((v) => v.toFixed(3)).join(" / ")} · Food contact ${world.foodContact ? "yes" : "no"} · Energy proxy ${(world.energy * 100).toFixed(0)}%`;
     const idx = wiring!.nodes.findIndex((n) => n.id === "11751");
     if (!history.length || e.data.time > history.at(-1)!.t) {
       history.push({ t: e.data.time, r: world.circuit.rates[idx] });
@@ -244,7 +244,7 @@ export function initTerrarium() {
       ]);
       wiring = w;
       $("wiring-count").textContent =
-        `${w.nodes.length} cells Â· ${w.edges.length.toLocaleString()} edges`;
+        `${w.nodes.length} cells · ${w.edges.length.toLocaleString()} edges`;
       renderList();
       e = await createEngine(
         manifest,
@@ -273,7 +273,7 @@ export function initTerrarium() {
         },
         step: (steps = 1) => {
           if (!Number.isInteger(steps) || steps < 1 || steps > 5000)
-            throw Error("steps must be 1â€“5000");
+            throw Error("steps must be 1–5000");
           e!.running = false;
           e!.step(steps);
           sync();
