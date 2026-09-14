@@ -2,7 +2,7 @@ import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
-import { createEngine } from "../src/engine.ts";
+import { createEngine, modelAssetPath } from "../src/engine.ts";
 import { Terrarium } from "../src/terrarium.ts";
 const manifest = JSON.parse(
   await readFile(
@@ -12,11 +12,18 @@ const manifest = JSON.parse(
 const wiring = JSON.parse(
   await readFile(new URL("../public/data/manc-walking.json", import.meta.url)),
 );
-const read = (p) => readFile(new URL("../public/model/" + p, import.meta.url));
+const read = (p) =>
+  readFile(new URL("../public" + modelAssetPath(manifest, p), import.meta.url));
 let engine, world;
 before(async () => {
   engine = await createEngine(manifest, read);
-  world = new Terrarium(engine, wiring);
+  world = new Terrarium(
+    engine,
+    wiring,
+    JSON.parse(
+      await readFile(new URL("../public/data/nmf-steps.json", import.meta.url)),
+    ),
+  );
 });
 after(() => engine?.dispose());
 test("published assay identifies the current circuit, bridge and body bytes", async () => {
@@ -42,17 +49,19 @@ test("derived body has separate provenance, six free legs and native muscle dyna
       .digest("hex"),
     file.sha256,
   );
-  assert.equal(engine.model.nq, 25);
-  assert.equal(engine.model.nu, 36);
-  assert.equal(engine.model.nv, 24);
-  assert.ok([...engine.model.actuator_dyntype].every((v) => v === 4));
-  assert.equal(manifest.physics.timestep, 0.0002);
+  assert.equal(engine.model.nq, 73);
+  assert.equal(engine.model.nu, 90);
+  assert.equal(engine.model.nv, 72);
+  assert.ok(
+    [...engine.model.actuator_dyntype.slice(0, 84)].every((v) => v === 4),
+  );
+  assert.equal(manifest.physics.timestep, 0.0001);
 });
 function run({
   lesion = false,
   passive = false,
   bridge = true,
-  dt = 0.0002,
+  dt = 0.0001,
 } = {}) {
   engine.model.opt.timestep = dt;
   world.bridge = bridge;
@@ -62,13 +71,21 @@ function run({
   const min = [Infinity, Infinity],
     max = [0, 0],
     contact = new Set();
-  for (let i = 0; i < Math.round(3 / dt); i++) {
+  for (let i = 0; i < Math.round(1.5 / dt); i++) {
     engine.step();
     const z = engine.data.qpos[2];
     min[0] = Math.min(min[0], z);
-    if (i % 10 === 0) {
+    if (i % 100 === 0) {
       const o = world.observation();
       min[1] = Math.min(min[1], o.up);
+      assert.ok(
+        o.surface.floorClearanceMM > -0.005,
+        "anatomical surface penetrates floor",
+      );
+      assert.ok(
+        o.contact.maxPenetrationMM < 0.005,
+        "environment contact exceeds 5 micrometres",
+      );
       contact.add(o.contacts.map((v) => (v ? 1 : 0)).join(""));
       max[0] = Math.max(max[0], o.physicalContacts);
       max[1] = Math.max(max[1], ...o.muscleActivation);
@@ -88,8 +105,8 @@ test("neural-timed muscles advance the body; ablated and passive controls do not
   const active = run(),
     ablated = run({ lesion: true }),
     passive = run({ passive: true });
-  assert.ok(active.position[0] > 1.5, JSON.stringify(active.position));
-  assert.ok(active.min[0] > 1.4);
+  assert.ok(active.position[0] > 5, JSON.stringify(active.position));
+  assert.ok(active.min[0] > 0.5);
   assert.ok(active.min[1] > 0.8);
   assert.ok(
     active.neuralCycles > 10 &&
@@ -99,19 +116,19 @@ test("neural-timed muscles advance the body; ablated and passive controls do not
   );
   assert.ok(Math.hypot(...ablated.position.slice(0, 2)) < 0.2);
   assert.equal(ablated.neuralCycles, 0);
-  assert.ok(passive.position[2] < 0.7);
+  assert.ok(passive.position[2] < 0.8);
   assert.ok(Math.hypot(...passive.position.slice(0, 2)) < 0.5);
   assert.ok(passive.muscleActivation.every((v) => v < 1e-6));
 });
 test("halved physical timestep preserves the locomotion result and upright stance", () => {
-  const half = run({ dt: 0.0001 });
-  assert.ok(half.position[0] > 1.5);
-  assert.ok(half.min[0] > 1.4);
+  const half = run({ dt: 0.00005 });
+  assert.ok(half.position[0] > 5);
+  assert.ok(half.min[0] > 0.5);
   assert.ok(half.min[1] > 0.8);
-  engine.model.opt.timestep = 0.0002;
+  engine.model.opt.timestep = 0.0001;
 });
 test("bridge timing follows neural activity rather than the presence of a lesion flag", () => {
-  engine.model.opt.timestep = 0.0002;
+  engine.model.opt.timestep = 0.0001;
   world.passive = false;
   world.bridge = true;
   world.ablate(false);
@@ -119,15 +136,15 @@ test("bridge timing follows neural activity rather than the presence of a lesion
   world.circuit.silenced.add(
     wiring.nodes.findIndex((n) => n.role === "motor" && n.leg === "RH"),
   );
-  engine.step(5000);
+  engine.step(10000);
   assert.ok(
     world.phase > 1,
     "a remote single-MN lesion must not globally gate the bridge",
   );
   world.ablate(true);
-  engine.step(2500);
+  engine.step(5000);
   const phase = world.phase;
-  engine.step(2500);
+  engine.step(5000);
   assert.equal(
     world.phase,
     phase,

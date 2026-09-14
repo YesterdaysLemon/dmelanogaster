@@ -15,6 +15,37 @@ export interface Paper {
 }
 export const papers: Paper[] = [
   {
+    id: "nmf2-contact",
+    year: "2024",
+    type: "Modelling",
+    title: "NeuroMechFly v2: compliant feet, adhesion and reusable stepping",
+    authors: "Wang-Chen et al. · Nature Methods / pinned FlyGym implementation",
+    url: "https://www.nature.com/articles/s41592-024-02497-y",
+    claim:
+      "The published model uses articulated tarsi and contact-dependent adhesion. Its reusable steps are processed from annotated walking, normalized, mirrored, closed and selected for simulated displacement.",
+    use: "Terrarium v0.4 reuses the source anatomical axes, all five tarsal segments, periodic single-step interpolation, model tarsal stiffness 7.5/damping 0.01 and native MuJoCo adhesive pads with gain 40. Its 42 active axes are driven by 84 hypothetical Hill antagonists; the existing MANC circuit clocks the steps.",
+    limit:
+      "The processed template is not a raw observed six-leg cycle. Tripod timing, 150 ms amplitude ramp, ideal joint feedback and muscle recruitment are our hypotheses. Pad gain, friction and passive stiffness are model parameters, not new physiological measurements. We do not import a trained policy or claim the paper's full hybrid controller or reconstructed neural control.",
+    next: "Replace ideal feedback with identified load/proprioceptive pathways and measure foot contact, slip and muscle response against independent calibrated recordings. Inspect the Contact shapes overlay and source-hashed collision assay.",
+    status:
+      "Implemented · free body, compliant tarsi, native adhesion; explicit bridge",
+  },
+  {
+    id: "mujoco-contact",
+    year: "2026",
+    type: "Modelling",
+    title: "MuJoCo contact mechanics and compiled convex hulls",
+    authors: "MuJoCo authors · official documentation",
+    url: "https://mujoco.readthedocs.io/en/stable/computation/index.html#collision-detection",
+    claim:
+      "Mesh collision uses convex geometry and a compliant constraint solver. Collision masks select eligible pairs; contact margins and solver parameters affect separation and penetration.",
+    use: "Every visible anatomical mesh now has environment contact. The overlay displays the engine's actual compiled hull faces. Floor and wall transforms match rendering; 94 short convex pieces follow our original Blender banana and preserve the open peel. All source hashes and quantitative drop/contact assays are published.",
+    limit:
+      "Convex surfaces are conservative approximations. Same-leg and body-leg self-contact are excluded because rigid attachment hulls overlap. Numerical contact compliance is not measured cuticle stiffness and cannot promise identically zero penetration in every state. Substrate patches are solid proxies, not liquids.",
+    next: "Validate against measured substrate forces and shape uncertainty; use contact assays before refining local concavities or expanding obstacle behavior.",
+    status: "Implemented · inspectable anatomical/environment collision",
+  },
+  {
     id: "nmf2-motion",
     year: "2024",
     type: "Modelling",

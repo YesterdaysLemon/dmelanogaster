@@ -17,10 +17,28 @@ export interface Muscle {
   gainprm: number[];
   evidence: string[];
   neuralMapping: string;
+  qposIndex?: number;
 }
 export interface Manifest {
   runtimeModel?: string;
   initialQpos?: number[];
+  adhesion?: { id: string; index: number; body: string; gain: number }[];
+  environment?: {
+    floorZ: number;
+    halfWidth: number;
+    wallHalfThickness: number;
+    wallHeight: number;
+    banana: { position: number[]; rotationZ: number; visual: string };
+    stimuli: {
+      id: string;
+      kind: "food" | "repellent" | "water";
+      x: number;
+      y: number;
+      radius: number;
+      strength: number;
+      enabled: boolean;
+    }[];
+  };
   version: number;
   source: string;
   commit: string;
@@ -33,7 +51,13 @@ export interface Manifest {
     scope: string;
     forceUnit: string;
   };
-  files: { target: string; source: string; bytes: number; sha256: string }[];
+  files: {
+    target: string;
+    source: string;
+    bytes: number;
+    sha256: string;
+    assetPath?: string;
+  }[];
   muscles: Muscle[];
 }
 export type Sample = {
@@ -82,7 +106,7 @@ export class FlyEngine {
     if (
       !Number.isInteger(index) ||
       index < 0 ||
-      index >= this.model.nu ||
+      index >= this.manifest.muscles.length ||
       !Number.isFinite(value)
     )
       throw new Error("Invalid muscle excitation");
@@ -133,7 +157,8 @@ export class FlyEngine {
       length: this.data.actuator_length[i],
       angle:
         (this.data.qpos[
-          this.manifest.runtimeModel ? 7 + Math.floor(i / 2) : 6
+          this.manifest.muscles[i]?.qposIndex ??
+            (this.manifest.runtimeModel ? 7 + Math.floor(i / 2) : 6)
         ] *
           180) /
         Math.PI,
@@ -155,6 +180,13 @@ export class FlyEngine {
     this.model.delete();
   }
 }
+/** Shared assets retain their source bytes without duplicating the anatomical archive. */
+export function modelAssetPath(manifest: Manifest, target: string) {
+  return (
+    manifest.files.find((file) => file.target === target)?.assetPath ??
+    "/model/" + target
+  );
+}
 export async function createEngine(
   manifest: Manifest,
   read: (path: string) => Promise<Uint8Array>,
@@ -165,6 +197,18 @@ export async function createEngine(
   fs.mkdir("/fly");
   fs.mkdir("/fly/meshes");
   fs.mkdir("/fly/meshes/stl");
+  const directories = new Set(["/fly", "/fly/meshes", "/fly/meshes/stl"]);
+  for (const file of manifest.files) {
+    const parts = file.target.split("/");
+    let path = "/fly";
+    for (const part of parts.slice(0, -1)) {
+      path += "/" + part;
+      if (!directories.has(path)) {
+        fs.mkdir(path);
+        directories.add(path);
+      }
+    }
+  }
   // Source XML and meshes are copied unchanged. No learned controller is loaded.
   await Promise.all(
     manifest.files.map(async (f) =>
@@ -174,7 +218,7 @@ export async function createEngine(
   const model = mujoco.MjModel.from_xml_path(
     "/fly/" + (manifest.runtimeModel || "fly.xml"),
   );
-  if (model.nu !== manifest.muscles.length)
+  if (model.nu !== manifest.muscles.length + (manifest.adhesion?.length ?? 0))
     throw new Error("Actuator roster differs from anatomical manifest");
   return new FlyEngine(mujoco, model, manifest);
 }

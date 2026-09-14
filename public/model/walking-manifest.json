@@ -1,1853 +1,2802 @@
 {
-  "version": 1,
-  "runtimeModel": "walking.xml",
-  "source": "https://github.com/gizemozd/FlyMimic",
-  "commit": "9ea1131626cd76f7203b74076ef8f0e9cab30bef",
+  "version": 2,
+  "source": "https://github.com/NeLy-EPFL/flygym",
+  "commit": "cedd204e0c3bc70bab8ccdf1d0520f2b77b2619b",
   "modelPath": "walking.xml",
-  "license": "Apache-2.0 derivation with MIT integration",
-  "modifications": [
-    "Free thorax",
-    "18 principal leg DOF",
-    "36 inferred antagonistic muscle groups with constant moment arms",
-    "Assumed 1 mg body mass; source relative inertias retained",
-    "Simplified contact geometry",
-    "No wing, haltere, gut, respiratory or reproductive dynamics"
-  ],
-  "physics": {
-    "timestep": 0.0002,
-    "gravity": "9801 mm/s^2",
-    "scope": "experimental reduced six-leg model",
-    "forceUnit": "microNewton (g, mm, s model convention; uncalibrated strength)"
-  },
+  "runtimeModel": "walking.xml",
+  "license": "Apache-2.0",
   "files": [
     {
-      "source": "flymimic/assets/models/meshes/stl/Thorax.stl",
-      "target": "meshes/stl/Thorax.stl",
+      "target": "meshes/nmf/Thorax.stl",
+      "source": "flygym/data/mesh/Thorax.stl",
       "bytes": 281534,
-      "sha256": "61a091c49c87895f735fb63e42898128888a6f53ee60900bbf61f92edf5e42e6"
+      "sha256": "0ac93168a38e8feb80f544ee25c2c03272072f00048f041b77966ad450fb0fc9",
+      "assetPath": "/motion/meshes/Thorax.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/A1A2.stl",
-      "target": "meshes/stl/A1A2.stl",
+      "target": "meshes/nmf/A1A2.stl",
+      "source": "flygym/data/mesh/A1A2.stl",
       "bytes": 144334,
-      "sha256": "a8645b7b026f2736b08772bc2bca08ca79adc417bd613ed4d487c02ffcaa2903"
+      "sha256": "aed84b41c264a93755678df79a99ce8ea399cf2674fdd6a8fe7e2dcfec6c6d6b",
+      "assetPath": "/motion/meshes/A1A2.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/A3.stl",
-      "target": "meshes/stl/A3.stl",
+      "target": "meshes/nmf/A3.stl",
+      "source": "flygym/data/mesh/A3.stl",
       "bytes": 140084,
-      "sha256": "5717f47f1c426bdfa5d6f44e1d41bd4e8d997cda43075f0258d6162c8fe4c124"
+      "sha256": "07c5b43e2f91a9262cbfbcea4d0beabb0e5a1381afe01260df95548bf3cfefbc",
+      "assetPath": "/motion/meshes/A3.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/A4.stl",
-      "target": "meshes/stl/A4.stl",
+      "target": "meshes/nmf/A4.stl",
+      "source": "flygym/data/mesh/A4.stl",
       "bytes": 143384,
-      "sha256": "ffc7a77b712b9f8f54982da0b65435680f4602184231f27b6c34d485cfcec0f5"
+      "sha256": "010667e71500c425eea1307004833c5990a0f76ceb0b57957e39c52bd9e6a52d",
+      "assetPath": "/motion/meshes/A4.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/A5.stl",
-      "target": "meshes/stl/A5.stl",
+      "target": "meshes/nmf/A5.stl",
+      "source": "flygym/data/mesh/A5.stl",
       "bytes": 158834,
-      "sha256": "3e80fdb1fa9db4da41df9015162cdcc22e724a0e5ddb47400d025a3f5b88debb"
+      "sha256": "0b83e74ef96eac7c944c74062b224e1ecaef356ed490dad1a2c6a78f2618d008",
+      "assetPath": "/motion/meshes/A5.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/A6.stl",
-      "target": "meshes/stl/A6.stl",
+      "target": "meshes/nmf/A6.stl",
+      "source": "flygym/data/mesh/A6.stl",
       "bytes": 203134,
-      "sha256": "153bb1b802fd14c90bcbd9c56425bac7d49a1ef205afd5e18ac8c71b54ea336f"
+      "sha256": "6ec06369174ff0fec5ce2dd5129aa5291ae81d1b624c0cb3e2e1986bf76c7ea7",
+      "assetPath": "/motion/meshes/A6.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/Head.stl",
-      "target": "meshes/stl/Head.stl",
-      "bytes": 864784,
-      "sha256": "27b97b890db42105b0a692b03d6b7ee014498da7f52b1523d8d5701264b31992"
+      "target": "meshes/nmf/Head.stl",
+      "source": "flygym/data/mesh/Head.stl",
+      "bytes": 4117984,
+      "sha256": "aafc2196f1bdcd94f29378b6aec39943d6c4baddeed24502fb0381f8e0430150",
+      "assetPath": "/motion/meshes/Head.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LEye.stl",
-      "target": "meshes/stl/LEye.stl",
-      "bytes": 238084,
-      "sha256": "b4371603242f501020032c8f86d2bec9feef5501b8f3a347408ac49d16030fee"
+      "target": "meshes/nmf/REye.stl",
+      "source": "flygym/data/mesh/REye.stl",
+      "bytes": 2616284,
+      "sha256": "a6057f98a73a8b91cc65a1cae0c83b3f0a66def10f9a15b6a271c4bb4b5af0a6",
+      "assetPath": "/motion/meshes/REye.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LPedicel.stl",
-      "target": "meshes/stl/LPedicel.stl",
-      "bytes": 860484,
-      "sha256": "6dfd2255f674a937a85f12916ddc4af193b79757f4f29e48070a776d825a5616"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LFuniculus.stl",
-      "target": "meshes/stl/LFuniculus.stl",
-      "bytes": 869484,
-      "sha256": "3bf5a160aee8a87bb9776cf3b4e2cce26fa9c7586737054e0d7e06a91c2cddbf"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LArista.stl",
-      "target": "meshes/stl/LArista.stl",
-      "bytes": 568884,
-      "sha256": "89279377fa06a9d0a611b5fa46f3353bc528121a19c7e52b419bb754cf3696f4"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/REye.stl",
-      "target": "meshes/stl/REye.stl",
-      "bytes": 164784,
-      "sha256": "b9bb1a0137254acbf0c204d2ee9b55ab63f6dc4415dce55bfec95b225de97a3d"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RPedicel.stl",
-      "target": "meshes/stl/RPedicel.stl",
-      "bytes": 837884,
-      "sha256": "e555a9108c30c70b9c5e5117577153ecec2eecb66c857b78540a4c02b191f538"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RFuniculus.stl",
-      "target": "meshes/stl/RFuniculus.stl",
-      "bytes": 856284,
-      "sha256": "b0e4d9699f1f70d276186c9c7a90c51720c21ad56e99ceb70fd4219642d36275"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RArista.stl",
-      "target": "meshes/stl/RArista.stl",
-      "bytes": 580484,
-      "sha256": "025fe9065e92ab6be2dc311aeb6d38258c284b02724393b46d60b64c46d35cef"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/Rostrum.stl",
-      "target": "meshes/stl/Rostrum.stl",
+      "target": "meshes/nmf/Rostrum.stl",
+      "source": "flygym/data/mesh/Rostrum.stl",
       "bytes": 189384,
-      "sha256": "672c49f10fc9294c047eaa017afd30c68037036446cb4a2b34f52455fa72854e"
+      "sha256": "9616109271847e638de093e85553903b81e4db67b06d237a70abae5994d1c4c9",
+      "assetPath": "/motion/meshes/Rostrum.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/Haustellum.stl",
-      "target": "meshes/stl/Haustellum.stl",
+      "target": "meshes/nmf/Haustellum.stl",
+      "source": "flygym/data/mesh/Haustellum.stl",
       "bytes": 215634,
-      "sha256": "09fda52eeef008ff4b6513d8fcc2906d3cbe8911393ff4e77ef687a66240b47d"
+      "sha256": "9498e99c33324fbc6b3381ceb1bb13b874f919b9deccc7a5cfce618fb42d742f",
+      "assetPath": "/motion/meshes/Haustellum.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LFCoxa.stl",
-      "target": "meshes/stl/LFCoxa.stl",
-      "bytes": 103984,
-      "sha256": "9195e39b45975b58a631a281e53c3b8a6b3f0d8ee8dee09be7aad3342e7aa3bb"
+      "target": "meshes/nmf/RPedicel.stl",
+      "source": "flygym/data/mesh/RPedicel.stl",
+      "bytes": 862884,
+      "sha256": "1bf370fed2fca4b1a1c275a78a1ece1ac3df6e62a542a9331238d23dd5fd46a5",
+      "assetPath": "/motion/meshes/RPedicel.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LFTrochanter.stl",
-      "target": "meshes/stl/LFTrochanter.stl",
-      "bytes": 34784,
-      "sha256": "9eece5e88d044b53517bfe231edddbe8acc3f5cb50bbd2230168f799cfaee9f2"
+      "target": "meshes/nmf/RFuniculus.stl",
+      "source": "flygym/data/mesh/RFuniculus.stl",
+      "bytes": 26784,
+      "sha256": "5b9fbc5111e5da82d1c1c106d2e4036205e464a9227f24fbdbe587c95e631377",
+      "assetPath": "/motion/meshes/RFuniculus.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LFFemur.stl",
-      "target": "meshes/stl/LFFemur.stl",
-      "bytes": 842284,
-      "sha256": "d4012dff9598fcf021d451b04d0b2bfce666fa8bc5369c7a6844699ff806f3cc"
+      "target": "meshes/nmf/RArista.stl",
+      "source": "flygym/data/mesh/RArista.stl",
+      "bytes": 2662884,
+      "sha256": "cf4701d9502a6287578378aa5a894ed0579ff34185ac37446d7f4812294a9e3d",
+      "assetPath": "/motion/meshes/RArista.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LFTibia.stl",
-      "target": "meshes/stl/LFTibia.stl",
-      "bytes": 53684,
-      "sha256": "e48e96e254ac932ecb707364c31f4d1867ab2dd947a3fc257a3291bae5d10d5f"
+      "target": "meshes/nmf/RFCoxa.stl",
+      "source": "flygym/data/mesh/RFCoxa.stl",
+      "bytes": 184034,
+      "sha256": "fb8aecfd0cf4ea7bbe4e7bb0512fb984eaaf5ec09b92a457200c14bec4121d5e",
+      "assetPath": "/motion/meshes/RFCoxa.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LFTarsus1.stl",
-      "target": "meshes/stl/LFTarsus1.stl",
-      "bytes": 24484,
-      "sha256": "ad61cfec64816d669f1f4f89bddb818471344dd69f6443c184a3aa674ea2b62a"
+      "target": "meshes/nmf/RFFemur.stl",
+      "source": "flygym/data/mesh/RFFemur.stl",
+      "bytes": 80984,
+      "sha256": "9deda28d4c0cb903792468a4fcacb36e07c0ac8deefd3c836703686ebc901a2e",
+      "assetPath": "/motion/meshes/RFFemur.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LFTarsus2.stl",
-      "target": "meshes/stl/LFTarsus2.stl",
-      "bytes": 19784,
-      "sha256": "a5c00b6a936c0d61a70a9726082e569f9b7f72bce17bfce67cd406bb7ed840e5"
+      "target": "meshes/nmf/RFTibia.stl",
+      "source": "flygym/data/mesh/RFTibia.stl",
+      "bytes": 85534,
+      "sha256": "cfea07f978588affdc760ac9eb047c4bb03f6f5976151178de883bd8cc9b5858",
+      "assetPath": "/motion/meshes/RFTibia.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LFTarsus3.stl",
-      "target": "meshes/stl/LFTarsus3.stl",
-      "bytes": 17484,
-      "sha256": "c154a96be4927b0db54cbc713681e00ae62021a05d55ca3649c3e40069c65acb"
+      "target": "meshes/nmf/RFTarsus1.stl",
+      "source": "flygym/data/mesh/RFTarsus1.stl",
+      "bytes": 89584,
+      "sha256": "a8cc8e23209eb6405d50e5fdc40a4e28f0a74c9cca3da880e36e58e0c6843bf8",
+      "assetPath": "/motion/meshes/RFTarsus1.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LFTarsus4.stl",
-      "target": "meshes/stl/LFTarsus4.stl",
-      "bytes": 14884,
-      "sha256": "622606f09a1a6598125bd534af675cfe50a8aae465b38fdf9148dda8b06a58f9"
+      "target": "meshes/nmf/RFTarsus2.stl",
+      "source": "flygym/data/mesh/RFTarsus2.stl",
+      "bytes": 89884,
+      "sha256": "5a916893bb14604ff8600e7607864be6328e04d6db3907882b08b828ee7f1649",
+      "assetPath": "/motion/meshes/RFTarsus2.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LFTarsus5.stl",
-      "target": "meshes/stl/LFTarsus5.stl",
-      "bytes": 18084,
-      "sha256": "7f7e9f98c416f01c1114f38d22ba3fc0c7ed4ee2c5f799a2c59a447fbff308b3"
+      "target": "meshes/nmf/RFTarsus3.stl",
+      "source": "flygym/data/mesh/RFTarsus3.stl",
+      "bytes": 152584,
+      "sha256": "d0288babd00488f735e1caa392bee5da7524edcf063b8eb059b9b152c606be44",
+      "assetPath": "/motion/meshes/RFTarsus3.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LHCoxa.stl",
-      "target": "meshes/stl/LHCoxa.stl",
-      "bytes": 199084,
-      "sha256": "cf8352af3217f5febd0574215b799faa38113ec8055079e751983071da53d4bc"
+      "target": "meshes/nmf/RFTarsus4.stl",
+      "source": "flygym/data/mesh/RFTarsus4.stl",
+      "bytes": 164234,
+      "sha256": "e0343859c3eab8fa79579e5f0c48aa0dafde245ae0c2bf54472d7ca483d07c20",
+      "assetPath": "/motion/meshes/RFTarsus4.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LHFemur.stl",
-      "target": "meshes/stl/LHFemur.stl",
-      "bytes": 165884,
-      "sha256": "9a8f7703c5939807d8894dc1e750997bdfb00b2a7c1698ab3e193544d07ba11b"
+      "target": "meshes/nmf/RFTarsus5.stl",
+      "source": "flygym/data/mesh/RFTarsus5.stl",
+      "bytes": 142184,
+      "sha256": "e4dd5405ec5b22d28c08b6b50e99b9de28ba54768817a49c2f966e80a8eeb30b",
+      "assetPath": "/motion/meshes/RFTarsus5.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LHTibia.stl",
-      "target": "meshes/stl/LHTibia.stl",
-      "bytes": 37484,
-      "sha256": "15b3fcb4b0c14d12883daffc14f99415329f99614f14f1fd8cfd5e7b1fda4b37"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LHTarsus1.stl",
-      "target": "meshes/stl/LHTarsus1.stl",
-      "bytes": 38934,
-      "sha256": "bef10a44d00419f04f5373a6d80f8aa5a248e84f9b2a07408d35671ef8bc46d8"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LHTarsus2.stl",
-      "target": "meshes/stl/LHTarsus2.stl",
-      "bytes": 98684,
-      "sha256": "41cab7b9105f99d4db311c90fcbdda95b2cb53595b4a37b6ab494469eb0740b8"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LHTarsus3.stl",
-      "target": "meshes/stl/LHTarsus3.stl",
-      "bytes": 129584,
-      "sha256": "cfde4d0b603b0848dbc4ce85ab2e2954942da05da3429f2fb694819d3e77a0d1"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LHTarsus4.stl",
-      "target": "meshes/stl/LHTarsus4.stl",
-      "bytes": 130984,
-      "sha256": "c2eed9e0aa475353694d4cc209435bb5716d5a5862161bc1fd76a57bd72717c2"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LHTarsus5.stl",
-      "target": "meshes/stl/LHTarsus5.stl",
-      "bytes": 147084,
-      "sha256": "33556f4a7f538fc2d3e14913f50e756f6f88a33439dab455b3f5f300da5287ed"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LHaltere.stl",
-      "target": "meshes/stl/LHaltere.stl",
+      "target": "meshes/nmf/RHaltere.stl",
+      "source": "flygym/data/mesh/RHaltere.stl",
       "bytes": 41284,
-      "sha256": "f10ce437255a1aede388e6375e32a6ea2d917c1cebb0347e95c93938a82afe46"
+      "sha256": "01bf5200bcba3051660926a092466b06464b801d21fd93645a68993ecacf929a",
+      "assetPath": "/motion/meshes/RHaltere.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/LMCoxa.stl",
-      "target": "meshes/stl/LMCoxa.stl",
-      "bytes": 130384,
-      "sha256": "1f531dd264b421f50218f948ca0520daedcec95b326848344472b87f99df38c4"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LMFemur.stl",
-      "target": "meshes/stl/LMFemur.stl",
-      "bytes": 41384,
-      "sha256": "cc7de1d5c273692c1092af22c64ac523ab9065e54c9867ae0e840028fe1f4489"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LMTibia.stl",
-      "target": "meshes/stl/LMTibia.stl",
-      "bytes": 33884,
-      "sha256": "121eb0503627adcb96f71701d1d12be0e6dafb8a842dd672cb23918094dae186"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LMTarsus1.stl",
-      "target": "meshes/stl/LMTarsus1.stl",
-      "bytes": 46284,
-      "sha256": "46c584345e52741d3e93c6053b63de72d84262a1db82651e9fe146ed4cfabd6a"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LMTarsus2.stl",
-      "target": "meshes/stl/LMTarsus2.stl",
-      "bytes": 77884,
-      "sha256": "6f0482bbc912995884caab40380645ac4846ae1b6d38b78f7d1190514cdaa399"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LMTarsus3.stl",
-      "target": "meshes/stl/LMTarsus3.stl",
-      "bytes": 92884,
-      "sha256": "bbb9f6caa201c9d177b4007011dabf0c87ad2d722f55f6aeef4c8cf98b772883"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LMTarsus4.stl",
-      "target": "meshes/stl/LMTarsus4.stl",
-      "bytes": 159584,
-      "sha256": "cef9504a68c0b054795dc1feaaad683df05cd47601db4c8a141bc6dc427fff61"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LMTarsus5.stl",
-      "target": "meshes/stl/LMTarsus5.stl",
-      "bytes": 49384,
-      "sha256": "83eaa926ff3a7b8452e2432033e4573752097ee08c9b3513b70482c084e29f7f"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/LWing.stl",
-      "target": "meshes/stl/LWing.stl",
-      "bytes": 996734,
-      "sha256": "9247992a96ba2f6ea69a13b2949c0be0ea51738bb0044cdaed34b262a926f256"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RFCoxa.stl",
-      "target": "meshes/stl/RFCoxa.stl",
-      "bytes": 42884,
-      "sha256": "e1849a7dbe5273cfd86ace2c14af0130775d00381e926e1736ed592cac63550a"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RFTrochanter.stl",
-      "target": "meshes/stl/RFTrochanter.stl",
-      "bytes": 19584,
-      "sha256": "a47df0bfd23d89aa8f1aa9a3652d86cc2fdfe39e9410485baa6bbe2140491c1b"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RFFemur.stl",
-      "target": "meshes/stl/RFFemur.stl",
-      "bytes": 60834,
-      "sha256": "77ee2146a08d8ef175bdc5bcb3a5a155a3e5317103e17e28903e415316ed5837"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RFTibia.stl",
-      "target": "meshes/stl/RFTibia.stl",
-      "bytes": 61834,
-      "sha256": "bd073bc9a7f598dbe1487d838da35273be58d84822222bd971ba5fabd88845ed"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RFTarsus1.stl",
-      "target": "meshes/stl/RFTarsus1.stl",
-      "bytes": 24484,
-      "sha256": "055adb1a90f1430b9edfd54f050da921ad816e3c212a66cc99a83118485cf805"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RFTarsus2.stl",
-      "target": "meshes/stl/RFTarsus2.stl",
-      "bytes": 19784,
-      "sha256": "4dfacd1cfd62d6984b93a7809d2e64527e97a5e9ccb95bc4729415fdcedb6cdd"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RFTarsus3.stl",
-      "target": "meshes/stl/RFTarsus3.stl",
-      "bytes": 17484,
-      "sha256": "402b2d148d2f079aa100ae2cc799919d4cf64fcfdb2e112ae05221a3247b86c0"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RFTarsus4.stl",
-      "target": "meshes/stl/RFTarsus4.stl",
-      "bytes": 14884,
-      "sha256": "1d9790cfd7949942e973e6de356989f90468acb0c9808458661d85afd6953c73"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RFTarsus5.stl",
-      "target": "meshes/stl/RFTarsus5.stl",
-      "bytes": 18084,
-      "sha256": "716f7a121e190f7c46df2b63968ea29cacc7d9951b864d657ed5b96f50f8bf3f"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RHCoxa.stl",
-      "target": "meshes/stl/RHCoxa.stl",
+      "target": "meshes/nmf/RHCoxa.stl",
+      "source": "flygym/data/mesh/RHCoxa.stl",
       "bytes": 199084,
-      "sha256": "de2abbee97410931b6aecd8e904d622a225f1cfd1b475eb8c49da1b161eac736"
+      "sha256": "0298272dc088ebcb964eb9ac4d13b16121e1ee90ba45337781bdadfba096dbaf",
+      "assetPath": "/motion/meshes/RHCoxa.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RHFemur.stl",
-      "target": "meshes/stl/RHFemur.stl",
+      "target": "meshes/nmf/RHFemur.stl",
+      "source": "flygym/data/mesh/RHFemur.stl",
       "bytes": 165884,
-      "sha256": "219ef48acfab0bb2920e8a3d57537c23b0a4fcc133feff18fc72477baf550880"
+      "sha256": "fb717ea9d5a2eb436262bfc42688f5297bc972290d12d7b5b6dd83dfdfba25dd",
+      "assetPath": "/motion/meshes/RHFemur.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RHTibia.stl",
-      "target": "meshes/stl/RHTibia.stl",
+      "target": "meshes/nmf/RHTibia.stl",
+      "source": "flygym/data/mesh/RHTibia.stl",
       "bytes": 37484,
-      "sha256": "94830552615cb5cacaeb4eddaabde518bc1ab79fbc76e42a8cc654a54f8c6815"
+      "sha256": "688cda77697232e5c2cd62bcfcb1b994693c2518d2ee8862d546863e92954992",
+      "assetPath": "/motion/meshes/RHTibia.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RHTarsus1.stl",
-      "target": "meshes/stl/RHTarsus1.stl",
+      "target": "meshes/nmf/RHTarsus1.stl",
+      "source": "flygym/data/mesh/RHTarsus1.stl",
       "bytes": 38934,
-      "sha256": "55a3db5944bb43a4bf970fcddba0b77a9cff1b37319b9d5b35d7c7ac933f06ec"
+      "sha256": "28c6287e3349116c21fd264b9d775d2d68207db98e7032e3203158fd61c36fa1",
+      "assetPath": "/motion/meshes/RHTarsus1.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RHTarsus2.stl",
-      "target": "meshes/stl/RHTarsus2.stl",
+      "target": "meshes/nmf/RHTarsus2.stl",
+      "source": "flygym/data/mesh/RHTarsus2.stl",
       "bytes": 98684,
-      "sha256": "ab7262e6d880ef8aee6208d03275ffaa8517b311dee5972a35d749af2dbdfbc2"
+      "sha256": "ffce858b2321c5871ef0109c44e6aa2f17db27ef136dcff998385cad583f4686",
+      "assetPath": "/motion/meshes/RHTarsus2.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RHTarsus3.stl",
-      "target": "meshes/stl/RHTarsus3.stl",
+      "target": "meshes/nmf/RHTarsus3.stl",
+      "source": "flygym/data/mesh/RHTarsus3.stl",
       "bytes": 129584,
-      "sha256": "9d4d07ebfdc32a8301c9e0a47c7c066fc144d5e75a947a0f69b6ef4fc4fdaf1e"
+      "sha256": "4335fffd3834d9964e86199c056243ba05fff27b58c5de34c91784e838a8ccdd",
+      "assetPath": "/motion/meshes/RHTarsus3.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RHTarsus4.stl",
-      "target": "meshes/stl/RHTarsus4.stl",
+      "target": "meshes/nmf/RHTarsus4.stl",
+      "source": "flygym/data/mesh/RHTarsus4.stl",
       "bytes": 130984,
-      "sha256": "dbb7b4b0dff7ce16ad67d799c5d8ac1c3067c2ca8a7a09c35bd1be552abf46c6"
+      "sha256": "1a0d68dddf33caaaf9278f1650b2018690b68453732d0e46e862f5e522889753",
+      "assetPath": "/motion/meshes/RHTarsus4.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RHTarsus5.stl",
-      "target": "meshes/stl/RHTarsus5.stl",
+      "target": "meshes/nmf/RHTarsus5.stl",
+      "source": "flygym/data/mesh/RHTarsus5.stl",
       "bytes": 147084,
-      "sha256": "e4fbc4cf0ab91e6ca120f3b2a0e4f3b376c553f963759be9b067f1307b285f92"
+      "sha256": "4043963e5561f033e887491dfa4085fa5c43233b48d6796c99fb8c49932fb874",
+      "assetPath": "/motion/meshes/RHTarsus5.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RHaltere.stl",
-      "target": "meshes/stl/RHaltere.stl",
-      "bytes": 41284,
-      "sha256": "79f6fd1b7e390c68a518c5785c5a264d4fce6b6190f0c459e67b8a86e5b1d39d"
-    },
-    {
-      "source": "flymimic/assets/models/meshes/stl/RMCoxa.stl",
-      "target": "meshes/stl/RMCoxa.stl",
+      "target": "meshes/nmf/RMCoxa.stl",
+      "source": "flygym/data/mesh/RMCoxa.stl",
       "bytes": 130384,
-      "sha256": "3b1dadc1ac39b49ca1e7a67e5ce73b20765398d6ee36c58bd7a2da31b6495727"
+      "sha256": "25fc3f1dcb1c767bd42cdf82321c05c0f4d92bc09ee448cbe1acef9263a37449",
+      "assetPath": "/motion/meshes/RMCoxa.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RMFemur.stl",
-      "target": "meshes/stl/RMFemur.stl",
+      "target": "meshes/nmf/RMFemur.stl",
+      "source": "flygym/data/mesh/RMFemur.stl",
       "bytes": 41384,
-      "sha256": "a09baaa03751f7e75b29dff72cbb41b8e6d4281e726aa25714d9568c8a24b484"
+      "sha256": "939eb30b456bb3dc72ca081542760c6acf5c75a7316b6463453cc282a978f97d",
+      "assetPath": "/motion/meshes/RMFemur.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RMTibia.stl",
-      "target": "meshes/stl/RMTibia.stl",
+      "target": "meshes/nmf/RMTibia.stl",
+      "source": "flygym/data/mesh/RMTibia.stl",
       "bytes": 33884,
-      "sha256": "5ae92d36789ae2666c52ebe56614de609c7a78b56610b3886662008fdf4b02dd"
+      "sha256": "17662ff1636431e5c5399e71dbe31fb48b389f06b2a40783bcc1c513cade8b8f",
+      "assetPath": "/motion/meshes/RMTibia.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RMTarsus1.stl",
-      "target": "meshes/stl/RMTarsus1.stl",
+      "target": "meshes/nmf/RMTarsus1.stl",
+      "source": "flygym/data/mesh/RMTarsus1.stl",
       "bytes": 46284,
-      "sha256": "a52ffb792c22345983f1d2d068836765682975e3f209ad056cd08c62060ae5e1"
+      "sha256": "cb1606bb2b6d3a3713fde86f4fca6c737b74c8be45e7584e569d95ffab8af8c9",
+      "assetPath": "/motion/meshes/RMTarsus1.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RMTarsus2.stl",
-      "target": "meshes/stl/RMTarsus2.stl",
+      "target": "meshes/nmf/RMTarsus2.stl",
+      "source": "flygym/data/mesh/RMTarsus2.stl",
       "bytes": 77884,
-      "sha256": "3f52c7f9a5ce869098b8e29a7bc9a0d308b4833d4d17064c92a1ba4a58898502"
+      "sha256": "49272c7e82f7c28a09bc79d339d22c15e3585ecd21de88748417bd8409310afb",
+      "assetPath": "/motion/meshes/RMTarsus2.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RMTarsus3.stl",
-      "target": "meshes/stl/RMTarsus3.stl",
+      "target": "meshes/nmf/RMTarsus3.stl",
+      "source": "flygym/data/mesh/RMTarsus3.stl",
       "bytes": 92884,
-      "sha256": "e70d291cdd958d0a5a2ed6e3554b369b7170a6b9a110f912017c331afafa1d72"
+      "sha256": "b80f1f7d2380e8b85bc7958399ac5d3dd0c0b9c8cfb655cb7517d0086d098c0d",
+      "assetPath": "/motion/meshes/RMTarsus3.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RMTarsus4.stl",
-      "target": "meshes/stl/RMTarsus4.stl",
+      "target": "meshes/nmf/RMTarsus4.stl",
+      "source": "flygym/data/mesh/RMTarsus4.stl",
       "bytes": 159584,
-      "sha256": "6e2d9ec053490b0649c756b9d1ca47394806d162f463659ed6117c16788ab40a"
+      "sha256": "53b914a75fb54c27a1fc03f4210bc273795de76f336a5429ce89cf31ca927a89",
+      "assetPath": "/motion/meshes/RMTarsus4.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RMTarsus5.stl",
-      "target": "meshes/stl/RMTarsus5.stl",
+      "target": "meshes/nmf/RMTarsus5.stl",
+      "source": "flygym/data/mesh/RMTarsus5.stl",
       "bytes": 49384,
-      "sha256": "f6ac243379d2694e6161e28c2c9dc406cf6ac91363ac6bf7eb7e42da225b2f15"
+      "sha256": "222297c3ea6c513db2dabb82d4efe831409b2d0f2a32e38500ac9266c7279214",
+      "assetPath": "/motion/meshes/RMTarsus5.stl"
     },
     {
-      "source": "flymimic/assets/models/meshes/stl/RWing.stl",
-      "target": "meshes/stl/RWing.stl",
+      "target": "meshes/nmf/RWing.stl",
+      "source": "flygym/data/mesh/RWing.stl",
       "bytes": 996734,
-      "sha256": "a00cd68f368e9a51832a05ba869cade1ac65fa7b502c7c3e9f62da417b53ea43"
+      "sha256": "7c6fad3ec5ce3b59f9a448ff6d8aff2857979afc56d846fbb22c483bf4e44edc",
+      "assetPath": "/motion/meshes/RWing.stl"
+    },
+    {
+      "target": "meshes/banana/flesh_000.stl",
+      "assetPath": "/props/banana/collision/flesh_000.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "61f2a5fb4a976915c0c0c7ee3bc1d84b68acdebaad42872c7e524446dd1f2066",
+      "bytes": 11684
+    },
+    {
+      "target": "meshes/banana/flesh_003.stl",
+      "assetPath": "/props/banana/collision/flesh_003.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "f5f6597b819915d713094d175f69a60baed2b43f5d0ba6852ffef2a4abd88d9c",
+      "bytes": 11584
+    },
+    {
+      "target": "meshes/banana/flesh_006.stl",
+      "assetPath": "/props/banana/collision/flesh_006.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "5e91a8da222a5c85065593d8c31bffdcc706e2120675a3f2ba8723d5675212f5",
+      "bytes": 11584
+    },
+    {
+      "target": "meshes/banana/flesh_009.stl",
+      "assetPath": "/props/banana/collision/flesh_009.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "cd0a5d22868cf0237f9a3ee17769ff689b071b272e79c988c0ddb09b08b536fe",
+      "bytes": 10884
+    },
+    {
+      "target": "meshes/banana/flesh_012.stl",
+      "assetPath": "/props/banana/collision/flesh_012.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "a384cccf22ccb2cdb3c6ad57eb48d5ce880f524648660b37b50701e80a7f9c86",
+      "bytes": 10184
+    },
+    {
+      "target": "meshes/banana/flesh_015.stl",
+      "assetPath": "/props/banana/collision/flesh_015.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "d40440d5ae907387b60355ddef4a94f2acc3d7f24aaab73b135201277a0c615f",
+      "bytes": 9584
+    },
+    {
+      "target": "meshes/banana/flesh_018.stl",
+      "assetPath": "/props/banana/collision/flesh_018.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "972c1b2f4a26eb9afc15498563f72fb0f10ee199d3e9a2a0af2602340d44487c",
+      "bytes": 9284
+    },
+    {
+      "target": "meshes/banana/flesh_021.stl",
+      "assetPath": "/props/banana/collision/flesh_021.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "f0463910e29175746922f6024ed70a43592471a873565d37a684e272829b00f0",
+      "bytes": 9084
+    },
+    {
+      "target": "meshes/banana/flesh_024.stl",
+      "assetPath": "/props/banana/collision/flesh_024.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "f5fb17b54d7a58308adfbcfdd007be09a4d04fbd2ed1071fc3068318626c7bb6",
+      "bytes": 9084
+    },
+    {
+      "target": "meshes/banana/flesh_027.stl",
+      "assetPath": "/props/banana/collision/flesh_027.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "d51ecd53b0c5993b208a8946e724d50e8047c7d7a743d567c8d49424db83cba1",
+      "bytes": 8884
+    },
+    {
+      "target": "meshes/banana/flesh_030.stl",
+      "assetPath": "/props/banana/collision/flesh_030.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "981d4c82a567d9ad6fd746653eebfae16e075edf23bf86951542c850ec216a14",
+      "bytes": 8884
+    },
+    {
+      "target": "meshes/banana/flesh_033.stl",
+      "assetPath": "/props/banana/collision/flesh_033.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "bcb4afa8348475b2f3dfba689f1b11416df57d81146cbd8a2c3058cd53e4aec7",
+      "bytes": 9084
+    },
+    {
+      "target": "meshes/banana/flesh_036.stl",
+      "assetPath": "/props/banana/collision/flesh_036.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "1871efc2eb9b89843d4b68b846695754a2abbf21c77c131165345a1c064367ba",
+      "bytes": 9084
+    },
+    {
+      "target": "meshes/banana/flesh_039.stl",
+      "assetPath": "/props/banana/collision/flesh_039.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "b36faf42e71b490255f6235fafac2bfe1fc70414e0d3497324bf3d2cb7fe5564",
+      "bytes": 9284
+    },
+    {
+      "target": "meshes/banana/flesh_042.stl",
+      "assetPath": "/props/banana/collision/flesh_042.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "37ec5a8b7e6923cfd0745ef7d8738738faea3230bce7dc86aa1312bc721ded4c",
+      "bytes": 9584
+    },
+    {
+      "target": "meshes/banana/flesh_045.stl",
+      "assetPath": "/props/banana/collision/flesh_045.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "660f844af5decd6c19bc6916a2770c45df9ff93748f881e1af04b3be39f32ac1",
+      "bytes": 10184
+    },
+    {
+      "target": "meshes/banana/flesh_048.stl",
+      "assetPath": "/props/banana/collision/flesh_048.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "4d40c512d255a6d90ee507d708f2aadfab7bc30e715c127ac96037b3c1ee6e95",
+      "bytes": 10884
+    },
+    {
+      "target": "meshes/banana/flesh_051.stl",
+      "assetPath": "/props/banana/collision/flesh_051.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "de54154a065e0d6db879c078f0da2099d74b5dcf32f298371de2d758ab425216",
+      "bytes": 11584
+    },
+    {
+      "target": "meshes/banana/flesh_054.stl",
+      "assetPath": "/props/banana/collision/flesh_054.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "11f9c754b186fa500248d5084638247b4bcecc9a3a9770a176ded43fc4e28f45",
+      "bytes": 11584
+    },
+    {
+      "target": "meshes/banana/flesh_057.stl",
+      "assetPath": "/props/banana/collision/flesh_057.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "72aa4dd85704e8b9ee8a3df1cb25bcf807023b47a2e63bc8baa585bc40e210e2",
+      "bytes": 11684
+    },
+    {
+      "target": "meshes/banana/unopened_skin_000.stl",
+      "assetPath": "/props/banana/collision/unopened_skin_000.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "1e2b832e01b513eaa534b4cb39dbb07a009452b73402342d350d9c3781e47f0f",
+      "bytes": 9784
+    },
+    {
+      "target": "meshes/banana/unopened_skin_003.stl",
+      "assetPath": "/props/banana/collision/unopened_skin_003.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "2eb4b4db2fa8b83345b6ccfce6f94d4f5c5111d77a1811d35d0ff02eb64f5eec",
+      "bytes": 10084
+    },
+    {
+      "target": "meshes/banana/unopened_skin_006.stl",
+      "assetPath": "/props/banana/collision/unopened_skin_006.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "6c59022fccc4b9d279c7d87fcc00974d12f0c39a07050f03aacc31429c57836b",
+      "bytes": 9984
+    },
+    {
+      "target": "meshes/banana/unopened_skin_009.stl",
+      "assetPath": "/props/banana/collision/unopened_skin_009.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "6cdfeba79626e5481207043c6e8f33bb584b453254ca5cc7223e5e9f89677a69",
+      "bytes": 10384
+    },
+    {
+      "target": "meshes/banana/unopened_skin_012.stl",
+      "assetPath": "/props/banana/collision/unopened_skin_012.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "bac65d4a4619ab2f655969f5cb228438984298948a02076a934f687ee4c57e11",
+      "bytes": 10684
+    },
+    {
+      "target": "meshes/banana/unopened_skin_015.stl",
+      "assetPath": "/props/banana/collision/unopened_skin_015.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "a9688ad6a24dcb9a7dc79a66b11e88df9ff30dc1d802faa7ed9c4e747cc128f0",
+      "bytes": 11284
+    },
+    {
+      "target": "meshes/banana/unopened_skin_018.stl",
+      "assetPath": "/props/banana/collision/unopened_skin_018.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "6ae30c7fef78317e7a0f60a90674bf0e73b3bb6aad91d64eeb984d18e6c6c19a",
+      "bytes": 12384
+    },
+    {
+      "target": "meshes/banana/unopened_skin_021.stl",
+      "assetPath": "/props/banana/collision/unopened_skin_021.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "9399887298dcf665cd5910a304fabca83b4dd8483d4cb416fece269170a95c49",
+      "bytes": 12684
+    },
+    {
+      "target": "meshes/banana/unopened_skin_024.stl",
+      "assetPath": "/props/banana/collision/unopened_skin_024.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "844c8ad62808ef85ba547097a3f3b7e4dcaf0b787111ae3c0f57abcf6a7e39af",
+      "bytes": 12684
+    },
+    {
+      "target": "meshes/banana/unopened_skin_027.stl",
+      "assetPath": "/props/banana/collision/unopened_skin_027.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "7a7f6251c4d8d25015b3c1d53abec882c3480a20694a22f99495de75c9a08a20",
+      "bytes": 12684
+    },
+    {
+      "target": "meshes/banana/stem_000.stl",
+      "assetPath": "/props/banana/collision/stem_000.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "b44f5cac739cda354c5b83dd31a2d88eab67a69cc0749f5299ab0c3c4e9a18a1",
+      "bytes": 3084
+    },
+    {
+      "target": "meshes/banana/stem_002.stl",
+      "assetPath": "/props/banana/collision/stem_002.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "303ad1f6f4272ef74b9b5da9a0195b8ccaa74099d27b04cf9769ec941ca3bc52",
+      "bytes": 2784
+    },
+    {
+      "target": "meshes/banana/stem_004.stl",
+      "assetPath": "/props/banana/collision/stem_004.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "baa5a9b1a6f6959223e56867540e80641598fa5b0163690385237dce7fa3053a",
+      "bytes": 3384
+    },
+    {
+      "target": "meshes/banana/blossom_tip_000.stl",
+      "assetPath": "/props/banana/collision/blossom_tip_000.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "ed3f7e2ae5e78a62a733bf93133ee55120655f4b8d280f3bf5a850e10487a607",
+      "bytes": 3384
+    },
+    {
+      "target": "meshes/banana/peel_1_000.stl",
+      "assetPath": "/props/banana/collision/peel_1_000.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "670681572b50514d9e969b559b5522250b5e87919d7422d812e456df767deb2c",
+      "bytes": 3284
+    },
+    {
+      "target": "meshes/banana/peel_1_003.stl",
+      "assetPath": "/props/banana/collision/peel_1_003.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "1af6608d11a0b6ae2a217195341e76dd1ed9db0a54a8943dd4007d4581397d89",
+      "bytes": 5384
+    },
+    {
+      "target": "meshes/banana/peel_1_006.stl",
+      "assetPath": "/props/banana/collision/peel_1_006.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "1f00efc411e642eaf75d1d3bc6bf4b080a00ac680e0472408470b057c5e75146",
+      "bytes": 5084
+    },
+    {
+      "target": "meshes/banana/peel_1_009.stl",
+      "assetPath": "/props/banana/collision/peel_1_009.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "6720f1b12d8e8987cb7c8fa900e7f6bbc366944f23d298038479ba9759d3619e",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_1_012.stl",
+      "assetPath": "/props/banana/collision/peel_1_012.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "cbcd03f54403388f9d165c05c384103dc6581cab729973e5b2ce6912875e468e",
+      "bytes": 4984
+    },
+    {
+      "target": "meshes/banana/peel_1_015.stl",
+      "assetPath": "/props/banana/collision/peel_1_015.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "7f14f73aa256e9231591606364c3cb5b379e05e8c2a7dd7d88c7284d1afd1dfb",
+      "bytes": 5084
+    },
+    {
+      "target": "meshes/banana/peel_1_018.stl",
+      "assetPath": "/props/banana/collision/peel_1_018.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "86e2114383582980c25f3df64a181224178d848fea6f77b3fe778cbeef731c22",
+      "bytes": 5384
+    },
+    {
+      "target": "meshes/banana/peel_1_021.stl",
+      "assetPath": "/props/banana/collision/peel_1_021.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "8cb9fb129123ca71e8f2253e0131e75a0b974695e665f3f2ba805555f63f319f",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_1_024.stl",
+      "assetPath": "/props/banana/collision/peel_1_024.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "5223013f6c3de56561f4bba92212af0b6990c9d1f1410119d0feed983fe039f0",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_1_027.stl",
+      "assetPath": "/props/banana/collision/peel_1_027.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "2e1da118dff5a23bbc7df193b8b639bc7a9a1e7e5a767cb8c7277405aa69c06c",
+      "bytes": 4984
+    },
+    {
+      "target": "meshes/banana/peel_1_030.stl",
+      "assetPath": "/props/banana/collision/peel_1_030.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "93ba50ee8a142b277ca8da0c8a726d6435172bb56f8b8850561f70c35d65f987",
+      "bytes": 5384
+    },
+    {
+      "target": "meshes/banana/peel_1_033.stl",
+      "assetPath": "/props/banana/collision/peel_1_033.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "53d0c2a9988c1f651426dd446ddd7995d43765de9aae6e92d8401727da3e219e",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_1_036.stl",
+      "assetPath": "/props/banana/collision/peel_1_036.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "f4381ca3221f2ad1d81c54adcb7e9139f901c5ff00bcf4c4d382eccc86f99c69",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_1_039.stl",
+      "assetPath": "/props/banana/collision/peel_1_039.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "2b173ad72b48e9b7ea61a6ef66cdc5de9cf94be929c8da93ac5d5d9a33b7043b",
+      "bytes": 4884
+    },
+    {
+      "target": "meshes/banana/peel_1_042.stl",
+      "assetPath": "/props/banana/collision/peel_1_042.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "a1b995347a88cdb9ac7dcf947869bea84f357bf4e8aa36051c2037cc6c658225",
+      "bytes": 5084
+    },
+    {
+      "target": "meshes/banana/peel_1_045.stl",
+      "assetPath": "/props/banana/collision/peel_1_045.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "600236c849ecb748cea9cacfcfedf6bf400e74b2adfcb5a2ecae74763483c5c5",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_1_048.stl",
+      "assetPath": "/props/banana/collision/peel_1_048.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "2adcdceb58d0e353aac3f074aa2e4296557c960fcb80b6913372f2b12e162228",
+      "bytes": 5084
+    },
+    {
+      "target": "meshes/banana/peel_1_051.stl",
+      "assetPath": "/props/banana/collision/peel_1_051.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "2a8c87c088e76ceb6a08fa84d425a68eeaf120e6c4a864d0b4ab012c05f36d20",
+      "bytes": 5084
+    },
+    {
+      "target": "meshes/banana/peel_1_054.stl",
+      "assetPath": "/props/banana/collision/peel_1_054.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "5b36423f99cc8b02c79890fdb18ed28deb392eb1e5048c2f1983a496f50f33ad",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_1_057.stl",
+      "assetPath": "/props/banana/collision/peel_1_057.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "692777e401fa5fec680140180380b8bb6b6d0ec5031a7761cc75cc8464361bb7",
+      "bytes": 3484
+    },
+    {
+      "target": "meshes/banana/peel_2_000.stl",
+      "assetPath": "/props/banana/collision/peel_2_000.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "784f4dc000e4e2be6d4d9fb83ea5c79c18c8e01b991cb9963bb7a0b23c389d8a",
+      "bytes": 3084
+    },
+    {
+      "target": "meshes/banana/peel_2_003.stl",
+      "assetPath": "/props/banana/collision/peel_2_003.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "7b0f18bdbaf7571727e62a8d3062ac7cd6c807cf960fec8029e69cc041230df5",
+      "bytes": 5084
+    },
+    {
+      "target": "meshes/banana/peel_2_006.stl",
+      "assetPath": "/props/banana/collision/peel_2_006.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "0a4b7cafddeb6ff31d9ee5f145b1fb86508b4717d8ff6f0c404aed5ed5a023f3",
+      "bytes": 5384
+    },
+    {
+      "target": "meshes/banana/peel_2_009.stl",
+      "assetPath": "/props/banana/collision/peel_2_009.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "843b038ffcdb74d6a584905cc27cbf2bf10aadbcb6aa2fca2c42d1682b0d99fc",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_2_012.stl",
+      "assetPath": "/props/banana/collision/peel_2_012.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "21b34093e8c5f6af5eb683cd05a3b33d29a9bb265390de5aed35766b48272bd9",
+      "bytes": 4884
+    },
+    {
+      "target": "meshes/banana/peel_2_015.stl",
+      "assetPath": "/props/banana/collision/peel_2_015.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "986186fdf235b014d4629df59808871d21555dd1d6ca1e8671b9830507bd6f07",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_2_018.stl",
+      "assetPath": "/props/banana/collision/peel_2_018.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "98487dc16afe8455106d64cce3dd10db0331ed26d459416b0f72a275130776ef",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_2_021.stl",
+      "assetPath": "/props/banana/collision/peel_2_021.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "17dab65b49de176e38d739a3244210c4e59b46a38c5519da4412a569c0080def",
+      "bytes": 4884
+    },
+    {
+      "target": "meshes/banana/peel_2_024.stl",
+      "assetPath": "/props/banana/collision/peel_2_024.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "a6038b517dce5c1d181831e66b5d95f008243d2e493ac7f48149de72d40fd490",
+      "bytes": 5384
+    },
+    {
+      "target": "meshes/banana/peel_2_027.stl",
+      "assetPath": "/props/banana/collision/peel_2_027.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "7bf05a401541ceede5a2e7932af68a1ac1b7407b6d7b8a553e6bb6a95e628acb",
+      "bytes": 5084
+    },
+    {
+      "target": "meshes/banana/peel_2_030.stl",
+      "assetPath": "/props/banana/collision/peel_2_030.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "6de0c36a5620db56b10a41ead9e21259c38a85820f634d9c439eb5518bf8f387",
+      "bytes": 4984
+    },
+    {
+      "target": "meshes/banana/peel_2_033.stl",
+      "assetPath": "/props/banana/collision/peel_2_033.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "482fb7ade97f6d63b05e3b40b88447549984e71c0d655c27c46d798c2fb7bc56",
+      "bytes": 4984
+    },
+    {
+      "target": "meshes/banana/peel_2_036.stl",
+      "assetPath": "/props/banana/collision/peel_2_036.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "5e19d461ffb0759a49349e090932e714e8a93173a0dda88688c999410884ccb9",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_2_039.stl",
+      "assetPath": "/props/banana/collision/peel_2_039.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "92b072a540e422dfdf45b4fe64252c2fca9266581d1a9cb89d710cee48718172",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_2_042.stl",
+      "assetPath": "/props/banana/collision/peel_2_042.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "7c83e4d93a60931a347b73b895d7a2b44ebe92b8b427a3317f4f3c3ac3cd5bbc",
+      "bytes": 4984
+    },
+    {
+      "target": "meshes/banana/peel_2_045.stl",
+      "assetPath": "/props/banana/collision/peel_2_045.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "1c460313ba820e2e1f0ff1cd481d79f9588e3c6c8a862387d72da1476e6bdba3",
+      "bytes": 5084
+    },
+    {
+      "target": "meshes/banana/peel_2_048.stl",
+      "assetPath": "/props/banana/collision/peel_2_048.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "0b3ca868a28d1ffc9dfe05e6cbda2ddc522befbe0ac171c562e30870d0e8a208",
+      "bytes": 5084
+    },
+    {
+      "target": "meshes/banana/peel_2_051.stl",
+      "assetPath": "/props/banana/collision/peel_2_051.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "0fe6137e071ca072d1ea7dcc39118069382049234cc61cec7c5d4fce2723341a",
+      "bytes": 5084
+    },
+    {
+      "target": "meshes/banana/peel_2_054.stl",
+      "assetPath": "/props/banana/collision/peel_2_054.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "90bc45940bdf93a61ee04e9a5634c490d704856b1ca455905e70850563149eba",
+      "bytes": 5384
+    },
+    {
+      "target": "meshes/banana/peel_2_057.stl",
+      "assetPath": "/props/banana/collision/peel_2_057.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "269c0251881e844df226e39395b20edf7f972af5889d8723e9bfd6aa20fe8a3d",
+      "bytes": 3684
+    },
+    {
+      "target": "meshes/banana/peel_3_000.stl",
+      "assetPath": "/props/banana/collision/peel_3_000.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "1575cd2ccf138c9785ee9243fa68ca03a7c326d404d5b89f78b3f9142d3c3700",
+      "bytes": 3084
+    },
+    {
+      "target": "meshes/banana/peel_3_003.stl",
+      "assetPath": "/props/banana/collision/peel_3_003.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "02b94d2d8314bb7e86e6b27322a300b68e70b6b82c7960a6c69187dda44e2bf5",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_3_006.stl",
+      "assetPath": "/props/banana/collision/peel_3_006.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "58a4b82fbf03e0b641fa0df20ca9164328b211b83b265a4c2e4f1c4525536a83",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_3_009.stl",
+      "assetPath": "/props/banana/collision/peel_3_009.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "400154c033cbbb831ef22193498e39d811a5e9d181e6e8e9152a2557d2f21478",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_3_012.stl",
+      "assetPath": "/props/banana/collision/peel_3_012.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "0e5814b1a352cdd25076a3a9014b9d0c86d3de30b235044aa961e8e2f0209f40",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_3_015.stl",
+      "assetPath": "/props/banana/collision/peel_3_015.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "fd21119f59401764bcd188ddccee1265fc3eeda8c86e736a6e75d3d02742d329",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_3_018.stl",
+      "assetPath": "/props/banana/collision/peel_3_018.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "a365395facbcbeecdbee1b33452f4407519775dd9842592fae0d3841ba84982f",
+      "bytes": 5084
+    },
+    {
+      "target": "meshes/banana/peel_3_021.stl",
+      "assetPath": "/props/banana/collision/peel_3_021.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "46d0ee216bd32113101307731d77c0aa315127f16ceac542ee77499856fdceed",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_3_024.stl",
+      "assetPath": "/props/banana/collision/peel_3_024.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "971f49356a2142d014444dffeebb5cbed719433207e366c0943d7afbdd1c1ccd",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_3_027.stl",
+      "assetPath": "/props/banana/collision/peel_3_027.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "eafdb3c547239df0dae3b44ae060b898907256905046f1e8000c43c5cdd44060",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_3_030.stl",
+      "assetPath": "/props/banana/collision/peel_3_030.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "a10e43ee852b15d270d1229b06facb2e02f77573cc6026a093ce7d32cb6f186c",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_3_033.stl",
+      "assetPath": "/props/banana/collision/peel_3_033.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "6e19575b40a30b49953aa22c418d8205da56a45d7be39084dd8a43f6f24faf4b",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_3_036.stl",
+      "assetPath": "/props/banana/collision/peel_3_036.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "46a341a3517ac1c594768b764266973668ec3410ece14f280964b87a7bed736a",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_3_039.stl",
+      "assetPath": "/props/banana/collision/peel_3_039.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "a03e544b75da346f511d438e77973e1478d925044a4de1a85a2cab2c9c06ba12",
+      "bytes": 5384
+    },
+    {
+      "target": "meshes/banana/peel_3_042.stl",
+      "assetPath": "/props/banana/collision/peel_3_042.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "16567478ff91bd37aa33ad3bcf7f2df48a3ad62a5b0eda4b6cec41e01196d021",
+      "bytes": 5184
+    },
+    {
+      "target": "meshes/banana/peel_3_045.stl",
+      "assetPath": "/props/banana/collision/peel_3_045.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "e79ca607b9726d1d1774e0d37a5830009e367ca2a298a2808ca7ff4f23a0dba3",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_3_048.stl",
+      "assetPath": "/props/banana/collision/peel_3_048.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "334d7397fcc839bff2f329705d42a192c9d93542beabdf166b573e618929f44f",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_3_051.stl",
+      "assetPath": "/props/banana/collision/peel_3_051.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "9d7f03bd9a79c6da06a36f9a122d577bcd499cb75f790a729eea0aec20815db9",
+      "bytes": 5584
+    },
+    {
+      "target": "meshes/banana/peel_3_054.stl",
+      "assetPath": "/props/banana/collision/peel_3_054.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "947eca353d967aacac3b2940467da7cf423bcdc0ceeb5c07f4cecfbff08f9eb3",
+      "bytes": 5284
+    },
+    {
+      "target": "meshes/banana/peel_3_057.stl",
+      "assetPath": "/props/banana/collision/peel_3_057.stl",
+      "source": "scripts/build-banana.py",
+      "sha256": "4846d3eb52c66d4af661e456c973fa537558d317324b8d260284d90995887b33",
+      "bytes": 3584
     },
     {
       "target": "walking.xml",
       "source": "scripts/derive-walker.py",
-      "bytes": 53494,
-      "sha256": "35a2c2e18bcdb9708b727e9292dedf1724b39a3f2606138b2405a1ff2e1f679c"
+      "bytes": 111093,
+      "sha256": "da38871509697c701986f97fbfc309e7b4f064446f461e88bceb1f352d5f30b3"
     }
   ],
   "muscles": [
     {
       "index": 0,
-      "id": "LF_coxa_positive",
-      "label": "LF coxa positive",
-      "region": "LF",
-      "tendon": "LF_coxa_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa stance drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa stance",
+      "id": "joint_LFCoxa_yaw_positive",
+      "joint": "joint_LFCoxa_yaw",
       "sign": 1,
-      "joint": "LF_coxa"
+      "sites": [],
+      "qposIndex": 7
     },
     {
       "index": 1,
-      "id": "LF_coxa_negative",
-      "label": "LF coxa negative",
-      "region": "LF",
-      "tendon": "LF_coxa_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa swing drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa swing",
+      "id": "joint_LFCoxa_yaw_negative",
+      "joint": "joint_LFCoxa_yaw",
       "sign": -1,
-      "joint": "LF_coxa"
+      "sites": [],
+      "qposIndex": 7
     },
     {
       "index": 2,
-      "id": "LF_femur_positive",
-      "label": "LF femur positive",
-      "region": "LF",
-      "tendon": "LF_femur_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr flex",
+      "id": "joint_LFCoxa_positive",
+      "joint": "joint_LFCoxa",
       "sign": 1,
-      "joint": "LF_femur"
+      "sites": [],
+      "qposIndex": 8
     },
     {
       "index": 3,
-      "id": "LF_femur_negative",
-      "label": "LF femur negative",
-      "region": "LF",
-      "tendon": "LF_femur_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr extend",
+      "id": "joint_LFCoxa_negative",
+      "joint": "joint_LFCoxa",
       "sign": -1,
-      "joint": "LF_femur"
+      "sites": [],
+      "qposIndex": 8
     },
     {
       "index": 4,
-      "id": "LF_tibia_positive",
-      "label": "LF tibia positive",
-      "region": "LF",
-      "tendon": "LF_tibia_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia extend",
+      "id": "joint_LFCoxa_roll_positive",
+      "joint": "joint_LFCoxa_roll",
       "sign": 1,
-      "joint": "LF_tibia"
+      "sites": [],
+      "qposIndex": 9
     },
     {
       "index": 5,
-      "id": "LF_tibia_negative",
-      "label": "LF tibia negative",
-      "region": "LF",
-      "tendon": "LF_tibia_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia flex",
+      "id": "joint_LFCoxa_roll_negative",
+      "joint": "joint_LFCoxa_roll",
       "sign": -1,
-      "joint": "LF_tibia"
+      "sites": [],
+      "qposIndex": 9
     },
     {
       "index": 6,
-      "id": "LM_coxa_positive",
-      "label": "LM coxa positive",
-      "region": "LM",
-      "tendon": "LM_coxa_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa stance drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa stance",
+      "id": "joint_LFFemur_positive",
+      "joint": "joint_LFFemur",
       "sign": 1,
-      "joint": "LM_coxa"
+      "sites": [],
+      "qposIndex": 10
     },
     {
       "index": 7,
-      "id": "LM_coxa_negative",
-      "label": "LM coxa negative",
-      "region": "LM",
-      "tendon": "LM_coxa_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa swing drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa swing",
+      "id": "joint_LFFemur_negative",
+      "joint": "joint_LFFemur",
       "sign": -1,
-      "joint": "LM_coxa"
+      "sites": [],
+      "qposIndex": 10
     },
     {
       "index": 8,
-      "id": "LM_femur_positive",
-      "label": "LM femur positive",
-      "region": "LM",
-      "tendon": "LM_femur_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr flex",
+      "id": "joint_LFFemur_roll_positive",
+      "joint": "joint_LFFemur_roll",
       "sign": 1,
-      "joint": "LM_femur"
+      "sites": [],
+      "qposIndex": 11
     },
     {
       "index": 9,
-      "id": "LM_femur_negative",
-      "label": "LM femur negative",
-      "region": "LM",
-      "tendon": "LM_femur_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr extend",
+      "id": "joint_LFFemur_roll_negative",
+      "joint": "joint_LFFemur_roll",
       "sign": -1,
-      "joint": "LM_femur"
+      "sites": [],
+      "qposIndex": 11
     },
     {
       "index": 10,
-      "id": "LM_tibia_positive",
-      "label": "LM tibia positive",
-      "region": "LM",
-      "tendon": "LM_tibia_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia extend",
+      "id": "joint_LFTibia_positive",
+      "joint": "joint_LFTibia",
       "sign": 1,
-      "joint": "LM_tibia"
+      "sites": [],
+      "qposIndex": 12
     },
     {
       "index": 11,
-      "id": "LM_tibia_negative",
-      "label": "LM tibia negative",
-      "region": "LM",
-      "tendon": "LM_tibia_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia flex",
+      "id": "joint_LFTibia_negative",
+      "joint": "joint_LFTibia",
       "sign": -1,
-      "joint": "LM_tibia"
+      "sites": [],
+      "qposIndex": 12
     },
     {
       "index": 12,
-      "id": "LH_coxa_positive",
-      "label": "LH coxa positive",
-      "region": "LH",
-      "tendon": "LH_coxa_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa stance drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa stance",
+      "id": "joint_LFTarsus1_positive",
+      "joint": "joint_LFTarsus1",
       "sign": 1,
-      "joint": "LH_coxa"
+      "sites": [],
+      "qposIndex": 13
     },
     {
       "index": 13,
-      "id": "LH_coxa_negative",
-      "label": "LH coxa negative",
-      "region": "LH",
-      "tendon": "LH_coxa_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa swing drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa swing",
+      "id": "joint_LFTarsus1_negative",
+      "joint": "joint_LFTarsus1",
       "sign": -1,
-      "joint": "LH_coxa"
+      "sites": [],
+      "qposIndex": 13
     },
     {
       "index": 14,
-      "id": "LH_femur_positive",
-      "label": "LH femur positive",
-      "region": "LH",
-      "tendon": "LH_femur_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr flex",
+      "id": "joint_LMCoxa_yaw_positive",
+      "joint": "joint_LMCoxa_yaw",
       "sign": 1,
-      "joint": "LH_femur"
+      "sites": [],
+      "qposIndex": 29
     },
     {
       "index": 15,
-      "id": "LH_femur_negative",
-      "label": "LH femur negative",
-      "region": "LH",
-      "tendon": "LH_femur_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr extend",
+      "id": "joint_LMCoxa_yaw_negative",
+      "joint": "joint_LMCoxa_yaw",
       "sign": -1,
-      "joint": "LH_femur"
+      "sites": [],
+      "qposIndex": 29
     },
     {
       "index": 16,
-      "id": "LH_tibia_positive",
-      "label": "LH tibia positive",
-      "region": "LH",
-      "tendon": "LH_tibia_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia extend",
+      "id": "joint_LMCoxa_positive",
+      "joint": "joint_LMCoxa",
       "sign": 1,
-      "joint": "LH_tibia"
+      "sites": [],
+      "qposIndex": 30
     },
     {
       "index": 17,
-      "id": "LH_tibia_negative",
-      "label": "LH tibia negative",
-      "region": "LH",
-      "tendon": "LH_tibia_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia flex",
+      "id": "joint_LMCoxa_negative",
+      "joint": "joint_LMCoxa",
       "sign": -1,
-      "joint": "LH_tibia"
+      "sites": [],
+      "qposIndex": 30
     },
     {
       "index": 18,
-      "id": "RF_coxa_positive",
-      "label": "RF coxa positive",
-      "region": "RF",
-      "tendon": "RF_coxa_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa stance drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa stance",
+      "id": "joint_LMCoxa_roll_positive",
+      "joint": "joint_LMCoxa_roll",
       "sign": 1,
-      "joint": "RF_coxa"
+      "sites": [],
+      "qposIndex": 31
     },
     {
       "index": 19,
-      "id": "RF_coxa_negative",
-      "label": "RF coxa negative",
-      "region": "RF",
-      "tendon": "RF_coxa_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa swing drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa swing",
+      "id": "joint_LMCoxa_roll_negative",
+      "joint": "joint_LMCoxa_roll",
       "sign": -1,
-      "joint": "RF_coxa"
+      "sites": [],
+      "qposIndex": 31
     },
     {
       "index": 20,
-      "id": "RF_femur_positive",
-      "label": "RF femur positive",
-      "region": "RF",
-      "tendon": "RF_femur_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr flex",
+      "id": "joint_LMFemur_positive",
+      "joint": "joint_LMFemur",
       "sign": 1,
-      "joint": "RF_femur"
+      "sites": [],
+      "qposIndex": 32
     },
     {
       "index": 21,
-      "id": "RF_femur_negative",
-      "label": "RF femur negative",
-      "region": "RF",
-      "tendon": "RF_femur_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr extend",
+      "id": "joint_LMFemur_negative",
+      "joint": "joint_LMFemur",
       "sign": -1,
-      "joint": "RF_femur"
+      "sites": [],
+      "qposIndex": 32
     },
     {
       "index": 22,
-      "id": "RF_tibia_positive",
-      "label": "RF tibia positive",
-      "region": "RF",
-      "tendon": "RF_tibia_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia extend",
+      "id": "joint_LMFemur_roll_positive",
+      "joint": "joint_LMFemur_roll",
       "sign": 1,
-      "joint": "RF_tibia"
+      "sites": [],
+      "qposIndex": 33
     },
     {
       "index": 23,
-      "id": "RF_tibia_negative",
-      "label": "RF tibia negative",
-      "region": "RF",
-      "tendon": "RF_tibia_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia flex",
+      "id": "joint_LMFemur_roll_negative",
+      "joint": "joint_LMFemur_roll",
       "sign": -1,
-      "joint": "RF_tibia"
+      "sites": [],
+      "qposIndex": 33
     },
     {
       "index": 24,
-      "id": "RM_coxa_positive",
-      "label": "RM coxa positive",
-      "region": "RM",
-      "tendon": "RM_coxa_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa stance drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa stance",
+      "id": "joint_LMTibia_positive",
+      "joint": "joint_LMTibia",
       "sign": 1,
-      "joint": "RM_coxa"
+      "sites": [],
+      "qposIndex": 34
     },
     {
       "index": 25,
-      "id": "RM_coxa_negative",
-      "label": "RM coxa negative",
-      "region": "RM",
-      "tendon": "RM_coxa_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa swing drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa swing",
+      "id": "joint_LMTibia_negative",
+      "joint": "joint_LMTibia",
       "sign": -1,
-      "joint": "RM_coxa"
+      "sites": [],
+      "qposIndex": 34
     },
     {
       "index": 26,
-      "id": "RM_femur_positive",
-      "label": "RM femur positive",
-      "region": "RM",
-      "tendon": "RM_femur_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr flex",
+      "id": "joint_LMTarsus1_positive",
+      "joint": "joint_LMTarsus1",
       "sign": 1,
-      "joint": "RM_femur"
+      "sites": [],
+      "qposIndex": 35
     },
     {
       "index": 27,
-      "id": "RM_femur_negative",
-      "label": "RM femur negative",
-      "region": "RM",
-      "tendon": "RM_femur_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr extend",
+      "id": "joint_LMTarsus1_negative",
+      "joint": "joint_LMTarsus1",
       "sign": -1,
-      "joint": "RM_femur"
+      "sites": [],
+      "qposIndex": 35
     },
     {
       "index": 28,
-      "id": "RM_tibia_positive",
-      "label": "RM tibia positive",
-      "region": "RM",
-      "tendon": "RM_tibia_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia extend",
+      "id": "joint_LHCoxa_yaw_positive",
+      "joint": "joint_LHCoxa_yaw",
       "sign": 1,
-      "joint": "RM_tibia"
+      "sites": [],
+      "qposIndex": 18
     },
     {
       "index": 29,
-      "id": "RM_tibia_negative",
-      "label": "RM tibia negative",
-      "region": "RM",
-      "tendon": "RM_tibia_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia flex",
+      "id": "joint_LHCoxa_yaw_negative",
+      "joint": "joint_LHCoxa_yaw",
       "sign": -1,
-      "joint": "RM_tibia"
+      "sites": [],
+      "qposIndex": 18
     },
     {
       "index": 30,
-      "id": "RH_coxa_positive",
-      "label": "RH coxa positive",
-      "region": "RH",
-      "tendon": "RH_coxa_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa stance drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa stance",
+      "id": "joint_LHCoxa_positive",
+      "joint": "joint_LHCoxa",
       "sign": 1,
-      "joint": "RH_coxa"
+      "sites": [],
+      "qposIndex": 19
     },
     {
       "index": 31,
-      "id": "RH_coxa_negative",
-      "label": "RH coxa negative",
-      "region": "RH",
-      "tendon": "RH_coxa_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled coxa swing drive; NMJ and individual muscle fibres unresolved",
-      "module": "coxa swing",
+      "id": "joint_LHCoxa_negative",
+      "joint": "joint_LHCoxa",
       "sign": -1,
-      "joint": "RH_coxa"
+      "sites": [],
+      "qposIndex": 19
     },
     {
       "index": 32,
-      "id": "RH_femur_positive",
-      "label": "RH femur positive",
-      "region": "RH",
-      "tendon": "RH_femur_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr flex",
+      "id": "joint_LHCoxa_roll_positive",
+      "joint": "joint_LHCoxa_roll",
       "sign": 1,
-      "joint": "RH_femur"
+      "sites": [],
+      "qposIndex": 20
     },
     {
       "index": 33,
-      "id": "RH_femur_negative",
-      "label": "RH femur negative",
-      "region": "RH",
-      "tendon": "RH_femur_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled femur/tr extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "femur/tr extend",
+      "id": "joint_LHCoxa_roll_negative",
+      "joint": "joint_LHCoxa_roll",
       "sign": -1,
-      "joint": "RH_femur"
+      "sites": [],
+      "qposIndex": 20
     },
     {
       "index": 34,
-      "id": "RH_tibia_positive",
-      "label": "RH tibia positive",
-      "region": "RH",
-      "tendon": "RH_tibia_positive_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia extend drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia extend",
+      "id": "joint_LHFemur_positive",
+      "joint": "joint_LHFemur",
       "sign": 1,
-      "joint": "RH_tibia"
+      "sites": [],
+      "qposIndex": 21
     },
     {
       "index": 35,
-      "id": "RH_tibia_negative",
-      "label": "RH tibia negative",
-      "region": "RH",
-      "tendon": "RH_tibia_negative_excursion",
-      "sites": [],
-      "ctrlrange": [
-        0,
-        1
-      ],
-      "lengthrange": [
-        -0.16,
-        0.16
-      ],
-      "dynprm": [
-        0.008,
-        0.025
-      ],
-      "gainprm": [
-        0.5,
-        1.5,
-        180
-      ],
-      "evidence": [
-        "experimental-muscle-groups"
-      ],
-      "neuralMapping": "Hypothesized pooled tibia flex drive; NMJ and individual muscle fibres unresolved",
-      "module": "tibia flex",
+      "id": "joint_LHFemur_negative",
+      "joint": "joint_LHFemur",
       "sign": -1,
-      "joint": "RH_tibia"
+      "sites": [],
+      "qposIndex": 21
+    },
+    {
+      "index": 36,
+      "id": "joint_LHFemur_roll_positive",
+      "joint": "joint_LHFemur_roll",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 22
+    },
+    {
+      "index": 37,
+      "id": "joint_LHFemur_roll_negative",
+      "joint": "joint_LHFemur_roll",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 22
+    },
+    {
+      "index": 38,
+      "id": "joint_LHTibia_positive",
+      "joint": "joint_LHTibia",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 23
+    },
+    {
+      "index": 39,
+      "id": "joint_LHTibia_negative",
+      "joint": "joint_LHTibia",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 23
+    },
+    {
+      "index": 40,
+      "id": "joint_LHTarsus1_positive",
+      "joint": "joint_LHTarsus1",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 24
+    },
+    {
+      "index": 41,
+      "id": "joint_LHTarsus1_negative",
+      "joint": "joint_LHTarsus1",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 24
+    },
+    {
+      "index": 42,
+      "id": "joint_RFCoxa_yaw_positive",
+      "joint": "joint_RFCoxa_yaw",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 62
+    },
+    {
+      "index": 43,
+      "id": "joint_RFCoxa_yaw_negative",
+      "joint": "joint_RFCoxa_yaw",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 62
+    },
+    {
+      "index": 44,
+      "id": "joint_RFCoxa_positive",
+      "joint": "joint_RFCoxa",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 63
+    },
+    {
+      "index": 45,
+      "id": "joint_RFCoxa_negative",
+      "joint": "joint_RFCoxa",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 63
+    },
+    {
+      "index": 46,
+      "id": "joint_RFCoxa_roll_positive",
+      "joint": "joint_RFCoxa_roll",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 64
+    },
+    {
+      "index": 47,
+      "id": "joint_RFCoxa_roll_negative",
+      "joint": "joint_RFCoxa_roll",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 64
+    },
+    {
+      "index": 48,
+      "id": "joint_RFFemur_positive",
+      "joint": "joint_RFFemur",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 65
+    },
+    {
+      "index": 49,
+      "id": "joint_RFFemur_negative",
+      "joint": "joint_RFFemur",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 65
+    },
+    {
+      "index": 50,
+      "id": "joint_RFFemur_roll_positive",
+      "joint": "joint_RFFemur_roll",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 66
+    },
+    {
+      "index": 51,
+      "id": "joint_RFFemur_roll_negative",
+      "joint": "joint_RFFemur_roll",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 66
+    },
+    {
+      "index": 52,
+      "id": "joint_RFTibia_positive",
+      "joint": "joint_RFTibia",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 67
+    },
+    {
+      "index": 53,
+      "id": "joint_RFTibia_negative",
+      "joint": "joint_RFTibia",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 67
+    },
+    {
+      "index": 54,
+      "id": "joint_RFTarsus1_positive",
+      "joint": "joint_RFTarsus1",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 68
+    },
+    {
+      "index": 55,
+      "id": "joint_RFTarsus1_negative",
+      "joint": "joint_RFTarsus1",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 68
+    },
+    {
+      "index": 56,
+      "id": "joint_RMCoxa_yaw_positive",
+      "joint": "joint_RMCoxa_yaw",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 51
+    },
+    {
+      "index": 57,
+      "id": "joint_RMCoxa_yaw_negative",
+      "joint": "joint_RMCoxa_yaw",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 51
+    },
+    {
+      "index": 58,
+      "id": "joint_RMCoxa_positive",
+      "joint": "joint_RMCoxa",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 52
+    },
+    {
+      "index": 59,
+      "id": "joint_RMCoxa_negative",
+      "joint": "joint_RMCoxa",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 52
+    },
+    {
+      "index": 60,
+      "id": "joint_RMCoxa_roll_positive",
+      "joint": "joint_RMCoxa_roll",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 53
+    },
+    {
+      "index": 61,
+      "id": "joint_RMCoxa_roll_negative",
+      "joint": "joint_RMCoxa_roll",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 53
+    },
+    {
+      "index": 62,
+      "id": "joint_RMFemur_positive",
+      "joint": "joint_RMFemur",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 54
+    },
+    {
+      "index": 63,
+      "id": "joint_RMFemur_negative",
+      "joint": "joint_RMFemur",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 54
+    },
+    {
+      "index": 64,
+      "id": "joint_RMFemur_roll_positive",
+      "joint": "joint_RMFemur_roll",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 55
+    },
+    {
+      "index": 65,
+      "id": "joint_RMFemur_roll_negative",
+      "joint": "joint_RMFemur_roll",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 55
+    },
+    {
+      "index": 66,
+      "id": "joint_RMTibia_positive",
+      "joint": "joint_RMTibia",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 56
+    },
+    {
+      "index": 67,
+      "id": "joint_RMTibia_negative",
+      "joint": "joint_RMTibia",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 56
+    },
+    {
+      "index": 68,
+      "id": "joint_RMTarsus1_positive",
+      "joint": "joint_RMTarsus1",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 57
+    },
+    {
+      "index": 69,
+      "id": "joint_RMTarsus1_negative",
+      "joint": "joint_RMTarsus1",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 57
+    },
+    {
+      "index": 70,
+      "id": "joint_RHCoxa_yaw_positive",
+      "joint": "joint_RHCoxa_yaw",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 40
+    },
+    {
+      "index": 71,
+      "id": "joint_RHCoxa_yaw_negative",
+      "joint": "joint_RHCoxa_yaw",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 40
+    },
+    {
+      "index": 72,
+      "id": "joint_RHCoxa_positive",
+      "joint": "joint_RHCoxa",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 41
+    },
+    {
+      "index": 73,
+      "id": "joint_RHCoxa_negative",
+      "joint": "joint_RHCoxa",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 41
+    },
+    {
+      "index": 74,
+      "id": "joint_RHCoxa_roll_positive",
+      "joint": "joint_RHCoxa_roll",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 42
+    },
+    {
+      "index": 75,
+      "id": "joint_RHCoxa_roll_negative",
+      "joint": "joint_RHCoxa_roll",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 42
+    },
+    {
+      "index": 76,
+      "id": "joint_RHFemur_positive",
+      "joint": "joint_RHFemur",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 43
+    },
+    {
+      "index": 77,
+      "id": "joint_RHFemur_negative",
+      "joint": "joint_RHFemur",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 43
+    },
+    {
+      "index": 78,
+      "id": "joint_RHFemur_roll_positive",
+      "joint": "joint_RHFemur_roll",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 44
+    },
+    {
+      "index": 79,
+      "id": "joint_RHFemur_roll_negative",
+      "joint": "joint_RHFemur_roll",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 44
+    },
+    {
+      "index": 80,
+      "id": "joint_RHTibia_positive",
+      "joint": "joint_RHTibia",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 45
+    },
+    {
+      "index": 81,
+      "id": "joint_RHTibia_negative",
+      "joint": "joint_RHTibia",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 45
+    },
+    {
+      "index": 82,
+      "id": "joint_RHTarsus1_positive",
+      "joint": "joint_RHTarsus1",
+      "sign": 1,
+      "sites": [],
+      "qposIndex": 46
+    },
+    {
+      "index": 83,
+      "id": "joint_RHTarsus1_negative",
+      "joint": "joint_RHTarsus1",
+      "sign": -1,
+      "sites": [],
+      "qposIndex": 46
     }
   ],
   "joints": [
     {
-      "name": "LF_coxa",
+      "name": "joint_LFCoxa_yaw",
       "leg": "LF",
-      "kind": "coxa",
-      "rest": -0.75,
-      "range": [
-        -1.5,
-        1.5
-      ]
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0",
+      "qposIndex": 7,
+      "qvelIndex": 6
     },
     {
-      "name": "LF_femur",
+      "name": "joint_LFCoxa",
       "leg": "LF",
-      "kind": "femur",
-      "rest": 0.8,
-      "range": [
-        -0.2,
-        1.6
-      ]
+      "kind": "Coxa",
+      "axis": "0 1 0",
+      "qposIndex": 8,
+      "qvelIndex": 7
     },
     {
-      "name": "LF_tibia",
+      "name": "joint_LFCoxa_roll",
       "leg": "LF",
-      "kind": "tibia",
-      "rest": -1.3,
-      "range": [
-        -2.4,
-        -0.2
-      ]
+      "kind": "Coxa_roll",
+      "axis": "0 0 1",
+      "qposIndex": 9,
+      "qvelIndex": 8
     },
     {
-      "name": "LM_coxa",
+      "name": "joint_LFFemur",
+      "leg": "LF",
+      "kind": "Femur",
+      "axis": "0 1 0",
+      "qposIndex": 10,
+      "qvelIndex": 9
+    },
+    {
+      "name": "joint_LFFemur_roll",
+      "leg": "LF",
+      "kind": "Femur_roll",
+      "axis": "0 0 1",
+      "qposIndex": 11,
+      "qvelIndex": 10
+    },
+    {
+      "name": "joint_LFTibia",
+      "leg": "LF",
+      "kind": "Tibia",
+      "axis": "0 1 0",
+      "qposIndex": 12,
+      "qvelIndex": 11
+    },
+    {
+      "name": "joint_LFTarsus1",
+      "leg": "LF",
+      "kind": "Tarsus1",
+      "axis": "0 1 0",
+      "qposIndex": 13,
+      "qvelIndex": 12
+    },
+    {
+      "name": "joint_LMCoxa_yaw",
       "leg": "LM",
-      "kind": "coxa",
-      "rest": 0,
-      "range": [
-        -1.5,
-        1.5
-      ]
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0",
+      "qposIndex": 29,
+      "qvelIndex": 28
     },
     {
-      "name": "LM_femur",
+      "name": "joint_LMCoxa",
       "leg": "LM",
-      "kind": "femur",
-      "rest": 0.8,
-      "range": [
-        -0.2,
-        1.6
-      ]
+      "kind": "Coxa",
+      "axis": "0 1 0",
+      "qposIndex": 30,
+      "qvelIndex": 29
     },
     {
-      "name": "LM_tibia",
+      "name": "joint_LMCoxa_roll",
       "leg": "LM",
-      "kind": "tibia",
-      "rest": -1.3,
-      "range": [
-        -2.4,
-        -0.2
-      ]
+      "kind": "Coxa_roll",
+      "axis": "0 0 1",
+      "qposIndex": 31,
+      "qvelIndex": 30
     },
     {
-      "name": "LH_coxa",
+      "name": "joint_LMFemur",
+      "leg": "LM",
+      "kind": "Femur",
+      "axis": "0 1 0",
+      "qposIndex": 32,
+      "qvelIndex": 31
+    },
+    {
+      "name": "joint_LMFemur_roll",
+      "leg": "LM",
+      "kind": "Femur_roll",
+      "axis": "0 0 1",
+      "qposIndex": 33,
+      "qvelIndex": 32
+    },
+    {
+      "name": "joint_LMTibia",
+      "leg": "LM",
+      "kind": "Tibia",
+      "axis": "0 1 0",
+      "qposIndex": 34,
+      "qvelIndex": 33
+    },
+    {
+      "name": "joint_LMTarsus1",
+      "leg": "LM",
+      "kind": "Tarsus1",
+      "axis": "0 1 0",
+      "qposIndex": 35,
+      "qvelIndex": 34
+    },
+    {
+      "name": "joint_LHCoxa_yaw",
       "leg": "LH",
-      "kind": "coxa",
-      "rest": 0.8,
-      "range": [
-        -1.5,
-        1.5
-      ]
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0",
+      "qposIndex": 18,
+      "qvelIndex": 17
     },
     {
-      "name": "LH_femur",
+      "name": "joint_LHCoxa",
       "leg": "LH",
-      "kind": "femur",
-      "rest": 0.8,
-      "range": [
-        -0.2,
-        1.6
-      ]
+      "kind": "Coxa",
+      "axis": "0 1 0",
+      "qposIndex": 19,
+      "qvelIndex": 18
     },
     {
-      "name": "LH_tibia",
+      "name": "joint_LHCoxa_roll",
       "leg": "LH",
-      "kind": "tibia",
-      "rest": -1.3,
-      "range": [
-        -2.4,
-        -0.2
-      ]
+      "kind": "Coxa_roll",
+      "axis": "0 0 1",
+      "qposIndex": 20,
+      "qvelIndex": 19
     },
     {
-      "name": "RF_coxa",
+      "name": "joint_LHFemur",
+      "leg": "LH",
+      "kind": "Femur",
+      "axis": "0 1 0",
+      "qposIndex": 21,
+      "qvelIndex": 20
+    },
+    {
+      "name": "joint_LHFemur_roll",
+      "leg": "LH",
+      "kind": "Femur_roll",
+      "axis": "0 0 1",
+      "qposIndex": 22,
+      "qvelIndex": 21
+    },
+    {
+      "name": "joint_LHTibia",
+      "leg": "LH",
+      "kind": "Tibia",
+      "axis": "0 1 0",
+      "qposIndex": 23,
+      "qvelIndex": 22
+    },
+    {
+      "name": "joint_LHTarsus1",
+      "leg": "LH",
+      "kind": "Tarsus1",
+      "axis": "0 1 0",
+      "qposIndex": 24,
+      "qvelIndex": 23
+    },
+    {
+      "name": "joint_RFCoxa_yaw",
       "leg": "RF",
-      "kind": "coxa",
-      "rest": -0.75,
-      "range": [
-        -1.5,
-        1.5
-      ]
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0",
+      "qposIndex": 62,
+      "qvelIndex": 61
     },
     {
-      "name": "RF_femur",
+      "name": "joint_RFCoxa",
       "leg": "RF",
-      "kind": "femur",
-      "rest": 0.8,
-      "range": [
-        -0.2,
-        1.6
-      ]
+      "kind": "Coxa",
+      "axis": "0 1 0",
+      "qposIndex": 63,
+      "qvelIndex": 62
     },
     {
-      "name": "RF_tibia",
+      "name": "joint_RFCoxa_roll",
       "leg": "RF",
-      "kind": "tibia",
-      "rest": -1.3,
-      "range": [
-        -2.4,
-        -0.2
-      ]
+      "kind": "Coxa_roll",
+      "axis": "0 0 1",
+      "qposIndex": 64,
+      "qvelIndex": 63
     },
     {
-      "name": "RM_coxa",
+      "name": "joint_RFFemur",
+      "leg": "RF",
+      "kind": "Femur",
+      "axis": "0 1 0",
+      "qposIndex": 65,
+      "qvelIndex": 64
+    },
+    {
+      "name": "joint_RFFemur_roll",
+      "leg": "RF",
+      "kind": "Femur_roll",
+      "axis": "0 0 1",
+      "qposIndex": 66,
+      "qvelIndex": 65
+    },
+    {
+      "name": "joint_RFTibia",
+      "leg": "RF",
+      "kind": "Tibia",
+      "axis": "0 1 0",
+      "qposIndex": 67,
+      "qvelIndex": 66
+    },
+    {
+      "name": "joint_RFTarsus1",
+      "leg": "RF",
+      "kind": "Tarsus1",
+      "axis": "0 1 0",
+      "qposIndex": 68,
+      "qvelIndex": 67
+    },
+    {
+      "name": "joint_RMCoxa_yaw",
       "leg": "RM",
-      "kind": "coxa",
-      "rest": 0,
-      "range": [
-        -1.5,
-        1.5
-      ]
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0",
+      "qposIndex": 51,
+      "qvelIndex": 50
     },
     {
-      "name": "RM_femur",
+      "name": "joint_RMCoxa",
       "leg": "RM",
-      "kind": "femur",
-      "rest": 0.8,
-      "range": [
-        -0.2,
-        1.6
-      ]
+      "kind": "Coxa",
+      "axis": "0 1 0",
+      "qposIndex": 52,
+      "qvelIndex": 51
     },
     {
-      "name": "RM_tibia",
+      "name": "joint_RMCoxa_roll",
       "leg": "RM",
-      "kind": "tibia",
-      "rest": -1.3,
-      "range": [
-        -2.4,
-        -0.2
-      ]
+      "kind": "Coxa_roll",
+      "axis": "0 0 1",
+      "qposIndex": 53,
+      "qvelIndex": 52
     },
     {
-      "name": "RH_coxa",
-      "leg": "RH",
-      "kind": "coxa",
-      "rest": 0.8,
-      "range": [
-        -1.5,
-        1.5
-      ]
+      "name": "joint_RMFemur",
+      "leg": "RM",
+      "kind": "Femur",
+      "axis": "0 1 0",
+      "qposIndex": 54,
+      "qvelIndex": 53
     },
     {
-      "name": "RH_femur",
-      "leg": "RH",
-      "kind": "femur",
-      "rest": 0.8,
-      "range": [
-        -0.2,
-        1.6
-      ]
+      "name": "joint_RMFemur_roll",
+      "leg": "RM",
+      "kind": "Femur_roll",
+      "axis": "0 0 1",
+      "qposIndex": 55,
+      "qvelIndex": 54
     },
     {
-      "name": "RH_tibia",
+      "name": "joint_RMTibia",
+      "leg": "RM",
+      "kind": "Tibia",
+      "axis": "0 1 0",
+      "qposIndex": 56,
+      "qvelIndex": 55
+    },
+    {
+      "name": "joint_RMTarsus1",
+      "leg": "RM",
+      "kind": "Tarsus1",
+      "axis": "0 1 0",
+      "qposIndex": 57,
+      "qvelIndex": 56
+    },
+    {
+      "name": "joint_RHCoxa_yaw",
       "leg": "RH",
-      "kind": "tibia",
-      "rest": -1.3,
-      "range": [
-        -2.4,
-        -0.2
-      ]
+      "kind": "Coxa_yaw",
+      "axis": "1 0 0",
+      "qposIndex": 40,
+      "qvelIndex": 39
+    },
+    {
+      "name": "joint_RHCoxa",
+      "leg": "RH",
+      "kind": "Coxa",
+      "axis": "0 1 0",
+      "qposIndex": 41,
+      "qvelIndex": 40
+    },
+    {
+      "name": "joint_RHCoxa_roll",
+      "leg": "RH",
+      "kind": "Coxa_roll",
+      "axis": "0 0 1",
+      "qposIndex": 42,
+      "qvelIndex": 41
+    },
+    {
+      "name": "joint_RHFemur",
+      "leg": "RH",
+      "kind": "Femur",
+      "axis": "0 1 0",
+      "qposIndex": 43,
+      "qvelIndex": 42
+    },
+    {
+      "name": "joint_RHFemur_roll",
+      "leg": "RH",
+      "kind": "Femur_roll",
+      "axis": "0 0 1",
+      "qposIndex": 44,
+      "qvelIndex": 43
+    },
+    {
+      "name": "joint_RHTibia",
+      "leg": "RH",
+      "kind": "Tibia",
+      "axis": "0 1 0",
+      "qposIndex": 45,
+      "qvelIndex": 44
+    },
+    {
+      "name": "joint_RHTarsus1",
+      "leg": "RH",
+      "kind": "Tarsus1",
+      "axis": "0 1 0",
+      "qposIndex": 46,
+      "qvelIndex": 45
     }
   ],
-  "legs": [
+  "landmarks": [
+    "LF-ThC",
+    "LF-CTr",
+    "LF-FTi",
+    "LF-TiTa",
+    "LF-Claw",
+    "LM-ThC",
+    "LM-CTr",
+    "LM-FTi",
+    "LM-TiTa",
+    "LM-Claw",
+    "LH-ThC",
+    "LH-CTr",
+    "LH-FTi",
+    "LH-TiTa",
+    "LH-Claw",
+    "RF-ThC",
+    "RF-CTr",
+    "RF-FTi",
+    "RF-TiTa",
+    "RF-Claw",
+    "RM-ThC",
+    "RM-CTr",
+    "RM-FTi",
+    "RM-TiTa",
+    "RM-Claw",
+    "RH-ThC",
+    "RH-CTr",
+    "RH-FTi",
+    "RH-TiTa",
+    "RH-Claw"
+  ],
+  "dataset": {
+    "doi": "10.7910/DVN/3MCEYR",
+    "version": "3.1",
+    "license": "CC0-1.0"
+  },
+  "sourceFiles": [
     {
-      "id": "LF",
-      "footSite": "LF_foot_site",
-      "yaw": -0.75
+      "target": "source/annotations.csv",
+      "source": "https://dataverse.harvard.edu/api/access/datafile/10407643",
+      "bytes": 72358,
+      "sha256": "cf73a19c2833cc96ef21d73fa05d5fc0737fac10277d0c4701dc94eee151b982"
     },
     {
-      "id": "LM",
-      "footSite": "LM_foot_site",
-      "yaw": 0
+      "target": "source/recorded_steps.mp4",
+      "source": "https://dataverse.harvard.edu/api/access/datafile/10407644",
+      "bytes": 347082,
+      "sha256": "f0c30e128f7ddf96e35db061ec03d910767e3809e308dfd858519c7e0e7aeaf7"
     },
     {
-      "id": "LH",
-      "footSite": "LH_foot_site",
-      "yaw": 0.8
+      "target": "source/single_steps_untethered.pkl",
+      "source": "flygym/data/behavior/single_steps_untethered.pkl",
+      "bytes": 18024,
+      "sha256": "1e5b28bb6b3f50ac95a04773ea37af28d05e26d03bd90fdba57fa1b3eacfaf8c"
     },
     {
-      "id": "RF",
-      "footSite": "RF_foot_site",
-      "yaw": -0.75
+      "target": "source/neuromechfly.xml",
+      "source": "flygym/data/mjcf/neuromechfly_seqik_kinorder_ypr.xml",
+      "bytes": 78816,
+      "sha256": "09ae2dd68213dd6d1ec7af95c9a00e9acfe5e7fe6024b7d38625a3d0e934b4fd"
     },
     {
-      "id": "RM",
-      "footSite": "RM_foot_site",
-      "yaw": 0
-    },
-    {
-      "id": "RH",
-      "footSite": "RH_foot_site",
-      "yaw": 0.8
+      "target": "source/dataverse-metadata.json",
+      "source": "https://dataverse.harvard.edu/api/datasets/:persistentId?persistentId=doi:10.7910/DVN/3MCEYR",
+      "bytes": 13471,
+      "sha256": "c63fad6b459e1cd38a8dfb7083444afd6cfa2539f1a4e829608a5c3ccf0156cf"
     }
   ],
-  "massScale": 0.40091866856523467,
-  "sourceMassSum": 0.002494271478,
+  "modifications": [
+    "Free thorax; 42 active anatomical leg axes with 84 hypothetical Hill antagonists",
+    "24 source distal tarsal hinges restored with NMF stiffness 7.5 and damping .01",
+    "6 native contact-dependent adhesion actuators, NMF model gain 40",
+    "All anatomical mesh hulls collide with environment; inter-leg self-contact enabled, same-leg/body-leg excluded",
+    "Original Blender banana: 94 short convex pieces, plus matching floor/walls/substrate patches",
+    "No wing, organ or reconstructed proprioceptive circuit dynamics"
+  ],
+  "physics": {
+    "timestep": 0.0001,
+    "gravity": "9801 mm/s^2",
+    "scope": "Experimental NMF anatomy / muscle-driven free body",
+    "forceUnit": "microNewton (g, mm, s model convention; uncalibrated strength)"
+  },
   "initialQpos": [
     0.0,
     0.0,
-    1.85,
+    1.325463994131868,
     1.0,
     0.0,
     0.0,
     0.0,
-    -0.7137658269930585,
-    0.8142830010801918,
-    -0.8948917957451306,
-    0.016562405796813926,
-    1.206709011496506,
-    -1.247756798846347,
-    0.6749385499985471,
-    1.2843349112114026,
-    -1.242764934894913,
-    -0.7033140981403357,
-    0.7922614880359539,
-    -0.9024951877677264,
-    0.016840203626013607,
-    1.202540752154906,
-    -1.2377860603320523,
-    0.6721647517244985,
-    1.2794788474513417,
-    -1.2341971858332872
-  ]
+    0.055195210284690766,
+    0.4315838118884233,
+    0.9728771476198634,
+    -2.1574180708955297,
+    0.6806443255401828,
+    1.640223264819252,
+    -0.5845121229604466,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.4737181442051509,
+    0.680698998817193,
+    2.401934587392918,
+    -1.5783594415689886,
+    -0.2322579358208282,
+    1.9953280144739733,
+    -0.19884916930080931,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.6681083621271233,
+    -0.15169823981235372,
+    1.7818380828579947,
+    -1.6988574599689676,
+    -0.14822250258856168,
+    2.1108370599891453,
+    -0.6243140842698209,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.4737181442051509,
+    0.680698998817193,
+    -2.401934587392918,
+    -1.5783594415689886,
+    0.2322579358208282,
+    1.9953280144739733,
+    -0.19884916930080931,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.6681083621271233,
+    -0.15169823981235372,
+    -1.7818380828579947,
+    -1.6988574599689676,
+    0.14822250258856168,
+    2.1108370599891453,
+    -0.6243140842698209,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.055195210284690766,
+    0.4315838118884233,
+    -0.9728771476198634,
+    -2.1574180708955297,
+    -0.6806443255401828,
+    1.640223264819252,
+    -0.5845121229604466,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "adhesion": [
+    {
+      "id": "LF_pad",
+      "index": 84,
+      "body": "LFTarsus5",
+      "gain": 40
+    },
+    {
+      "id": "LM_pad",
+      "index": 85,
+      "body": "LMTarsus5",
+      "gain": 40
+    },
+    {
+      "id": "LH_pad",
+      "index": 86,
+      "body": "LHTarsus5",
+      "gain": 40
+    },
+    {
+      "id": "RF_pad",
+      "index": 87,
+      "body": "RFTarsus5",
+      "gain": 40
+    },
+    {
+      "id": "RM_pad",
+      "index": 88,
+      "body": "RMTarsus5",
+      "gain": 40
+    },
+    {
+      "id": "RH_pad",
+      "index": 89,
+      "body": "RHTarsus5",
+      "gain": 40
+    }
+  ],
+  "environment": {
+    "floorZ": 0,
+    "halfWidth": 12,
+    "wallHalfThickness": 0.1,
+    "wallHeight": 4,
+    "banana": {
+      "version": 1,
+      "author": "dmelanogaster / original procedural Blender model",
+      "license": "MIT",
+      "scale": "Illustrative miniature banana in mm; not measured botanical anatomy",
+      "position": [
+        -3.5,
+        -4,
+        0
+      ],
+      "rotationZ": -0.25,
+      "upAxis": "Z",
+      "visual": "banana.glb",
+      "visualSha256": "54f3a4525f5dacfdc71048cae412bb8246d43f2eedc5c971085d727cd5d6d515",
+      "collision": "Short convex sections enclosing the authored surface; open spaces between peel flaps are preserved. Conservative local approximation, not triangle-level concave contact.",
+      "pieces": [
+        {
+          "name": "flesh_000",
+          "file": "collision/flesh_000.stl",
+          "sha256": "61f2a5fb4a976915c0c0c7ee3bc1d84b68acdebaad42872c7e524446dd1f2066",
+          "bytes": 11684
+        },
+        {
+          "name": "flesh_003",
+          "file": "collision/flesh_003.stl",
+          "sha256": "f5f6597b819915d713094d175f69a60baed2b43f5d0ba6852ffef2a4abd88d9c",
+          "bytes": 11584
+        },
+        {
+          "name": "flesh_006",
+          "file": "collision/flesh_006.stl",
+          "sha256": "5e91a8da222a5c85065593d8c31bffdcc706e2120675a3f2ba8723d5675212f5",
+          "bytes": 11584
+        },
+        {
+          "name": "flesh_009",
+          "file": "collision/flesh_009.stl",
+          "sha256": "cd0a5d22868cf0237f9a3ee17769ff689b071b272e79c988c0ddb09b08b536fe",
+          "bytes": 10884
+        },
+        {
+          "name": "flesh_012",
+          "file": "collision/flesh_012.stl",
+          "sha256": "a384cccf22ccb2cdb3c6ad57eb48d5ce880f524648660b37b50701e80a7f9c86",
+          "bytes": 10184
+        },
+        {
+          "name": "flesh_015",
+          "file": "collision/flesh_015.stl",
+          "sha256": "d40440d5ae907387b60355ddef4a94f2acc3d7f24aaab73b135201277a0c615f",
+          "bytes": 9584
+        },
+        {
+          "name": "flesh_018",
+          "file": "collision/flesh_018.stl",
+          "sha256": "972c1b2f4a26eb9afc15498563f72fb0f10ee199d3e9a2a0af2602340d44487c",
+          "bytes": 9284
+        },
+        {
+          "name": "flesh_021",
+          "file": "collision/flesh_021.stl",
+          "sha256": "f0463910e29175746922f6024ed70a43592471a873565d37a684e272829b00f0",
+          "bytes": 9084
+        },
+        {
+          "name": "flesh_024",
+          "file": "collision/flesh_024.stl",
+          "sha256": "f5fb17b54d7a58308adfbcfdd007be09a4d04fbd2ed1071fc3068318626c7bb6",
+          "bytes": 9084
+        },
+        {
+          "name": "flesh_027",
+          "file": "collision/flesh_027.stl",
+          "sha256": "d51ecd53b0c5993b208a8946e724d50e8047c7d7a743d567c8d49424db83cba1",
+          "bytes": 8884
+        },
+        {
+          "name": "flesh_030",
+          "file": "collision/flesh_030.stl",
+          "sha256": "981d4c82a567d9ad6fd746653eebfae16e075edf23bf86951542c850ec216a14",
+          "bytes": 8884
+        },
+        {
+          "name": "flesh_033",
+          "file": "collision/flesh_033.stl",
+          "sha256": "bcb4afa8348475b2f3dfba689f1b11416df57d81146cbd8a2c3058cd53e4aec7",
+          "bytes": 9084
+        },
+        {
+          "name": "flesh_036",
+          "file": "collision/flesh_036.stl",
+          "sha256": "1871efc2eb9b89843d4b68b846695754a2abbf21c77c131165345a1c064367ba",
+          "bytes": 9084
+        },
+        {
+          "name": "flesh_039",
+          "file": "collision/flesh_039.stl",
+          "sha256": "b36faf42e71b490255f6235fafac2bfe1fc70414e0d3497324bf3d2cb7fe5564",
+          "bytes": 9284
+        },
+        {
+          "name": "flesh_042",
+          "file": "collision/flesh_042.stl",
+          "sha256": "37ec5a8b7e6923cfd0745ef7d8738738faea3230bce7dc86aa1312bc721ded4c",
+          "bytes": 9584
+        },
+        {
+          "name": "flesh_045",
+          "file": "collision/flesh_045.stl",
+          "sha256": "660f844af5decd6c19bc6916a2770c45df9ff93748f881e1af04b3be39f32ac1",
+          "bytes": 10184
+        },
+        {
+          "name": "flesh_048",
+          "file": "collision/flesh_048.stl",
+          "sha256": "4d40c512d255a6d90ee507d708f2aadfab7bc30e715c127ac96037b3c1ee6e95",
+          "bytes": 10884
+        },
+        {
+          "name": "flesh_051",
+          "file": "collision/flesh_051.stl",
+          "sha256": "de54154a065e0d6db879c078f0da2099d74b5dcf32f298371de2d758ab425216",
+          "bytes": 11584
+        },
+        {
+          "name": "flesh_054",
+          "file": "collision/flesh_054.stl",
+          "sha256": "11f9c754b186fa500248d5084638247b4bcecc9a3a9770a176ded43fc4e28f45",
+          "bytes": 11584
+        },
+        {
+          "name": "flesh_057",
+          "file": "collision/flesh_057.stl",
+          "sha256": "72aa4dd85704e8b9ee8a3df1cb25bcf807023b47a2e63bc8baa585bc40e210e2",
+          "bytes": 11684
+        },
+        {
+          "name": "unopened_skin_000",
+          "file": "collision/unopened_skin_000.stl",
+          "sha256": "1e2b832e01b513eaa534b4cb39dbb07a009452b73402342d350d9c3781e47f0f",
+          "bytes": 9784
+        },
+        {
+          "name": "unopened_skin_003",
+          "file": "collision/unopened_skin_003.stl",
+          "sha256": "2eb4b4db2fa8b83345b6ccfce6f94d4f5c5111d77a1811d35d0ff02eb64f5eec",
+          "bytes": 10084
+        },
+        {
+          "name": "unopened_skin_006",
+          "file": "collision/unopened_skin_006.stl",
+          "sha256": "6c59022fccc4b9d279c7d87fcc00974d12f0c39a07050f03aacc31429c57836b",
+          "bytes": 9984
+        },
+        {
+          "name": "unopened_skin_009",
+          "file": "collision/unopened_skin_009.stl",
+          "sha256": "6cdfeba79626e5481207043c6e8f33bb584b453254ca5cc7223e5e9f89677a69",
+          "bytes": 10384
+        },
+        {
+          "name": "unopened_skin_012",
+          "file": "collision/unopened_skin_012.stl",
+          "sha256": "bac65d4a4619ab2f655969f5cb228438984298948a02076a934f687ee4c57e11",
+          "bytes": 10684
+        },
+        {
+          "name": "unopened_skin_015",
+          "file": "collision/unopened_skin_015.stl",
+          "sha256": "a9688ad6a24dcb9a7dc79a66b11e88df9ff30dc1d802faa7ed9c4e747cc128f0",
+          "bytes": 11284
+        },
+        {
+          "name": "unopened_skin_018",
+          "file": "collision/unopened_skin_018.stl",
+          "sha256": "6ae30c7fef78317e7a0f60a90674bf0e73b3bb6aad91d64eeb984d18e6c6c19a",
+          "bytes": 12384
+        },
+        {
+          "name": "unopened_skin_021",
+          "file": "collision/unopened_skin_021.stl",
+          "sha256": "9399887298dcf665cd5910a304fabca83b4dd8483d4cb416fece269170a95c49",
+          "bytes": 12684
+        },
+        {
+          "name": "unopened_skin_024",
+          "file": "collision/unopened_skin_024.stl",
+          "sha256": "844c8ad62808ef85ba547097a3f3b7e4dcaf0b787111ae3c0f57abcf6a7e39af",
+          "bytes": 12684
+        },
+        {
+          "name": "unopened_skin_027",
+          "file": "collision/unopened_skin_027.stl",
+          "sha256": "7a7f6251c4d8d25015b3c1d53abec882c3480a20694a22f99495de75c9a08a20",
+          "bytes": 12684
+        },
+        {
+          "name": "stem_000",
+          "file": "collision/stem_000.stl",
+          "sha256": "b44f5cac739cda354c5b83dd31a2d88eab67a69cc0749f5299ab0c3c4e9a18a1",
+          "bytes": 3084
+        },
+        {
+          "name": "stem_002",
+          "file": "collision/stem_002.stl",
+          "sha256": "303ad1f6f4272ef74b9b5da9a0195b8ccaa74099d27b04cf9769ec941ca3bc52",
+          "bytes": 2784
+        },
+        {
+          "name": "stem_004",
+          "file": "collision/stem_004.stl",
+          "sha256": "baa5a9b1a6f6959223e56867540e80641598fa5b0163690385237dce7fa3053a",
+          "bytes": 3384
+        },
+        {
+          "name": "blossom_tip_000",
+          "file": "collision/blossom_tip_000.stl",
+          "sha256": "ed3f7e2ae5e78a62a733bf93133ee55120655f4b8d280f3bf5a850e10487a607",
+          "bytes": 3384
+        },
+        {
+          "name": "peel_1_000",
+          "file": "collision/peel_1_000.stl",
+          "sha256": "670681572b50514d9e969b559b5522250b5e87919d7422d812e456df767deb2c",
+          "bytes": 3284
+        },
+        {
+          "name": "peel_1_003",
+          "file": "collision/peel_1_003.stl",
+          "sha256": "1af6608d11a0b6ae2a217195341e76dd1ed9db0a54a8943dd4007d4581397d89",
+          "bytes": 5384
+        },
+        {
+          "name": "peel_1_006",
+          "file": "collision/peel_1_006.stl",
+          "sha256": "1f00efc411e642eaf75d1d3bc6bf4b080a00ac680e0472408470b057c5e75146",
+          "bytes": 5084
+        },
+        {
+          "name": "peel_1_009",
+          "file": "collision/peel_1_009.stl",
+          "sha256": "6720f1b12d8e8987cb7c8fa900e7f6bbc366944f23d298038479ba9759d3619e",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_1_012",
+          "file": "collision/peel_1_012.stl",
+          "sha256": "cbcd03f54403388f9d165c05c384103dc6581cab729973e5b2ce6912875e468e",
+          "bytes": 4984
+        },
+        {
+          "name": "peel_1_015",
+          "file": "collision/peel_1_015.stl",
+          "sha256": "7f14f73aa256e9231591606364c3cb5b379e05e8c2a7dd7d88c7284d1afd1dfb",
+          "bytes": 5084
+        },
+        {
+          "name": "peel_1_018",
+          "file": "collision/peel_1_018.stl",
+          "sha256": "86e2114383582980c25f3df64a181224178d848fea6f77b3fe778cbeef731c22",
+          "bytes": 5384
+        },
+        {
+          "name": "peel_1_021",
+          "file": "collision/peel_1_021.stl",
+          "sha256": "8cb9fb129123ca71e8f2253e0131e75a0b974695e665f3f2ba805555f63f319f",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_1_024",
+          "file": "collision/peel_1_024.stl",
+          "sha256": "5223013f6c3de56561f4bba92212af0b6990c9d1f1410119d0feed983fe039f0",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_1_027",
+          "file": "collision/peel_1_027.stl",
+          "sha256": "2e1da118dff5a23bbc7df193b8b639bc7a9a1e7e5a767cb8c7277405aa69c06c",
+          "bytes": 4984
+        },
+        {
+          "name": "peel_1_030",
+          "file": "collision/peel_1_030.stl",
+          "sha256": "93ba50ee8a142b277ca8da0c8a726d6435172bb56f8b8850561f70c35d65f987",
+          "bytes": 5384
+        },
+        {
+          "name": "peel_1_033",
+          "file": "collision/peel_1_033.stl",
+          "sha256": "53d0c2a9988c1f651426dd446ddd7995d43765de9aae6e92d8401727da3e219e",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_1_036",
+          "file": "collision/peel_1_036.stl",
+          "sha256": "f4381ca3221f2ad1d81c54adcb7e9139f901c5ff00bcf4c4d382eccc86f99c69",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_1_039",
+          "file": "collision/peel_1_039.stl",
+          "sha256": "2b173ad72b48e9b7ea61a6ef66cdc5de9cf94be929c8da93ac5d5d9a33b7043b",
+          "bytes": 4884
+        },
+        {
+          "name": "peel_1_042",
+          "file": "collision/peel_1_042.stl",
+          "sha256": "a1b995347a88cdb9ac7dcf947869bea84f357bf4e8aa36051c2037cc6c658225",
+          "bytes": 5084
+        },
+        {
+          "name": "peel_1_045",
+          "file": "collision/peel_1_045.stl",
+          "sha256": "600236c849ecb748cea9cacfcfedf6bf400e74b2adfcb5a2ecae74763483c5c5",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_1_048",
+          "file": "collision/peel_1_048.stl",
+          "sha256": "2adcdceb58d0e353aac3f074aa2e4296557c960fcb80b6913372f2b12e162228",
+          "bytes": 5084
+        },
+        {
+          "name": "peel_1_051",
+          "file": "collision/peel_1_051.stl",
+          "sha256": "2a8c87c088e76ceb6a08fa84d425a68eeaf120e6c4a864d0b4ab012c05f36d20",
+          "bytes": 5084
+        },
+        {
+          "name": "peel_1_054",
+          "file": "collision/peel_1_054.stl",
+          "sha256": "5b36423f99cc8b02c79890fdb18ed28deb392eb1e5048c2f1983a496f50f33ad",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_1_057",
+          "file": "collision/peel_1_057.stl",
+          "sha256": "692777e401fa5fec680140180380b8bb6b6d0ec5031a7761cc75cc8464361bb7",
+          "bytes": 3484
+        },
+        {
+          "name": "peel_2_000",
+          "file": "collision/peel_2_000.stl",
+          "sha256": "784f4dc000e4e2be6d4d9fb83ea5c79c18c8e01b991cb9963bb7a0b23c389d8a",
+          "bytes": 3084
+        },
+        {
+          "name": "peel_2_003",
+          "file": "collision/peel_2_003.stl",
+          "sha256": "7b0f18bdbaf7571727e62a8d3062ac7cd6c807cf960fec8029e69cc041230df5",
+          "bytes": 5084
+        },
+        {
+          "name": "peel_2_006",
+          "file": "collision/peel_2_006.stl",
+          "sha256": "0a4b7cafddeb6ff31d9ee5f145b1fb86508b4717d8ff6f0c404aed5ed5a023f3",
+          "bytes": 5384
+        },
+        {
+          "name": "peel_2_009",
+          "file": "collision/peel_2_009.stl",
+          "sha256": "843b038ffcdb74d6a584905cc27cbf2bf10aadbcb6aa2fca2c42d1682b0d99fc",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_2_012",
+          "file": "collision/peel_2_012.stl",
+          "sha256": "21b34093e8c5f6af5eb683cd05a3b33d29a9bb265390de5aed35766b48272bd9",
+          "bytes": 4884
+        },
+        {
+          "name": "peel_2_015",
+          "file": "collision/peel_2_015.stl",
+          "sha256": "986186fdf235b014d4629df59808871d21555dd1d6ca1e8671b9830507bd6f07",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_2_018",
+          "file": "collision/peel_2_018.stl",
+          "sha256": "98487dc16afe8455106d64cce3dd10db0331ed26d459416b0f72a275130776ef",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_2_021",
+          "file": "collision/peel_2_021.stl",
+          "sha256": "17dab65b49de176e38d739a3244210c4e59b46a38c5519da4412a569c0080def",
+          "bytes": 4884
+        },
+        {
+          "name": "peel_2_024",
+          "file": "collision/peel_2_024.stl",
+          "sha256": "a6038b517dce5c1d181831e66b5d95f008243d2e493ac7f48149de72d40fd490",
+          "bytes": 5384
+        },
+        {
+          "name": "peel_2_027",
+          "file": "collision/peel_2_027.stl",
+          "sha256": "7bf05a401541ceede5a2e7932af68a1ac1b7407b6d7b8a553e6bb6a95e628acb",
+          "bytes": 5084
+        },
+        {
+          "name": "peel_2_030",
+          "file": "collision/peel_2_030.stl",
+          "sha256": "6de0c36a5620db56b10a41ead9e21259c38a85820f634d9c439eb5518bf8f387",
+          "bytes": 4984
+        },
+        {
+          "name": "peel_2_033",
+          "file": "collision/peel_2_033.stl",
+          "sha256": "482fb7ade97f6d63b05e3b40b88447549984e71c0d655c27c46d798c2fb7bc56",
+          "bytes": 4984
+        },
+        {
+          "name": "peel_2_036",
+          "file": "collision/peel_2_036.stl",
+          "sha256": "5e19d461ffb0759a49349e090932e714e8a93173a0dda88688c999410884ccb9",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_2_039",
+          "file": "collision/peel_2_039.stl",
+          "sha256": "92b072a540e422dfdf45b4fe64252c2fca9266581d1a9cb89d710cee48718172",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_2_042",
+          "file": "collision/peel_2_042.stl",
+          "sha256": "7c83e4d93a60931a347b73b895d7a2b44ebe92b8b427a3317f4f3c3ac3cd5bbc",
+          "bytes": 4984
+        },
+        {
+          "name": "peel_2_045",
+          "file": "collision/peel_2_045.stl",
+          "sha256": "1c460313ba820e2e1f0ff1cd481d79f9588e3c6c8a862387d72da1476e6bdba3",
+          "bytes": 5084
+        },
+        {
+          "name": "peel_2_048",
+          "file": "collision/peel_2_048.stl",
+          "sha256": "0b3ca868a28d1ffc9dfe05e6cbda2ddc522befbe0ac171c562e30870d0e8a208",
+          "bytes": 5084
+        },
+        {
+          "name": "peel_2_051",
+          "file": "collision/peel_2_051.stl",
+          "sha256": "0fe6137e071ca072d1ea7dcc39118069382049234cc61cec7c5d4fce2723341a",
+          "bytes": 5084
+        },
+        {
+          "name": "peel_2_054",
+          "file": "collision/peel_2_054.stl",
+          "sha256": "90bc45940bdf93a61ee04e9a5634c490d704856b1ca455905e70850563149eba",
+          "bytes": 5384
+        },
+        {
+          "name": "peel_2_057",
+          "file": "collision/peel_2_057.stl",
+          "sha256": "269c0251881e844df226e39395b20edf7f972af5889d8723e9bfd6aa20fe8a3d",
+          "bytes": 3684
+        },
+        {
+          "name": "peel_3_000",
+          "file": "collision/peel_3_000.stl",
+          "sha256": "1575cd2ccf138c9785ee9243fa68ca03a7c326d404d5b89f78b3f9142d3c3700",
+          "bytes": 3084
+        },
+        {
+          "name": "peel_3_003",
+          "file": "collision/peel_3_003.stl",
+          "sha256": "02b94d2d8314bb7e86e6b27322a300b68e70b6b82c7960a6c69187dda44e2bf5",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_3_006",
+          "file": "collision/peel_3_006.stl",
+          "sha256": "58a4b82fbf03e0b641fa0df20ca9164328b211b83b265a4c2e4f1c4525536a83",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_3_009",
+          "file": "collision/peel_3_009.stl",
+          "sha256": "400154c033cbbb831ef22193498e39d811a5e9d181e6e8e9152a2557d2f21478",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_3_012",
+          "file": "collision/peel_3_012.stl",
+          "sha256": "0e5814b1a352cdd25076a3a9014b9d0c86d3de30b235044aa961e8e2f0209f40",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_3_015",
+          "file": "collision/peel_3_015.stl",
+          "sha256": "fd21119f59401764bcd188ddccee1265fc3eeda8c86e736a6e75d3d02742d329",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_3_018",
+          "file": "collision/peel_3_018.stl",
+          "sha256": "a365395facbcbeecdbee1b33452f4407519775dd9842592fae0d3841ba84982f",
+          "bytes": 5084
+        },
+        {
+          "name": "peel_3_021",
+          "file": "collision/peel_3_021.stl",
+          "sha256": "46d0ee216bd32113101307731d77c0aa315127f16ceac542ee77499856fdceed",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_3_024",
+          "file": "collision/peel_3_024.stl",
+          "sha256": "971f49356a2142d014444dffeebb5cbed719433207e366c0943d7afbdd1c1ccd",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_3_027",
+          "file": "collision/peel_3_027.stl",
+          "sha256": "eafdb3c547239df0dae3b44ae060b898907256905046f1e8000c43c5cdd44060",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_3_030",
+          "file": "collision/peel_3_030.stl",
+          "sha256": "a10e43ee852b15d270d1229b06facb2e02f77573cc6026a093ce7d32cb6f186c",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_3_033",
+          "file": "collision/peel_3_033.stl",
+          "sha256": "6e19575b40a30b49953aa22c418d8205da56a45d7be39084dd8a43f6f24faf4b",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_3_036",
+          "file": "collision/peel_3_036.stl",
+          "sha256": "46a341a3517ac1c594768b764266973668ec3410ece14f280964b87a7bed736a",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_3_039",
+          "file": "collision/peel_3_039.stl",
+          "sha256": "a03e544b75da346f511d438e77973e1478d925044a4de1a85a2cab2c9c06ba12",
+          "bytes": 5384
+        },
+        {
+          "name": "peel_3_042",
+          "file": "collision/peel_3_042.stl",
+          "sha256": "16567478ff91bd37aa33ad3bcf7f2df48a3ad62a5b0eda4b6cec41e01196d021",
+          "bytes": 5184
+        },
+        {
+          "name": "peel_3_045",
+          "file": "collision/peel_3_045.stl",
+          "sha256": "e79ca607b9726d1d1774e0d37a5830009e367ca2a298a2808ca7ff4f23a0dba3",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_3_048",
+          "file": "collision/peel_3_048.stl",
+          "sha256": "334d7397fcc839bff2f329705d42a192c9d93542beabdf166b573e618929f44f",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_3_051",
+          "file": "collision/peel_3_051.stl",
+          "sha256": "9d7f03bd9a79c6da06a36f9a122d577bcd499cb75f790a729eea0aec20815db9",
+          "bytes": 5584
+        },
+        {
+          "name": "peel_3_054",
+          "file": "collision/peel_3_054.stl",
+          "sha256": "947eca353d967aacac3b2940467da7cf423bcdc0ceeb5c07f4cecfbff08f9eb3",
+          "bytes": 5284
+        },
+        {
+          "name": "peel_3_057",
+          "file": "collision/peel_3_057.stl",
+          "sha256": "4846d3eb52c66d4af661e456c973fa537558d317324b8d260284d90995887b33",
+          "bytes": 3584
+        }
+      ]
+    },
+    "stimuli": [
+      {
+        "id": "yeast",
+        "kind": "food",
+        "x": 4,
+        "y": 1.5,
+        "radius": 0.65,
+        "strength": 1,
+        "enabled": true
+      },
+      {
+        "id": "geosmin",
+        "kind": "repellent",
+        "x": 2,
+        "y": -3,
+        "radius": 0.65,
+        "strength": 1,
+        "enabled": true
+      },
+      {
+        "id": "water",
+        "kind": "water",
+        "x": -3,
+        "y": -2,
+        "radius": 0.5,
+        "strength": 1,
+        "enabled": true
+      }
+    ]
+  },
+  "contacts": {
+    "marginMM": 0.01,
+    "solref": [
+      0.0002,
+      1
+    ],
+    "solimp": [
+      0.999,
+      0.9999,
+      0.001
+    ],
+    "friction": [
+      1,
+      0.005,
+      0.0001
+    ],
+    "meshMethod": "MuJoCo convex hull of each source anatomical mesh; conservative, not tissue compliance",
+    "exclusions": "same-leg and body-leg self-contact; rigid attachments overlap. All surfaces collide with environment."
+  },
+  "stepData": {
+    "path": "/data/nmf-steps.json",
+    "sha256": "c773aa7ddcdc9591a7b8ae48d0a12ba92fb34f1c75baf19ec255dd3c52fa3d33"
+  },
+  "passiveTarsi": {
+    "count": 24,
+    "stiffness": 7.5,
+    "damping": 0.01,
+    "armature": 2e-08,
+    "evidence": "Source NMF joint axes; FlyGym model stiffness/damping; numerical armature is our assumption"
+  }
 }

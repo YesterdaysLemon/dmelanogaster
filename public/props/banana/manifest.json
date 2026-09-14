@@ -1,0 +1,582 @@
+{
+  "version": 1,
+  "author": "dmelanogaster / original procedural Blender model",
+  "license": "MIT",
+  "scale": "Illustrative miniature banana in mm; not measured botanical anatomy",
+  "position": [
+    -3.5,
+    -4,
+    0
+  ],
+  "rotationZ": -0.25,
+  "upAxis": "Z",
+  "visual": "banana.glb",
+  "visualSha256": "54f3a4525f5dacfdc71048cae412bb8246d43f2eedc5c971085d727cd5d6d515",
+  "collision": "Short convex sections enclosing the authored surface; open spaces between peel flaps are preserved. Conservative local approximation, not triangle-level concave contact.",
+  "pieces": [
+    {
+      "name": "flesh_000",
+      "file": "collision/flesh_000.stl",
+      "sha256": "61f2a5fb4a976915c0c0c7ee3bc1d84b68acdebaad42872c7e524446dd1f2066",
+      "bytes": 11684
+    },
+    {
+      "name": "flesh_003",
+      "file": "collision/flesh_003.stl",
+      "sha256": "f5f6597b819915d713094d175f69a60baed2b43f5d0ba6852ffef2a4abd88d9c",
+      "bytes": 11584
+    },
+    {
+      "name": "flesh_006",
+      "file": "collision/flesh_006.stl",
+      "sha256": "5e91a8da222a5c85065593d8c31bffdcc706e2120675a3f2ba8723d5675212f5",
+      "bytes": 11584
+    },
+    {
+      "name": "flesh_009",
+      "file": "collision/flesh_009.stl",
+      "sha256": "cd0a5d22868cf0237f9a3ee17769ff689b071b272e79c988c0ddb09b08b536fe",
+      "bytes": 10884
+    },
+    {
+      "name": "flesh_012",
+      "file": "collision/flesh_012.stl",
+      "sha256": "a384cccf22ccb2cdb3c6ad57eb48d5ce880f524648660b37b50701e80a7f9c86",
+      "bytes": 10184
+    },
+    {
+      "name": "flesh_015",
+      "file": "collision/flesh_015.stl",
+      "sha256": "d40440d5ae907387b60355ddef4a94f2acc3d7f24aaab73b135201277a0c615f",
+      "bytes": 9584
+    },
+    {
+      "name": "flesh_018",
+      "file": "collision/flesh_018.stl",
+      "sha256": "972c1b2f4a26eb9afc15498563f72fb0f10ee199d3e9a2a0af2602340d44487c",
+      "bytes": 9284
+    },
+    {
+      "name": "flesh_021",
+      "file": "collision/flesh_021.stl",
+      "sha256": "f0463910e29175746922f6024ed70a43592471a873565d37a684e272829b00f0",
+      "bytes": 9084
+    },
+    {
+      "name": "flesh_024",
+      "file": "collision/flesh_024.stl",
+      "sha256": "f5fb17b54d7a58308adfbcfdd007be09a4d04fbd2ed1071fc3068318626c7bb6",
+      "bytes": 9084
+    },
+    {
+      "name": "flesh_027",
+      "file": "collision/flesh_027.stl",
+      "sha256": "d51ecd53b0c5993b208a8946e724d50e8047c7d7a743d567c8d49424db83cba1",
+      "bytes": 8884
+    },
+    {
+      "name": "flesh_030",
+      "file": "collision/flesh_030.stl",
+      "sha256": "981d4c82a567d9ad6fd746653eebfae16e075edf23bf86951542c850ec216a14",
+      "bytes": 8884
+    },
+    {
+      "name": "flesh_033",
+      "file": "collision/flesh_033.stl",
+      "sha256": "bcb4afa8348475b2f3dfba689f1b11416df57d81146cbd8a2c3058cd53e4aec7",
+      "bytes": 9084
+    },
+    {
+      "name": "flesh_036",
+      "file": "collision/flesh_036.stl",
+      "sha256": "1871efc2eb9b89843d4b68b846695754a2abbf21c77c131165345a1c064367ba",
+      "bytes": 9084
+    },
+    {
+      "name": "flesh_039",
+      "file": "collision/flesh_039.stl",
+      "sha256": "b36faf42e71b490255f6235fafac2bfe1fc70414e0d3497324bf3d2cb7fe5564",
+      "bytes": 9284
+    },
+    {
+      "name": "flesh_042",
+      "file": "collision/flesh_042.stl",
+      "sha256": "37ec5a8b7e6923cfd0745ef7d8738738faea3230bce7dc86aa1312bc721ded4c",
+      "bytes": 9584
+    },
+    {
+      "name": "flesh_045",
+      "file": "collision/flesh_045.stl",
+      "sha256": "660f844af5decd6c19bc6916a2770c45df9ff93748f881e1af04b3be39f32ac1",
+      "bytes": 10184
+    },
+    {
+      "name": "flesh_048",
+      "file": "collision/flesh_048.stl",
+      "sha256": "4d40c512d255a6d90ee507d708f2aadfab7bc30e715c127ac96037b3c1ee6e95",
+      "bytes": 10884
+    },
+    {
+      "name": "flesh_051",
+      "file": "collision/flesh_051.stl",
+      "sha256": "de54154a065e0d6db879c078f0da2099d74b5dcf32f298371de2d758ab425216",
+      "bytes": 11584
+    },
+    {
+      "name": "flesh_054",
+      "file": "collision/flesh_054.stl",
+      "sha256": "11f9c754b186fa500248d5084638247b4bcecc9a3a9770a176ded43fc4e28f45",
+      "bytes": 11584
+    },
+    {
+      "name": "flesh_057",
+      "file": "collision/flesh_057.stl",
+      "sha256": "72aa4dd85704e8b9ee8a3df1cb25bcf807023b47a2e63bc8baa585bc40e210e2",
+      "bytes": 11684
+    },
+    {
+      "name": "unopened_skin_000",
+      "file": "collision/unopened_skin_000.stl",
+      "sha256": "1e2b832e01b513eaa534b4cb39dbb07a009452b73402342d350d9c3781e47f0f",
+      "bytes": 9784
+    },
+    {
+      "name": "unopened_skin_003",
+      "file": "collision/unopened_skin_003.stl",
+      "sha256": "2eb4b4db2fa8b83345b6ccfce6f94d4f5c5111d77a1811d35d0ff02eb64f5eec",
+      "bytes": 10084
+    },
+    {
+      "name": "unopened_skin_006",
+      "file": "collision/unopened_skin_006.stl",
+      "sha256": "6c59022fccc4b9d279c7d87fcc00974d12f0c39a07050f03aacc31429c57836b",
+      "bytes": 9984
+    },
+    {
+      "name": "unopened_skin_009",
+      "file": "collision/unopened_skin_009.stl",
+      "sha256": "6cdfeba79626e5481207043c6e8f33bb584b453254ca5cc7223e5e9f89677a69",
+      "bytes": 10384
+    },
+    {
+      "name": "unopened_skin_012",
+      "file": "collision/unopened_skin_012.stl",
+      "sha256": "bac65d4a4619ab2f655969f5cb228438984298948a02076a934f687ee4c57e11",
+      "bytes": 10684
+    },
+    {
+      "name": "unopened_skin_015",
+      "file": "collision/unopened_skin_015.stl",
+      "sha256": "a9688ad6a24dcb9a7dc79a66b11e88df9ff30dc1d802faa7ed9c4e747cc128f0",
+      "bytes": 11284
+    },
+    {
+      "name": "unopened_skin_018",
+      "file": "collision/unopened_skin_018.stl",
+      "sha256": "6ae30c7fef78317e7a0f60a90674bf0e73b3bb6aad91d64eeb984d18e6c6c19a",
+      "bytes": 12384
+    },
+    {
+      "name": "unopened_skin_021",
+      "file": "collision/unopened_skin_021.stl",
+      "sha256": "9399887298dcf665cd5910a304fabca83b4dd8483d4cb416fece269170a95c49",
+      "bytes": 12684
+    },
+    {
+      "name": "unopened_skin_024",
+      "file": "collision/unopened_skin_024.stl",
+      "sha256": "844c8ad62808ef85ba547097a3f3b7e4dcaf0b787111ae3c0f57abcf6a7e39af",
+      "bytes": 12684
+    },
+    {
+      "name": "unopened_skin_027",
+      "file": "collision/unopened_skin_027.stl",
+      "sha256": "7a7f6251c4d8d25015b3c1d53abec882c3480a20694a22f99495de75c9a08a20",
+      "bytes": 12684
+    },
+    {
+      "name": "stem_000",
+      "file": "collision/stem_000.stl",
+      "sha256": "b44f5cac739cda354c5b83dd31a2d88eab67a69cc0749f5299ab0c3c4e9a18a1",
+      "bytes": 3084
+    },
+    {
+      "name": "stem_002",
+      "file": "collision/stem_002.stl",
+      "sha256": "303ad1f6f4272ef74b9b5da9a0195b8ccaa74099d27b04cf9769ec941ca3bc52",
+      "bytes": 2784
+    },
+    {
+      "name": "stem_004",
+      "file": "collision/stem_004.stl",
+      "sha256": "baa5a9b1a6f6959223e56867540e80641598fa5b0163690385237dce7fa3053a",
+      "bytes": 3384
+    },
+    {
+      "name": "blossom_tip_000",
+      "file": "collision/blossom_tip_000.stl",
+      "sha256": "ed3f7e2ae5e78a62a733bf93133ee55120655f4b8d280f3bf5a850e10487a607",
+      "bytes": 3384
+    },
+    {
+      "name": "peel_1_000",
+      "file": "collision/peel_1_000.stl",
+      "sha256": "670681572b50514d9e969b559b5522250b5e87919d7422d812e456df767deb2c",
+      "bytes": 3284
+    },
+    {
+      "name": "peel_1_003",
+      "file": "collision/peel_1_003.stl",
+      "sha256": "1af6608d11a0b6ae2a217195341e76dd1ed9db0a54a8943dd4007d4581397d89",
+      "bytes": 5384
+    },
+    {
+      "name": "peel_1_006",
+      "file": "collision/peel_1_006.stl",
+      "sha256": "1f00efc411e642eaf75d1d3bc6bf4b080a00ac680e0472408470b057c5e75146",
+      "bytes": 5084
+    },
+    {
+      "name": "peel_1_009",
+      "file": "collision/peel_1_009.stl",
+      "sha256": "6720f1b12d8e8987cb7c8fa900e7f6bbc366944f23d298038479ba9759d3619e",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_1_012",
+      "file": "collision/peel_1_012.stl",
+      "sha256": "cbcd03f54403388f9d165c05c384103dc6581cab729973e5b2ce6912875e468e",
+      "bytes": 4984
+    },
+    {
+      "name": "peel_1_015",
+      "file": "collision/peel_1_015.stl",
+      "sha256": "7f14f73aa256e9231591606364c3cb5b379e05e8c2a7dd7d88c7284d1afd1dfb",
+      "bytes": 5084
+    },
+    {
+      "name": "peel_1_018",
+      "file": "collision/peel_1_018.stl",
+      "sha256": "86e2114383582980c25f3df64a181224178d848fea6f77b3fe778cbeef731c22",
+      "bytes": 5384
+    },
+    {
+      "name": "peel_1_021",
+      "file": "collision/peel_1_021.stl",
+      "sha256": "8cb9fb129123ca71e8f2253e0131e75a0b974695e665f3f2ba805555f63f319f",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_1_024",
+      "file": "collision/peel_1_024.stl",
+      "sha256": "5223013f6c3de56561f4bba92212af0b6990c9d1f1410119d0feed983fe039f0",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_1_027",
+      "file": "collision/peel_1_027.stl",
+      "sha256": "2e1da118dff5a23bbc7df193b8b639bc7a9a1e7e5a767cb8c7277405aa69c06c",
+      "bytes": 4984
+    },
+    {
+      "name": "peel_1_030",
+      "file": "collision/peel_1_030.stl",
+      "sha256": "93ba50ee8a142b277ca8da0c8a726d6435172bb56f8b8850561f70c35d65f987",
+      "bytes": 5384
+    },
+    {
+      "name": "peel_1_033",
+      "file": "collision/peel_1_033.stl",
+      "sha256": "53d0c2a9988c1f651426dd446ddd7995d43765de9aae6e92d8401727da3e219e",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_1_036",
+      "file": "collision/peel_1_036.stl",
+      "sha256": "f4381ca3221f2ad1d81c54adcb7e9139f901c5ff00bcf4c4d382eccc86f99c69",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_1_039",
+      "file": "collision/peel_1_039.stl",
+      "sha256": "2b173ad72b48e9b7ea61a6ef66cdc5de9cf94be929c8da93ac5d5d9a33b7043b",
+      "bytes": 4884
+    },
+    {
+      "name": "peel_1_042",
+      "file": "collision/peel_1_042.stl",
+      "sha256": "a1b995347a88cdb9ac7dcf947869bea84f357bf4e8aa36051c2037cc6c658225",
+      "bytes": 5084
+    },
+    {
+      "name": "peel_1_045",
+      "file": "collision/peel_1_045.stl",
+      "sha256": "600236c849ecb748cea9cacfcfedf6bf400e74b2adfcb5a2ecae74763483c5c5",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_1_048",
+      "file": "collision/peel_1_048.stl",
+      "sha256": "2adcdceb58d0e353aac3f074aa2e4296557c960fcb80b6913372f2b12e162228",
+      "bytes": 5084
+    },
+    {
+      "name": "peel_1_051",
+      "file": "collision/peel_1_051.stl",
+      "sha256": "2a8c87c088e76ceb6a08fa84d425a68eeaf120e6c4a864d0b4ab012c05f36d20",
+      "bytes": 5084
+    },
+    {
+      "name": "peel_1_054",
+      "file": "collision/peel_1_054.stl",
+      "sha256": "5b36423f99cc8b02c79890fdb18ed28deb392eb1e5048c2f1983a496f50f33ad",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_1_057",
+      "file": "collision/peel_1_057.stl",
+      "sha256": "692777e401fa5fec680140180380b8bb6b6d0ec5031a7761cc75cc8464361bb7",
+      "bytes": 3484
+    },
+    {
+      "name": "peel_2_000",
+      "file": "collision/peel_2_000.stl",
+      "sha256": "784f4dc000e4e2be6d4d9fb83ea5c79c18c8e01b991cb9963bb7a0b23c389d8a",
+      "bytes": 3084
+    },
+    {
+      "name": "peel_2_003",
+      "file": "collision/peel_2_003.stl",
+      "sha256": "7b0f18bdbaf7571727e62a8d3062ac7cd6c807cf960fec8029e69cc041230df5",
+      "bytes": 5084
+    },
+    {
+      "name": "peel_2_006",
+      "file": "collision/peel_2_006.stl",
+      "sha256": "0a4b7cafddeb6ff31d9ee5f145b1fb86508b4717d8ff6f0c404aed5ed5a023f3",
+      "bytes": 5384
+    },
+    {
+      "name": "peel_2_009",
+      "file": "collision/peel_2_009.stl",
+      "sha256": "843b038ffcdb74d6a584905cc27cbf2bf10aadbcb6aa2fca2c42d1682b0d99fc",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_2_012",
+      "file": "collision/peel_2_012.stl",
+      "sha256": "21b34093e8c5f6af5eb683cd05a3b33d29a9bb265390de5aed35766b48272bd9",
+      "bytes": 4884
+    },
+    {
+      "name": "peel_2_015",
+      "file": "collision/peel_2_015.stl",
+      "sha256": "986186fdf235b014d4629df59808871d21555dd1d6ca1e8671b9830507bd6f07",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_2_018",
+      "file": "collision/peel_2_018.stl",
+      "sha256": "98487dc16afe8455106d64cce3dd10db0331ed26d459416b0f72a275130776ef",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_2_021",
+      "file": "collision/peel_2_021.stl",
+      "sha256": "17dab65b49de176e38d739a3244210c4e59b46a38c5519da4412a569c0080def",
+      "bytes": 4884
+    },
+    {
+      "name": "peel_2_024",
+      "file": "collision/peel_2_024.stl",
+      "sha256": "a6038b517dce5c1d181831e66b5d95f008243d2e493ac7f48149de72d40fd490",
+      "bytes": 5384
+    },
+    {
+      "name": "peel_2_027",
+      "file": "collision/peel_2_027.stl",
+      "sha256": "7bf05a401541ceede5a2e7932af68a1ac1b7407b6d7b8a553e6bb6a95e628acb",
+      "bytes": 5084
+    },
+    {
+      "name": "peel_2_030",
+      "file": "collision/peel_2_030.stl",
+      "sha256": "6de0c36a5620db56b10a41ead9e21259c38a85820f634d9c439eb5518bf8f387",
+      "bytes": 4984
+    },
+    {
+      "name": "peel_2_033",
+      "file": "collision/peel_2_033.stl",
+      "sha256": "482fb7ade97f6d63b05e3b40b88447549984e71c0d655c27c46d798c2fb7bc56",
+      "bytes": 4984
+    },
+    {
+      "name": "peel_2_036",
+      "file": "collision/peel_2_036.stl",
+      "sha256": "5e19d461ffb0759a49349e090932e714e8a93173a0dda88688c999410884ccb9",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_2_039",
+      "file": "collision/peel_2_039.stl",
+      "sha256": "92b072a540e422dfdf45b4fe64252c2fca9266581d1a9cb89d710cee48718172",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_2_042",
+      "file": "collision/peel_2_042.stl",
+      "sha256": "7c83e4d93a60931a347b73b895d7a2b44ebe92b8b427a3317f4f3c3ac3cd5bbc",
+      "bytes": 4984
+    },
+    {
+      "name": "peel_2_045",
+      "file": "collision/peel_2_045.stl",
+      "sha256": "1c460313ba820e2e1f0ff1cd481d79f9588e3c6c8a862387d72da1476e6bdba3",
+      "bytes": 5084
+    },
+    {
+      "name": "peel_2_048",
+      "file": "collision/peel_2_048.stl",
+      "sha256": "0b3ca868a28d1ffc9dfe05e6cbda2ddc522befbe0ac171c562e30870d0e8a208",
+      "bytes": 5084
+    },
+    {
+      "name": "peel_2_051",
+      "file": "collision/peel_2_051.stl",
+      "sha256": "0fe6137e071ca072d1ea7dcc39118069382049234cc61cec7c5d4fce2723341a",
+      "bytes": 5084
+    },
+    {
+      "name": "peel_2_054",
+      "file": "collision/peel_2_054.stl",
+      "sha256": "90bc45940bdf93a61ee04e9a5634c490d704856b1ca455905e70850563149eba",
+      "bytes": 5384
+    },
+    {
+      "name": "peel_2_057",
+      "file": "collision/peel_2_057.stl",
+      "sha256": "269c0251881e844df226e39395b20edf7f972af5889d8723e9bfd6aa20fe8a3d",
+      "bytes": 3684
+    },
+    {
+      "name": "peel_3_000",
+      "file": "collision/peel_3_000.stl",
+      "sha256": "1575cd2ccf138c9785ee9243fa68ca03a7c326d404d5b89f78b3f9142d3c3700",
+      "bytes": 3084
+    },
+    {
+      "name": "peel_3_003",
+      "file": "collision/peel_3_003.stl",
+      "sha256": "02b94d2d8314bb7e86e6b27322a300b68e70b6b82c7960a6c69187dda44e2bf5",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_3_006",
+      "file": "collision/peel_3_006.stl",
+      "sha256": "58a4b82fbf03e0b641fa0df20ca9164328b211b83b265a4c2e4f1c4525536a83",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_3_009",
+      "file": "collision/peel_3_009.stl",
+      "sha256": "400154c033cbbb831ef22193498e39d811a5e9d181e6e8e9152a2557d2f21478",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_3_012",
+      "file": "collision/peel_3_012.stl",
+      "sha256": "0e5814b1a352cdd25076a3a9014b9d0c86d3de30b235044aa961e8e2f0209f40",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_3_015",
+      "file": "collision/peel_3_015.stl",
+      "sha256": "fd21119f59401764bcd188ddccee1265fc3eeda8c86e736a6e75d3d02742d329",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_3_018",
+      "file": "collision/peel_3_018.stl",
+      "sha256": "a365395facbcbeecdbee1b33452f4407519775dd9842592fae0d3841ba84982f",
+      "bytes": 5084
+    },
+    {
+      "name": "peel_3_021",
+      "file": "collision/peel_3_021.stl",
+      "sha256": "46d0ee216bd32113101307731d77c0aa315127f16ceac542ee77499856fdceed",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_3_024",
+      "file": "collision/peel_3_024.stl",
+      "sha256": "971f49356a2142d014444dffeebb5cbed719433207e366c0943d7afbdd1c1ccd",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_3_027",
+      "file": "collision/peel_3_027.stl",
+      "sha256": "eafdb3c547239df0dae3b44ae060b898907256905046f1e8000c43c5cdd44060",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_3_030",
+      "file": "collision/peel_3_030.stl",
+      "sha256": "a10e43ee852b15d270d1229b06facb2e02f77573cc6026a093ce7d32cb6f186c",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_3_033",
+      "file": "collision/peel_3_033.stl",
+      "sha256": "6e19575b40a30b49953aa22c418d8205da56a45d7be39084dd8a43f6f24faf4b",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_3_036",
+      "file": "collision/peel_3_036.stl",
+      "sha256": "46a341a3517ac1c594768b764266973668ec3410ece14f280964b87a7bed736a",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_3_039",
+      "file": "collision/peel_3_039.stl",
+      "sha256": "a03e544b75da346f511d438e77973e1478d925044a4de1a85a2cab2c9c06ba12",
+      "bytes": 5384
+    },
+    {
+      "name": "peel_3_042",
+      "file": "collision/peel_3_042.stl",
+      "sha256": "16567478ff91bd37aa33ad3bcf7f2df48a3ad62a5b0eda4b6cec41e01196d021",
+      "bytes": 5184
+    },
+    {
+      "name": "peel_3_045",
+      "file": "collision/peel_3_045.stl",
+      "sha256": "e79ca607b9726d1d1774e0d37a5830009e367ca2a298a2808ca7ff4f23a0dba3",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_3_048",
+      "file": "collision/peel_3_048.stl",
+      "sha256": "334d7397fcc839bff2f329705d42a192c9d93542beabdf166b573e618929f44f",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_3_051",
+      "file": "collision/peel_3_051.stl",
+      "sha256": "9d7f03bd9a79c6da06a36f9a122d577bcd499cb75f790a729eea0aec20815db9",
+      "bytes": 5584
+    },
+    {
+      "name": "peel_3_054",
+      "file": "collision/peel_3_054.stl",
+      "sha256": "947eca353d967aacac3b2940467da7cf423bcdc0ceeb5c07f4cecfbff08f9eb3",
+      "bytes": 5284
+    },
+    {
+      "name": "peel_3_057",
+      "file": "collision/peel_3_057.stl",
+      "sha256": "4846d3eb52c66d4af661e456c973fa537558d317324b8d260284d90995887b33",
+      "bytes": 3584
+    }
+  ]
+}

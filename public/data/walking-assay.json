@@ -1,6 +1,6 @@
 {
-  "version": "0.2.0",
-  "generatedAt": "2026-09-14T19:38:51.065Z",
+  "version": "0.4.0",
+  "generatedAt": "2026-09-14T21:56:57.785Z",
   "engine": "MuJoCo WASM 3.13.0",
   "scope": "Software intervention assays; not biological validation. Baseline sources and hand-specified experimental bridge.",
   "sourceFiles": [
@@ -10,15 +10,39 @@
     },
     {
       "path": "src/terrarium.ts",
-      "sha256": "408912df931a46dc9e0f4e83f6de01d08ba28141143f2fefd4bc2ecaac25ac20"
+      "sha256": "cde98de0dd31e6e43e846ee2de7d709704a87139bf799c8b42bc2165da88f56b"
     },
     {
       "path": "src/engine.ts",
-      "sha256": "91e80cd331948642989e517ddbef3300b2b29d5678d02bb1862f58f8159484f6"
+      "sha256": "3b71b49a036b9f969b045c132aaf747fb49dc1a7cfb77fd6e663b442028bedb2"
+    },
+    {
+      "path": "src/steps.ts",
+      "sha256": "a3de292894b40f23c1f4c6442681684f4238185e38f95317c9156d50db5840e3"
+    },
+    {
+      "path": "src/contact.ts",
+      "sha256": "fc60695b2d4bbbc97e37f5ff6d9b15386dc3b8465252da8248d34083928568ad"
+    },
+    {
+      "path": "scripts/contact-assay.mjs",
+      "sha256": "e80f63b24cd865899439457dd759dc08d35a1e6b6422d36943f35dd17eaba9ac"
+    },
+    {
+      "path": "public/data/nmf-steps.json",
+      "sha256": "c773aa7ddcdc9591a7b8ae48d0a12ba92fb34f1c75baf19ec255dd3c52fa3d33"
+    },
+    {
+      "path": "public/model/walking-manifest.json",
+      "sha256": "35bc56bda76a7abe866baa082f4cd83d03faaa0655d444a96f742ce8d7e07754"
+    },
+    {
+      "path": "public/props/banana/manifest.json",
+      "sha256": "2d4dda89a6ff41bc6fe4a872aa0370edaf2f8e60736990ab4b4a9ea49729cfcf"
     },
     {
       "path": "public/model/walking.xml",
-      "sha256": "35a2c2e18bcdb9708b727e9292dedf1724b39a3f2606138b2405a1ff2e1f679c"
+      "sha256": "da38871509697c701986f97fbfc309e7b4f064446f461e88bceb1f352d5f30b3"
     },
     {
       "path": "public/data/manc-walking.json",
@@ -29,92 +53,199 @@
     {
       "mode": "bridge",
       "duration": 3,
-      "timestep": 0.0002,
+      "timestep": 0.0001,
       "position": [
-        2.5001383046665584,
-        0.9952832712070461,
-        1.7276584591544881
+        10.369494219099016,
+        6.853998604376379,
+        1.5013126458021702
       ],
-      "netDistance": 2.690962714792899,
-      "travel": 8.2112164118263,
+      "netDistance": 12.429952020370846,
+      "travel": 26.036086162016467,
       "neuralCycles": 27,
-      "minHeight": 1.5801739128408452,
-      "minUp": 0.9950828094009914,
-      "maxContacts": 6,
+      "minHeight": 0.6423928901827448,
+      "minUp": 0.8065409791011591,
+      "maxContacts": 17,
+      "minFloorClearanceMM": 0.006013770558598771,
+      "minWallClearanceMM": 0.011082785541695728,
+      "maxPenetrationMM": 0,
       "finite": true,
       "externalForcesZero": true
     },
     {
       "mode": "E1-silenced",
       "duration": 3,
-      "timestep": 0.0002,
+      "timestep": 0.0001,
       "position": [
-        -0.0800203873916603,
-        -0.0016091562163037323,
-        1.7277177435236595
+        -0.14693759659460975,
+        -0.07249898660239015,
+        0.9867394725971426
       ],
-      "netDistance": 0.08003656528137534,
-      "travel": 0.3677222629071285,
+      "netDistance": 0.16384981034891014,
+      "travel": 0.9570030823312855,
       "neuralCycles": 0,
-      "minHeight": 1.6980098956807348,
-      "minUp": 0.9950828095359315,
-      "maxContacts": 6,
+      "minHeight": 0.9792359629528684,
+      "minUp": 0.9890977505027908,
+      "maxContacts": 15,
+      "minFloorClearanceMM": 0.011688635295675112,
+      "minWallClearanceMM": 8.912807465120913,
+      "maxPenetrationMM": 0,
       "finite": true,
       "externalForcesZero": true
     },
     {
       "mode": "passive",
       "duration": 3,
-      "timestep": 0.0002,
+      "timestep": 0.0001,
       "position": [
-        -0.14606358024871438,
-        0.01369121580004636,
-        0.45819284247666014
+        -0.15627226872139388,
+        -0.10962377225355673,
+        0.605444660921765
       ],
-      "netDistance": 0.14670384747904897,
-      "travel": 0.46726061774996724,
+      "netDistance": 0.1908884318507311,
+      "travel": 1.0209468088228397,
       "neuralCycles": 27,
-      "minHeight": 0.10155748171007113,
-      "minUp": 0.9344129732337977,
-      "maxContacts": 7,
+      "minHeight": 0.6000201687951058,
+      "minUp": 0.5370053002381132,
+      "maxContacts": 22,
+      "minFloorClearanceMM": 0.01773151372774382,
+      "minWallClearanceMM": 8.718993939883614,
+      "maxPenetrationMM": 0,
       "finite": true,
       "externalForcesZero": true
     },
     {
       "mode": "observed-network-only",
       "duration": 3,
-      "timestep": 0.0002,
+      "timestep": 0.0001,
       "position": [
-        -0.20824357830048726,
-        0.46158181116400854,
-        0.40781668729141524
+        -0.1694689734351921,
+        -0.045232398921222626,
+        0.5661320160442767
       ],
-      "netDistance": 0.5063824210029784,
-      "travel": 1.418095576196704,
+      "netDistance": 0.17540154751126477,
+      "travel": 1.5357519609353547,
       "neuralCycles": 27,
-      "minHeight": 0.10120293967778161,
-      "minUp": 0.9344110681828403,
-      "maxContacts": 7,
+      "minHeight": 0.5231461094468483,
+      "minUp": 0.5970659788174912,
+      "maxContacts": 19,
+      "minFloorClearanceMM": 0.01773151372774382,
+      "minWallClearanceMM": 8.718993939883614,
+      "maxPenetrationMM": 0,
       "finite": true,
       "externalForcesZero": true
     },
     {
       "mode": "half-timestep",
       "duration": 3,
+      "timestep": 0.00005,
+      "position": [
+        11.249185159593388,
+        7.245910232361013,
+        1.3081568947189954
+      ],
+      "netDistance": 13.380858785976713,
+      "travel": 27.147990217732204,
+      "neuralCycles": 27,
+      "minHeight": 0.6565268929769329,
+      "minUp": 0.8350776074682131,
+      "maxContacts": 17,
+      "minFloorClearanceMM": 0.012026840921017724,
+      "minWallClearanceMM": 0.006321751513171492,
+      "maxPenetrationMM": 0,
+      "finite": true,
+      "externalForcesZero": true
+    },
+    {
+      "mode": "arena-10s",
+      "duration": 10,
       "timestep": 0.0001,
       "position": [
-        2.450546964126303,
-        0.9497025192002241,
-        1.7316193271046776
+        10.292471949497928,
+        9.028533829146532,
+        0.42712682420382114
       ],
-      "netDistance": 2.6281391322309955,
-      "travel": 8.132610709598252,
-      "neuralCycles": 27,
-      "minHeight": 1.5782706835562939,
-      "minUp": 0.9951076288123679,
-      "maxContacts": 6,
+      "netDistance": 13.691216232871534,
+      "travel": 31.43880319605225,
+      "neuralCycles": 92,
+      "minHeight": 0.4196971852117939,
+      "minUp": -0.9951492437034222,
+      "maxContacts": 17,
+      "minFloorClearanceMM": 0.006013770558598771,
+      "minWallClearanceMM": 0.011082785541695728,
+      "maxPenetrationMM": 0,
       "finite": true,
       "externalForcesZero": true
     }
-  ]
+  ],
+  "contacts": [
+    {
+      "mode": "floor-drop",
+      "duration": 1,
+      "timestep": 0.0001,
+      "minFloorClearanceMM": 0.003847894928371426,
+      "minWallClearanceMM": 9.040329839627923,
+      "maxPenetrationMM": 0.0023157987853211076,
+      "bananaContactSamples": 0,
+      "wallContactSamples": 0,
+      "finalPosition": [
+        0.0678706022872061,
+        0.007503331242818682,
+        0.7234069047850681
+      ],
+      "finite": true,
+      "allCommandsZero": true
+    },
+    {
+      "mode": "side-drop",
+      "duration": 1,
+      "timestep": 0.0001,
+      "minFloorClearanceMM": 0.018074117772249244,
+      "minWallClearanceMM": 9.062229830051567,
+      "maxPenetrationMM": 0,
+      "bananaContactSamples": 0,
+      "wallContactSamples": 0,
+      "finalPosition": [
+        0.12201171407989957,
+        0.3218097739011239,
+        0.538489945604743
+      ],
+      "finite": true,
+      "allCommandsZero": true
+    },
+    {
+      "mode": "banana-drop",
+      "duration": 1,
+      "timestep": 0.0001,
+      "minFloorClearanceMM": 0.017625942474930698,
+      "minWallClearanceMM": 3.5680985812425803,
+      "maxPenetrationMM": 0,
+      "bananaContactSamples": 636,
+      "wallContactSamples": 0,
+      "finalPosition": [
+        -3.84355657327781,
+        -6.450470244003903,
+        0.4271292478621
+      ],
+      "finite": true,
+      "allCommandsZero": true
+    },
+    {
+      "mode": "wall-impact",
+      "duration": 1,
+      "timestep": 0.0001,
+      "minFloorClearanceMM": 0.018768827085381273,
+      "minWallClearanceMM": 0.019990595559235658,
+      "maxPenetrationMM": 0,
+      "bananaContactSamples": 0,
+      "wallContactSamples": 9852,
+      "finalPosition": [
+        11.250251667083432,
+        0.007217683675283209,
+        0.7884540944557539
+      ],
+      "finite": true,
+      "allCommandsZero": true
+    }
+  ],
+  "sampling": "Walking surface/contact metrics sampled every 100 physics steps; drop/impact penetration inspected at every solver step, surface support every 50 steps. Finite protocols, not a universal non-penetration guarantee."
 }

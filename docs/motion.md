@@ -1,6 +1,6 @@
 # Motion lab: recorded fly → anatomical fit → muscle response
 
-V0.3 implements an inspectable motion reconstruction bench. The public view at [Motion lab](https://fly.alirezaafshan.com/#motion) pairs source video, 30 colored 3D landmarks and a seven-coordinate-per-leg anatomical model on one frame scrubber. It also runs active and passive muscle assays in browser MuJoCo. **The terrarium's autonomous walking controller has not been upgraded by this bench.**
+V0.3 implements an inspectable motion reconstruction bench. The public view at [Motion lab](https://fly.alirezaafshan.com/#motion) pairs source video, 30 colored 3D landmarks and a seven-coordinate-per-leg anatomical model on one frame scrubber. It also runs active and passive muscle assays in browser MuJoCo. The fixed-thorax bench is preserved. **V0.4 separately brings this anatomical articulation and the authors’ processed step template into the free-body terrarium; see [contact and stepping methods](contact.md).**
 
 ## Precedents actually used
 
@@ -14,13 +14,13 @@ The paper's reusable template is a **processed product**: retained steps were no
 
 The [current official NMF replay tutorial](https://neuromechfly.org/tutorials/2_replaying_experimental_recordings/) separately shows estimated landmarks, fitted landmarks and position-actuator replay. Its newer Spotlight/PoseForge recording is not our data source. We adopt the inspectable comparison and residuals, while using manual annotations and our explicit muscle experiment. Newer FlyGym joint sign conventions must not be mixed with the pinned 2024 XML.
 
-| Source | Pin | Use |
-| --- | --- | --- |
-| FlyGym / NMF anatomy | `cedd204e0c3bc70bab8ccdf1d0520f2b77b2619b` (`resubmission-20240501`) | Source XML, 39 mesh files, processed template; Apache-2.0 |
-| NMF v2 paper code | `1597277deff6b97faf6e021f05afd12ff39fa23e` | Inspected `step_data/stepping_illustration.ipynb`; no notebook export copied |
-| SeqIKPy 1.1.0 | `f7f1dc9b09ce89c4f54b2005722d62f887623a7b` | Executed registration/IK; locomotion-example seeds; Apache-2.0 |
-| MuJoCo Python | `3.3.7` | Offline forward kinematics during fitting |
-| MuJoCo WASM | `3.13.0` | Browser and headless muscle dynamics |
+| Source               | Pin                                                                  | Use                                                                          |
+| -------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| FlyGym / NMF anatomy | `cedd204e0c3bc70bab8ccdf1d0520f2b77b2619b` (`resubmission-20240501`) | Source XML, 39 mesh files, processed template; Apache-2.0                    |
+| NMF v2 paper code    | `1597277deff6b97faf6e021f05afd12ff39fa23e`                           | Inspected `step_data/stepping_illustration.ipynb`; no notebook export copied |
+| SeqIKPy 1.1.0        | `f7f1dc9b09ce89c4f54b2005722d62f887623a7b`                           | Executed registration/IK; locomotion-example seeds; Apache-2.0               |
+| MuJoCo Python        | `3.3.7`                                                              | Offline forward kinematics during fitting                                    |
+| MuJoCo WASM          | `3.13.0`                                                             | Browser and headless muscle dynamics                                         |
 
 ## Coordinate and timing limits
 
@@ -46,32 +46,32 @@ The pose modes set joint coordinates for geometric replay. The muscle modes inst
 
 This new bench does **not** inherit FlyMimic's identified anatomical muscle paths. Each of the 42 joint coordinates receives a hypothetical opposing pair of Hill actuators, for 84 actuators total. These are mechanical placeholders, not 84 verified fly muscle identities. The original 15-unit FlyMimic foreleg bench remains available separately.
 
-| Assumption | Value / interpretation |
-| --- | --- |
-| Body frame | Thorax fixed at model z = 1.5 mm; no ground contact or adhesion |
-| Units | mm, g, s imply µN and µN·mm; inherited masses are model parameters |
-| Gravity / timestep | −9810 mm/s²; 0.0001 s, implicitfast |
-| Maximum force / moment arm | 180 µN per actuator / constant 0.05 mm; uncalibrated hypotheses |
-| Activation/deactivation | 8 / 25 ms; uncalibrated hypotheses |
-| Tendon / normalized muscle range | [−0.32, 0.32] mm / [0.5, 1.5] |
-| Hill limits | lmin 0.3, lmax 1.7, vmax 10, fpmax 0.0001; native remaining defaults |
-| Joint damping / armature | 0.02 g·mm²/s, 0.000002 g·mm²; numerical assumptions |
-| Control law | `τ = 50(q_target − q) + 0.12(qdot_target − qdot)` |
-| Excitation | `clip(sign × τ / 9, 0, 0.95)` per antagonist; 9 = force × moment arm |
+| Assumption                       | Value / interpretation                                               |
+| -------------------------------- | -------------------------------------------------------------------- |
+| Body frame                       | Thorax fixed at model z = 1.5 mm; no ground contact or adhesion      |
+| Units                            | mm, g, s imply µN and µN·mm; inherited masses are model parameters   |
+| Gravity / timestep               | −9810 mm/s²; 0.0001 s, implicitfast                                  |
+| Maximum force / moment arm       | 180 µN per actuator / constant 0.05 mm; uncalibrated hypotheses      |
+| Activation/deactivation          | 8 / 25 ms; uncalibrated hypotheses                                   |
+| Tendon / normalized muscle range | [−0.32, 0.32] mm / [0.5, 1.5]                                        |
+| Hill limits                      | lmin 0.3, lmax 1.7, vmax 10, fpmax 0.0001; native remaining defaults |
+| Joint damping / armature         | 0.02 g·mm²/s, 0.000002 g·mm²; numerical assumptions                  |
+| Control law                      | `τ = 50(q_target − q) + 0.12(qdot_target − qdot)`                    |
+| Excitation                       | `clip(sign × τ / 9, 0, 0.95)` per antagonist; 9 = force × moment arm |
 
 Targets are linearly resampled from fitted angles. The law is an explicit PD tracking controller, with hand-selected gains and strength; it is not reconstructed proprioception or an inferred motor circuit. No RL, imitation policy, pose-estimator model weights or task-reward learning are executed. Passive trials have zero excitation and the identical initial pose, gravity and damping. Nonzero muscle error is expected, including lag and saturation.
 
 ## Results and acceptance
 
-| Metric, one episode | Result |
-| --- | --- |
-| Full seven-coordinate registration RMS | 0.063897 mm |
-| Reduced three-coordinate registration RMS | 0.192453 mm |
-| Worst full-fit landmark residual | 0.202459 mm |
+| Metric, one episode                            | Result      |
+| ---------------------------------------------- | ----------- |
+| Full seven-coordinate registration RMS         | 0.063897 mm |
+| Reduced three-coordinate registration RMS      | 0.192453 mm |
+| Worst full-fit landmark residual               | 0.202459 mm |
 | Active muscle tracking RMS to fitted landmarks | 0.150712 mm |
-| Passive RMS to fitted landmarks | 0.971074 mm |
-| Active generalized-coordinate RMS | 7.783878° |
-| Half-timestep active landmark RMS | 0.150273 mm |
+| Passive RMS to fitted landmarks                | 0.971074 mm |
+| Active generalized-coordinate RMS              | 7.783878°   |
+| Half-timestep active landmark RMS              | 0.150273 mm |
 
 RMS is the root mean squared 3D point distance over 37 × 30 samples, including the registered anchors. The fitting objective omits the fixed anchors; the headline RMS includes them. Muscle results compare against **fitted** landmarks, not raw measurements. Samples use the closest integration step (within half a timestep). These are in-sample geometry and software-mechanics results, not biological validation or a muscle-force inference. Greater strength, damping or different gains could improve tracking without improving biological fidelity.
 

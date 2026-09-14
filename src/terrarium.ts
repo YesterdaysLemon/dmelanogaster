@@ -1,6 +1,9 @@
 import type { FlyEngine } from "./engine";
 import { RateCircuit, type Wiring } from "./circuit.ts";
 
+import { sampleStep, type RecordedSteps } from "./steps.ts";
+import { contactMetrics, surfaceBounds } from "./contact.ts";
+
 export const legs = ["LF", "LM", "LH", "RF", "RM", "RH"];
 export interface Stimulus {
   id: string;
@@ -14,35 +17,7 @@ export interface Stimulus {
 export class Terrarium {
   readonly circuit: RateCircuit;
   readonly engine: FlyEngine;
-  readonly sources: Stimulus[] = [
-    {
-      id: "yeast",
-      kind: "food",
-      x: 4,
-      y: 1.5,
-      radius: 0.65,
-      strength: 1,
-      enabled: true,
-    },
-    {
-      id: "geosmin",
-      kind: "repellent",
-      x: 2,
-      y: -3,
-      radius: 0.65,
-      strength: 1,
-      enabled: true,
-    },
-    {
-      id: "water",
-      kind: "water",
-      x: -3,
-      y: -2,
-      radius: 0.5,
-      strength: 1,
-      enabled: true,
-    },
-  ];
+  readonly sources: Stimulus[];
   bridge = true;
   sensory = true;
   passive = false;
@@ -57,6 +32,8 @@ export class Terrarium {
   reward = 0;
   lastPulse = -1;
   period = 0.12;
+  jointKp = 20;
+  jointKd = 0.08;
   private neuralElapsed = 0;
   private mean = 0;
   private previous = 0;
@@ -72,56 +49,31 @@ export class Terrarium {
   }[] = [];
   private rhythmIndex: number;
   private body: number;
-  private footIds: number[];
-  private inverseJac: number[][][] = [];
-  private bases = [
-    [0.7, 1.2, -1.77],
-    [-0.55, 1.6, -1.77],
-    [-1.8, 1.4, -1.77],
-    [0.7, -1.2, -1.77],
-    [-0.55, -1.6, -1.77],
-    [-1.8, -1.4, -1.77],
-  ];
-  constructor(engine: FlyEngine, wiring: Wiring) {
+  private amplitude = 0;
+  readonly steps: RecordedSteps;
+  private patchIds: number[];
+  constructor(engine: FlyEngine, wiring: Wiring, steps: RecordedSteps) {
     this.engine = engine;
+    this.sources = structuredClone(engine.manifest.environment!.stimuli);
+    this.steps = steps;
     this.circuit = new RateCircuit(wiring);
-    // A named observed LF premotor cell provides timing to the experimental bridge.
     this.rhythmIndex = wiring.nodes.findIndex((n) => n.id === "11751");
     if (this.rhythmIndex < 0) throw new Error("MANC LF E2 identity missing");
+    if (steps.joints.length !== 42 || engine.model.nu !== 90)
+      throw new Error("NMF body / step roster mismatch");
     const mj = engine.mujoco;
     this.body = mj.mj_name2id(
       engine.model,
       mj.mjtObj.mjOBJ_BODY.value,
       "Thorax",
     );
-    this.footIds = legs.map((l) =>
-      mj.mj_name2id(engine.model, mj.mjtObj.mjOBJ_SITE.value, l + "_foot_site"),
-    );
-    const d = engine.data;
-    this.inverseJac = this.footIds.map((sid, i) => {
-      const cols = Array.from({ length: 3 }, (_, j) => {
-        const a = (1 + i * 3 + j) * 3,
-          dx = d.site_xpos[3 * sid] - d.xanchor[a],
-          dy = d.site_xpos[3 * sid + 1] - d.xanchor[a + 1],
-          dz = d.site_xpos[3 * sid + 2] - d.xanchor[a + 2];
-        return [
-          d.xaxis[a + 1] * dz - d.xaxis[a + 2] * dy,
-          d.xaxis[a + 2] * dx - d.xaxis[a] * dz,
-          d.xaxis[a] * dy - d.xaxis[a + 1] * dx,
-        ];
-      });
-      const cross = (u: number[], v: number[]) => [
-        u[1] * v[2] - u[2] * v[1],
-        u[2] * v[0] - u[0] * v[2],
-        u[0] * v[1] - u[1] * v[0],
-      ];
-      const first = cross(cols[1], cols[2]),
-        det = first.reduce((s, v, k) => s + v * cols[0][k], 0);
-      if (Math.abs(det) < 1e-8)
-        throw new Error("Neutral leg Jacobian is singular");
-      return [first, cross(cols[2], cols[0]), cross(cols[0], cols[1])].map(
-        (row) => row.map((v) => v / det),
+    this.patchIds = this.sources.map((s) => {
+      const id = mj.mj_name2id(
+        engine.model,
+        mj.mjtObj.mjOBJ_BODY.value,
+        "patch_" + s.id,
       );
+      return engine.model.body_mocapid[id];
     });
     engine.beforeStep = (dt) => this.step(dt);
     engine.selected = 4;
@@ -131,6 +83,7 @@ export class Terrarium {
     this.engine.reset();
     this.circuit.reset();
     this.phase = 0;
+    this.amplitude = 0;
     this.cycles = 0;
     this.lastPulse = -1;
     this.period = 0.12;
@@ -147,6 +100,7 @@ export class Terrarium {
     this.contacts.fill(false);
     this.odor = [0, 0];
     this.aversion = [0, 0];
+    this.syncPatches();
   }
   ablate(active: boolean) {
     this.circuit.silenced.clear();
@@ -171,6 +125,7 @@ export class Terrarium {
   ) {
     const source = this.sources.find((s) => s.id === id);
     if (!source) throw new Error("Unknown stimulus");
+    const before = { ...source };
     for (const k of ["x", "y", "strength"] as const)
       if (patch[k] !== undefined && !Number.isFinite(patch[k]))
         throw new Error("Stimuli must be finite");
@@ -179,6 +134,36 @@ export class Terrarium {
     if (patch.strength !== undefined)
       source.strength = Math.max(0, Math.min(5, patch.strength));
     if (patch.enabled !== undefined) source.enabled = Boolean(patch.enabled);
+    this.syncPatches();
+    // Moving a prop must not teleport a solid into the animal. Validate the actual
+    // collision geometry and restore the previous placement if there is overlap.
+    const mj = this.engine.mujoco,
+      d = this.engine.data;
+    const geom = mj.mj_name2id(
+      this.engine.model,
+      mj.mjtObj.mjOBJ_GEOM.value,
+      "prop_" + id,
+    );
+    for (let i = 0; i < d.ncon; i++) {
+      const c = d.contact.get(i)!;
+      if (c.dist < 0 && (c.geom1 === geom || c.geom2 === geom)) {
+        Object.assign(source, before);
+        this.syncPatches();
+        throw new Error(
+          "This patch overlaps the fly. Choose a clear position.",
+        );
+      }
+    }
+  }
+  private syncPatches() {
+    this.sources.forEach((s, i) => {
+      const p = this.patchIds[i] * 3;
+      this.engine.data.mocap_pos.set(
+        [s.x, s.y, s.enabled ? s.radius * 0.1 : -10],
+        p,
+      );
+    });
+    this.engine.mujoco.mj_forward(this.engine.model, this.engine.data);
   }
   step(dt: number) {
     const { data: d } = this.engine,
@@ -223,9 +208,9 @@ export class Terrarium {
     }
     const steering = this.sensory
       ? Math.max(
-          -0.65,
+          -0.25,
           Math.min(
-            0.65,
+            0.25,
             3 *
               (this.odor[0] -
                 this.odor[1] -
@@ -249,62 +234,59 @@ export class Terrarium {
     );
     this.travel += Math.hypot(x - this.center[0], y - this.center[1]);
     this.center = [x, y];
-    if (this.passive) d.ctrl.fill(0);
-    for (let i = 0; i < 6; i++) {
-      const sid = this.footIds[i],
-        foot = Array.from(d.site_xpos.slice(3 * sid, 3 * sid + 3)) as number[];
-      this.contacts[i] = foot[2] < 0.08;
-      if (this.passive) continue;
-      if (!this.bridge) {
-        const modules = [
-          "coxa stance",
-          "coxa swing",
-          "femur/tr flex",
-          "femur/tr extend",
-          "tibia extend",
-          "tibia flex",
-        ];
-        for (let j = 0; j < 6; j++)
-          d.ctrl[i * 6 + j] = Math.min(
-            1,
-            this.circuit.pool(legs[i], modules[j]) / 40,
-          );
-        continue;
-      }
-      const target = this.bases[i].slice(),
-        p = (this.phase + ([0, 2, 4].includes(i) ? 0 : 0.5)) % 1;
-      const stride = 0.4 * (1 + (i < 3 ? -steering : steering));
-      if (alive) {
-        if (p < 0.6) target[0] += stride * (0.5 - p / 0.6);
-        else {
-          target[0] += stride * (-0.5 + (p - 0.6) / 0.4);
-          target[2] += 0.3 * Math.sin((Math.PI * (p - 0.6)) / 0.4);
+    // Published single-step shapes; invented six-leg timing and ideal feedback remain explicit.
+    // A stopped neural signal smoothly returns to stance and cannot advance the clock.
+    this.amplitude = Math.max(
+      0,
+      Math.min(1, this.amplitude + ((alive ? 1 : -1) * dt) / 0.15),
+    );
+    d.ctrl.fill(0);
+    if (!this.passive)
+      for (let leg = 0; leg < 6; leg++) {
+        const phase = this.phase + ([0, 2, 4].includes(leg) ? 0 : 0.5);
+        const p = ((phase % 1) + 1) % 1;
+        const magnitude =
+          this.amplitude * (1 + (leg < 3 ? -steering : steering));
+        if (this.bridge) {
+          // Native contact-only adhesion, as in NMF. No force is applied to airborne feet.
+          d.ctrl[84 + leg] = !alive || p > this.steps.stanceStart[leg] ? 1 : 0;
+          for (let j = 0; j < 7; j++) {
+            const q = leg * 7 + j,
+              sample = sampleStep(this.steps, q, phase);
+            const target =
+              this.steps.neutral[q] +
+              magnitude * (sample.angle - this.steps.neutral[q]);
+            const velocity = alive
+              ? (magnitude * sample.derivative) / (2 * this.period)
+              : 0;
+            const torque =
+              this.jointKp * (target - d.qpos[this.steps.qids[q]]) +
+              this.jointKd * (velocity - d.qvel[this.steps.vids[q]]);
+            d.ctrl[q * 2] = Math.min(0.95, Math.max(0, torque / 9));
+            d.ctrl[q * 2 + 1] = Math.min(0.95, Math.max(0, -torque / 9));
+          }
+        } else {
+          // Limited pooled-MN hypothesis only on principal pitch axes. No assignments
+          // are invented for roll/yaw/tarsus axes without an identified muscle bridge.
+          for (const [joint, positive, negative] of [
+            [1, "coxa stance", "coxa swing"],
+            [3, "femur/tr flex", "femur/tr extend"],
+            [5, "tibia extend", "tibia flex"],
+          ] as const) {
+            const a = (leg * 7 + joint) * 2;
+            d.ctrl[a] = Math.min(
+              1,
+              this.circuit.pool(legs[leg], positive) / 40,
+            );
+            d.ctrl[a + 1] = Math.min(
+              1,
+              this.circuit.pool(legs[leg], negative) / 40,
+            );
+          }
         }
       }
-      const delta = target.map((v, k) => v - this.bases[i][k]);
-      const desiredQ = this.inverseJac[i].map(
-        (row, j) =>
-          this.engine.manifest.initialQpos![7 + i * 3 + j] +
-          row.reduce((a, v, k) => a + v * delta[k], 0),
-      );
-      for (let j = 0; j < 3; j++) {
-        const torque =
-            50 * (desiredQ[j] - d.qpos[7 + i * 3 + j]) -
-            0.12 * d.qvel[6 + i * 3 + j],
-          u = Math.max(-0.95, Math.min(0.95, torque / 9)),
-          a = i * 6 + j * 2;
-        // H-posture is an explicit experimental recruitment path beside observed MN drive.
-        const module =
-          j === 0 ? "coxa stance" : j === 1 ? "femur/tr flex" : "tibia extend";
-        const observed = Math.min(
-          0.04,
-          this.circuit.pool(legs[i], module) / 200,
-        );
-        d.ctrl[a] = Math.min(1, Math.max(u, 0) + 0.015 + observed);
-        d.ctrl[a + 1] = Math.max(-u, 0) + 0.015;
-      }
-    }
     if (Math.floor(d.time / 0.01) > Math.floor((d.time - dt) / 0.01)) {
+      this.contacts = contactMetrics(this.engine).feet;
       this.trace.push({
         time: d.time,
         signal: this.previous,
@@ -317,7 +299,12 @@ export class Terrarium {
     }
   }
   observation() {
+    const contact = contactMetrics(this.engine);
+    this.contacts = contact.feet;
     return {
+      contact,
+      surface: surfaceBounds(this.engine),
+      adhesionCommands: Array.from(this.engine.data.ctrl.slice(84)),
       time: this.engine.data.time,
       up: this.engine.data.xmat[this.body * 9 + 8],
       physicalContacts: this.engine.data.ncon,
@@ -344,19 +331,20 @@ export class Terrarium {
   }
   export() {
     return {
-      schema: 2,
+      schema: 3,
       scope:
         "Experimental neural-timing / muscle-group terrarium; not a reconstructed whole fly",
       model: this.engine.manifest,
       network: this.circuit.wiring,
       environment: this.sources,
+      processedStepSource: this.steps.sourceSha256,
       parameters: {
         drive: this.circuit.drive,
-        jointKp: 50,
-        jointKd: 0.12,
-        stride: 0.4,
-        lift: 0.3,
-        stanceFraction: 0.6,
+        jointKp: this.jointKp,
+        jointKd: this.jointKd,
+        stepShape: "NMF v2 processed single step",
+        interLegPhases: [0, 0.5, 0, 0.5, 0, 0.5],
+        adhesionGain: 40,
         muscleRateScale: 40,
       },
       observation: this.observation(),

@@ -1,208 +1,140 @@
 import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import type { Terrarium } from "./terrarium";
 
-/** Original procedural habitat. Banana scale is illustrative, never an anatomical measurement. */
+/** All solid scenery shares dimensions and transforms with the physics manifest. */
 export function addHabitat(scene: THREE.Scene, world: Terrarium) {
+  const spec = world.engine.manifest.environment!;
   const objects = new Map<string, THREE.Group>();
-  const material = (color: number, roughness = 0.85) =>
-    new THREE.MeshStandardMaterial({ color, roughness });
+  const material = (color: number) =>
+    new THREE.MeshStandardMaterial({ color, roughness: 0.83 });
   const floor = new THREE.Mesh(
-    new THREE.BoxGeometry(24, 24, 0.18),
+    new THREE.BoxGeometry(spec.halfWidth * 2, spec.halfWidth * 2, 0.18),
     material(0xc8c3a1),
   );
-  floor.position.z = -0.13;
+  floor.position.z = spec.floorZ - 0.09;
   floor.receiveShadow = true;
   scene.add(floor);
+  // Flat pigment speckles, not unmodelled solid pebbles above the contact plane.
   let seed = 1462;
   const random = () =>
     (seed = (1664525 * seed + 1013904223) >>> 0) / 4294967296;
   const grit = new THREE.InstancedMesh(
-    new THREE.IcosahedronGeometry(0.018, 0),
-    material(0x97886b),
-    800,
+    new THREE.CircleGeometry(0.015, 5),
+    material(0xaaa080),
+    700,
   );
   const transform = new THREE.Object3D();
-  for (let i = 0; i < 800; i++) {
-    transform.position.set((random() - 0.5) * 24, (random() - 0.5) * 24, 0.005);
+  for (let i = 0; i < 700; i++) {
+    transform.position.set(
+      (random() - 0.5) * 24,
+      (random() - 0.5) * 24,
+      0.0005,
+    );
     transform.scale.setScalar(0.6 + random() * 1.6);
     transform.updateMatrix();
     grit.setMatrixAt(i, transform.matrix);
   }
   scene.add(grit);
-  const edge = new THREE.LineSegments(
-    new THREE.EdgesGeometry(new THREE.BoxGeometry(24, 24, 2)),
-    new THREE.LineBasicMaterial({
-      color: 0x89927c,
-      transparent: true,
-      opacity: 0.35,
-    }),
-  );
-  edge.position.z = 0.95;
-  scene.add(edge);
-  const foodMat = material(0xcf994b),
-    repellentMat = material(0x9257a7),
-    waterMat = new THREE.MeshPhysicalMaterial({
-      color: 0x97c7d1,
-      roughness: 0.1,
-      transparent: true,
-      opacity: 0.7,
-      metalness: 0.1,
-    });
-  for (const s of world.sources) {
-    const g = new THREE.Group();
-    const droplet = new THREE.Mesh(
-      new THREE.SphereGeometry(s.radius, 28, 18),
-      s.kind === "food"
-        ? foodMat
-        : s.kind === "repellent"
-          ? repellentMat
-          : waterMat,
-    );
-    droplet.scale.z = 0.28;
-    droplet.position.z = 0.08;
-    g.add(droplet);
-    const halo = new THREE.Mesh(
-      new THREE.RingGeometry(s.radius + 0.06, s.radius + 0.09, 48),
-      new THREE.MeshBasicMaterial({
-        color:
-          s.kind === "food"
-            ? 0xab7835
-            : s.kind === "repellent"
-              ? 0x9556a2
-              : 0x6a9ca4,
+  for (const [x, y, sx, sy] of [
+    [0, 12, 12, 0.1],
+    [0, -12, 12, 0.1],
+    [12, 0, 0.1, 12],
+    [-12, 0, 0.1, 12],
+  ]) {
+    const geometry = new THREE.BoxGeometry(sx * 2, sy * 2, spec.wallHeight);
+    const wall = new THREE.Mesh(
+      geometry,
+      new THREE.MeshPhysicalMaterial({
+        color: 0xc5d4c1,
+        transparent: true,
+        opacity: 0.045,
+        roughness: 0.1,
+        depthWrite: false,
         side: THREE.DoubleSide,
       }),
     );
-    halo.position.z = 0.014;
+    wall.position.set(x, y, spec.wallHeight / 2);
+    scene.add(wall);
+    const edge = new THREE.LineSegments(
+      new THREE.EdgesGeometry(geometry),
+      new THREE.LineBasicMaterial({
+        color: 0x89927c,
+        transparent: true,
+        opacity: 0.25,
+      }),
+    );
+    edge.position.copy(wall.position);
+    scene.add(edge);
+  }
+  for (const s of world.sources) {
+    const g = new THREE.Group();
+    const color =
+      s.kind === "food"
+        ? 0xcf994b
+        : s.kind === "repellent"
+          ? 0x9257a7
+          : 0x97c7d1;
+    const patch = new THREE.Mesh(
+      new THREE.SphereGeometry(1, 32, 20),
+      new THREE.MeshStandardMaterial({
+        color,
+        roughness: s.kind === "water" ? 0.18 : 0.7,
+        metalness: 0,
+      }),
+    );
+    patch.scale.set(s.radius, s.radius, s.radius * 0.1);
+    patch.position.z = s.radius * 0.1;
+    patch.castShadow = true;
+    patch.receiveShadow = true;
+    g.add(patch);
+    const halo = new THREE.Mesh(
+      new THREE.RingGeometry(s.radius + 0.06, s.radius + 0.085, 48),
+      new THREE.MeshBasicMaterial({ color, side: THREE.DoubleSide }),
+    );
+    halo.position.z = 0.003;
     g.add(halo);
-    if (s.kind === "food")
-      for (let i = 0; i < 18; i++) {
-        const grain = new THREE.Mesh(
-          new THREE.SphereGeometry(0.035, 6, 5),
-          material(0xf1d999),
-        );
-        grain.position.set(
-          (random() - 0.5) * 0.8,
-          (random() - 0.5) * 0.8,
-          0.19,
-        );
-        g.add(grain);
-      }
     scene.add(g);
     objects.set(s.id, g);
   }
   const banana = new THREE.Group();
-  banana.position.set(-3.5, -4, 0.3);
-  banana.rotation.z = -0.25;
+  banana.position.fromArray(spec.banana.position);
+  banana.rotation.z = spec.banana.rotationZ;
   scene.add(banana);
-  const bananaCurve = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(-3, 0, 0.2),
-    new THREE.Vector3(-1.8, 0, 0.6),
-    new THREE.Vector3(0, 0, 0.85),
-    new THREE.Vector3(1.4, 0, 0.5),
-    new THREE.Vector3(2, 0, 0.1),
-  ]);
-  const flesh = new THREE.Mesh(
-    new THREE.TubeGeometry(bananaCurve, 40, 0.48, 14, false),
-    material(0xf6e6ae, 0.68),
-  );
-  banana.add(flesh);
-  const skinCurve = new THREE.CatmullRomCurve3(
-    Array.from({ length: 12 }, (_, i) =>
-      bananaCurve.getPoint(0.52 + (i / 11) * 0.48),
-    ),
-  );
-  banana.add(
-    new THREE.Mesh(
-      new THREE.TubeGeometry(skinCurve, 20, 0.495, 12, false),
-      material(0xe4bb30),
-    ),
-  );
-  // Three broad peel ribbons curl away from the exposed fruit, with darker outer skin.
-  for (let k = 0; k < 3; k++) {
-    const verts: number[] = [],
-      indices: number[] = [],
-      angle = (k - 1) * 1.9;
-    for (let j = 0; j <= 32; j++) {
-      const t = j / 32,
-        x = 1.8 - 5.3 * t,
-        y = Math.sin(angle) * Math.sin((Math.PI * t) / 2) * 2,
-        z = 0.25 + (0.8 * Math.sin(Math.PI * t) - 0.25 * t) * Math.cos(angle);
-      const width = 0.36 * Math.sin(Math.PI * (0.08 + 0.9 * t));
-      verts.push(
-        x,
-        y - width,
-        z,
-        x,
-        y + width,
-        z + 0.06 * Math.sin(Math.PI * t),
-      );
-      if (j < 32) {
-        const n = j * 2;
-        indices.push(n, n + 1, n + 2, n + 1, n + 3, n + 2);
+  let disposed = false;
+  const ready = new GLTFLoader()
+    .loadAsync("/props/banana/" + spec.banana.visual)
+    .then((gltf) => {
+      if (disposed) {
+        gltf.scene.traverse((o) => {
+          if (o instanceof THREE.Mesh) {
+            o.geometry.dispose();
+            const mats = Array.isArray(o.material) ? o.material : [o.material];
+            mats.forEach((m) => m.dispose());
+          }
+        });
+        return;
       }
-    }
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute("position", new THREE.Float32BufferAttribute(verts, 3));
-    geo.setIndex(indices);
-    geo.computeVertexNormals();
-    const peel = new THREE.Mesh(
-      geo,
-      new THREE.MeshStandardMaterial({
-        color: 0xe1be37,
-        roughness: 0.82,
-        side: THREE.DoubleSide,
-      }),
-    );
-    banana.add(peel);
-    const rim = new THREE.Line(
-      new THREE.BufferGeometry().setFromPoints(
-        Array.from(
-          { length: 33 },
-          (_, j) =>
-            new THREE.Vector3(
-              verts[j * 6],
-              verts[j * 6 + 1],
-              verts[j * 6 + 2] - 0.014,
-            ),
-        ),
-      ),
-      new THREE.LineBasicMaterial({ color: 0x9b7930 }),
-    );
-    banana.add(rim);
-  }
-  const stem = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.12, 0.18, 0.65, 8),
-    material(0x7d6330),
-  );
-  stem.rotation.z = -Math.PI / 2;
-  stem.rotation.x = Math.PI / 2;
-  stem.position.set(2.2, 0, 0.1);
-  banana.add(stem);
-  for (let i = 0; i < 32; i++) {
-    const spot = new THREE.Mesh(
-      new THREE.SphereGeometry(0.025 + random() * 0.035, 5, 4),
-      material(0x85682f),
-    );
-    const t = random();
-    spot.position.set(
-      -3 + 5 * t,
-      (random() - 0.5) * 0.4,
-      0.25 + 0.6 * Math.sin(t * Math.PI),
-    );
-    banana.add(spot);
-  }
-  banana.traverse((o) => {
-    if (o instanceof THREE.Mesh) {
-      o.castShadow = true;
-      o.receiveShadow = true;
-    }
-  });
-  return () => {
-    for (const s of world.sources) {
-      const g = objects.get(s.id)!;
-      g.position.set(s.x, s.y, 0);
-      g.visible = s.enabled;
-    }
+      // Export is explicitly Z-up; no implicit glTF axis conversion or placement offset.
+      gltf.scene.traverse((o) => {
+        if (o instanceof THREE.Mesh) {
+          o.castShadow = true;
+          o.receiveShadow = true;
+        }
+      });
+      banana.add(gltf.scene);
+    });
+  return {
+    ready,
+    update: () => {
+      for (const s of world.sources) {
+        const g = objects.get(s.id)!;
+        g.position.set(s.x, s.y, 0);
+        g.visible = s.enabled;
+      }
+    },
+    dispose: () => {
+      disposed = true;
+    },
   };
 }

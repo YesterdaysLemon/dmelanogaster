@@ -1,39 +1,48 @@
 import wasmUrl from "@mujoco/mujoco/mujoco.wasm?url";
-import { createEngine, type FlyEngine, type Manifest } from "./engine";
+import {
+  createEngine,
+  modelAssetPath,
+  type FlyEngine,
+  type Manifest,
+} from "./engine";
 import { Terrarium, legs } from "./terrarium";
 import { FlyViewer } from "./viewer";
+import type { RecordedSteps } from "./steps";
+import { contactMetrics } from "./contact";
 import type { Wiring } from "./circuit";
 
 export const terrariumMarkup = `
 <section id="terrarium" class="page" hidden>
- <div class="page-heading"><div><div class="eyebrow"><span class="status-dot"></span> V0.2 / FIRST CIRCUIT → BODY EXPERIMENT</div><h1>Small steps. Open questions.</h1><p>A living experiment in rebuilding a fly, one evidenced connection at a time.</p></div><div class="specimen-stamp">DROSOPHILA MELANOGASTER<br><b>Six legs · muscle-driven physics</b></div></div>
+ <div class="page-heading"><div><div class="eyebrow"><span class="status-dot"></span> V0.4 / ANATOMY IN CONTACT</div><h1>A little more fly.</h1><p>A living experiment in rebuilding a fly, one evidenced connection at a time.</p></div><div class="specimen-stamp">DROSOPHILA MELANOGASTER<br><b>Six legs · muscle-driven physics</b></div></div>
  <div class="habitat-layout"><div class="viewport-panel habitat-panel">
   <div class="viewport-top"><span class="tiny-label">01 / THE TERRARIUM</span><span id="world-clock" class="quiet">Preparing…</span></div>
   <div id="habitat-view"><div id="world-loading" role="status"><span class="loader"></span><b>Connecting the specimen</b><span>Anatomy, MANC wiring, muscle mechanics…</span></div><div class="habitat-legend"><span><i class="food-dot"></i> Yeast / food</span><span><i class="odor-dot"></i> Geosmin / repellent</span><span><i class="water-dot"></i> Water</span></div></div>
-  <div class="view-tools"><button id="world-focus" class="chip" disabled>Find the fly</button><button id="world-follow" class="chip" aria-pressed="false" disabled>Follow fly</button><button id="world-xray" class="chip" aria-pressed="false" disabled>See through cuticle</button><span class="quiet">Drag to orbit · scroll to zoom</span></div>
-  <div class="scope-note"><span class="scope-icon">↳</span><div><b>Observed wiring. Experimental walking bridge.</b> The circuit supplies rhythm; assumed coordination and recruitment rules bridge the missing biology. Wings and organs are not simulated.</div><a href="#wiring">Inspect every layer ↗</a></div>
+  <div class="view-tools"><button id="world-focus" class="chip" disabled>Find the fly</button><button id="world-follow" class="chip" aria-pressed="false" disabled>Follow fly</button><button id="world-xray" class="chip" aria-pressed="false" disabled>See through cuticle</button><button id="world-contacts" class="chip" aria-pressed="false" disabled>Contact shapes</button><span class="quiet">Drag to orbit · scroll to zoom</span></div>
+  <div class="scope-note"><span class="scope-icon">↳</span><div><b>Observed wiring. Experimental walking bridge.</b> The circuit clocks published NMF step shapes through 84 hypothetical muscles, 24 compliant toe joints and six contact-dependent pads. Coordination and recruitment remain hypotheses.</div><a href="#wiring">Inspect every layer ↗</a></div>
  </div><aside class="inspector habitat-inspector"><div class="tiny-label">02 / LIVE EXPERIMENT</div><h2>Let the circuit move.</h2><p class="inspector-description">No learned policy. Native muscle activation and force act on a free body.</p>
  <div class="action-row"><button id="world-play" class="primary" disabled>Start walking <span>↗</span></button><button id="world-reset" class="secondary" disabled>Reset</button></div>
- <div class="world-values"><div><span>Travel</span><b id="world-travel">0.00 mm</b></div><div><span>Neural cycles</span><b id="world-cycles">0</b></div></div>
- <div class="leg-grid" id="leg-grid">${legs.map((l) => `<div><span>${l}</span><i id="foot-${l}"></i><b id="rate-${l}">0.0</b></div>`).join("")}</div><p class="microcopy">Foot contact proxy · E2 model rate in Hz. Contact feedback is not yet reconstructed.</p>
- <div class="section-rule"></div><label class="experiment-toggle"><input id="bridge-toggle" type="checkbox" checked disabled><span>Experimental walking bridge<small>Assumed timing, posture and motor recruitment</small></span></label>
+ <div class="world-values"><div><span>Displacement</span><b id="world-travel">0.00 mm</b></div><div><span>Neural cycles</span><b id="world-cycles">0</b></div></div>
+ <div class="leg-grid" id="leg-grid">${legs.map((l) => `<div><span>${l}</span><i id="foot-${l}"></i><b id="rate-${l}">0.0</b></div>`).join("")}</div><p class="microcopy">Actual tarsal contact · E2 model rate in Hz. Contact geometry is anatomical; sensory feedback is still a hypothesis.</p>
+ <p id="contact-reading" class="microcopy"></p><div class="section-rule"></div><label class="experiment-toggle"><input id="bridge-toggle" type="checkbox" checked disabled><span>Experimental walking bridge<small>Assumed timing, posture and motor recruitment</small></span></label>
  <label class="experiment-toggle"><input id="ablate-toggle" type="checkbox" disabled><span>Silence candidate CPG<small>Suppress all six IN17A001 cells</small></span></label>
  <label class="experiment-toggle"><input id="sensory-toggle" type="checkbox" checked disabled><span>Experimental sensory steering<small>Idealized antenna signals → stride asymmetry</small></span></label>
- <label class="experiment-toggle"><input id="passive-toggle" type="checkbox" disabled><span>All muscles passive<small>Remove excitation; keep gravity and contact</small></span></label>
+ <label class="experiment-toggle"><input id="passive-toggle" type="checkbox" disabled><span>All muscles passive<small>Remove muscle and pad commands; keep contact</small></span></label>
  <p id="world-mode" class="mode-note">Bridge enabled · hypothesis layer visible</p>
  <label class="speed-label">Simulation speed <select id="world-speed"><option value=".1">0.1×</option><option value=".25" selected>0.25×</option><option value=".5">0.5×</option></select></label>
  </aside></div>
- <div class="habitat-bottom"><section class="habitat-stimuli"><div class="tiny-label">03 / CHANGE THE WORLD</div><h3>Something sweet. Something suspicious.</h3><p>Move the food, switch off the repellent, and compare the two antenna signals. Odor fields and concentrations are uncalibrated model proxies.</p><div class="action-row"><button id="food-ahead" class="secondary" disabled>Place food ahead</button><button id="repellent-toggle" class="secondary" aria-pressed="true" disabled>Repellent: on</button><button id="world-export" class="text-button" disabled>Export state & evidence ↓</button></div><p id="odor-reading" class="microcopy">Antenna signals will appear here.</p><p class="microcopy">The half-open banana peel is original procedural scenery. Water is an environment object; drinking and digestion remain open.</p></section><section class="neural-chart"><div class="tiny-label">04 / A RHYTHM FROM CONNECTIVITY</div><h3>INXXX466 · left foreleg</h3><canvas id="neural-trace" aria-label="Model firing-rate trace for MANC neuron 11751"></canvas><p class="microcopy">MANC body ID 11751 · model Hz · last 3 simulated seconds<br><a href="#literature/walking-cpg">Candidate CPG source & limitations ↗</a></p></section></div>
+ <div class="habitat-bottom"><section class="habitat-stimuli"><div class="tiny-label">03 / CHANGE THE WORLD</div><h3>Something sweet. Something suspicious.</h3><p>Move the food, switch off the repellent, and compare the two antenna signals. Odor fields and concentrations are uncalibrated model proxies.</p><div class="action-row"><button id="food-ahead" class="secondary" disabled>Place food ahead</button><button id="repellent-toggle" class="secondary" aria-pressed="true" disabled>Repellent: on</button><button id="world-export" class="text-button" disabled>Export state & evidence ↓</button></div><p id="odor-reading" class="microcopy">Antenna signals will appear here.</p><p class="microcopy">The banana is an original Blender model with 94 contact pieces and an open peel. Its scale is illustrative. Colored substrate patches are solid proxies; fluids, drinking and digestion remain open. <a href="#literature/nmf2-contact">Contact methods & limitations ↗</a></p></section><section class="neural-chart"><div class="tiny-label">04 / A RHYTHM FROM CONNECTIVITY</div><h3>INXXX466 · left foreleg</h3><canvas id="neural-trace" aria-label="Model firing-rate trace for MANC neuron 11751"></canvas><p class="microcopy">MANC body ID 11751 · model Hz · last 3 simulated seconds<br><a href="#literature/walking-cpg">Candidate CPG source & limitations ↗</a></p></section></div>
 </section>
 <section id="wiring" class="page" hidden><div class="page-heading"><div><div class="eyebrow">THE WIRING LEDGER</div><h1>What connects to what?</h1><p>Keep the measurements. Name the assumptions. Make both inspectable.</p></div></div>
  <div class="wiring-levels"><article><span class="evidence-tag observed">OBSERVED</span><h3 id="wiring-count">MANC graph slice</h3><p>Identified cells and EM synapse counts. An anatomical subset of one adult male nerve cord.</p></article><article><span class="evidence-tag inferred">INFERRED</span><h3>Rates, signs, dynamics</h3><p>Predicted transmitters and assumed electrical gains. Muscle module assignments include homology-based matches.</p></article><article><span class="evidence-tag experimental">EXPERIMENTAL</span><h3>The walking bridge</h3><p>Shared timing, ideal proprioception, recruitment, muscle moment arms and odor steering. Switchable in the terrarium.</p></article></div>
- <div class="circuit-strip"><span>DNg100<small>Descending drive</small></span><b>→</b><span>IN17A001 ↔ INXXX466<small>IN16B036 inhibitory feedback</small></span><b>→</b><span>Leg motor pools<small>Observed partial pathways</small></span><b>⇢</b><span class="hypothesis-node">H-posture / H-coordination<small>Experimental bridge</small></span><b>⇢</b><span>36 muscle groups<small>Inferred reduced mechanics</small></span></div>
+ <div class="circuit-strip"><span>DNg100<small>Descending drive</small></span><b>→</b><span>IN17A001 ↔ INXXX466<small>IN16B036 inhibitory feedback</small></span><b>→</b><span>Leg motor pools<small>Observed partial pathways</small></span><b>⇢</b><span class="hypothesis-node">H-posture / H-coordination<small>Experimental bridge</small></span><b>⇢</b><span>84 muscle actuators<small>Hypothetical antagonists</small></span></div>
  <p class="atlas-note">This is a selected network, not the whole VNC or brain. The bridge still supplies most motor recruitment. Disabling it exposes the missing motor circuitry. Anatomical counts are unchanged; model weights use a separately declared gain.</p>
  <div class="wiring-browser"><aside><label class="input-label" for="neuron-search">FIND A CELL</label><input id="neuron-search" type="search" placeholder="Name, body ID, leg, muscle module…"><select id="neuron-list" size="12" aria-label="Matching neurons"></select></aside><article id="neuron-detail"><p>Loading the public wiring dataset…</p></article></div>
  <details class="wiring-assumptions" open><summary>Hypotheses currently in the control path</summary><table><thead><tr><th>Stable ID</th><th>Connection / parameter</th><th>Evidence boundary</th></tr></thead><tbody>
  <tr><td>H-coordination</td><td>LF E2 peaks → shared six-leg timing; two neural cycles per stride</td><td>Designed hypothesis. No claim that this cell coordinates all legs in vivo.</td></tr>
  <tr><td>H-posture</td><td>Ideal joint feedback → antagonistic recruitment</td><td>Engineering closure of the missing reflex/NMJ pathways. No identified sensory neuron mapping.</td></tr>
- <tr><td>H-muscle</td><td>36 groups, constant 0.05 mm moment arms; Hill dynamics</td><td>Reduced mechanics; attachments, strengths and time constants are not reconstructed measurements.</td></tr>
+ <tr><td>H-muscle</td><td>84 antagonists, constant 0.05 mm moment arms; Hill dynamics</td><td>42 active anatomical axes; attachments, strengths and time constants are not reconstructed measurements.</td></tr>
+ <tr><td>H-contact</td><td>24 compliant toe hinges, six adhesive pads, convex anatomical contact</td><td>NMF mechanics precedent; stiffness, adhesion and friction are model parameters. Same-leg and body-leg self-contact excluded.</td></tr>
+ <tr><td>H-step</td><td>NMF processed single-step shapes → muscle targets</td><td>Published smoothing, mirroring and loop closure; assumed tripod phasing. Not a raw six-leg recording.</td></tr>
  <tr><td>H-odor</td><td>Bilateral scalar fields → stride asymmetry</td><td>Behavior-inspired steering; receptor and descending pathways remain unimplemented.</td></tr>
  <tr><td>U-navigation</td><td>hΔ synaptic path-integration hypothesis</td><td>Tracked from the supplied reference. Not implemented or treated as proven plasticity.</td></tr>
  </tbody></table></details><p class="atlas-note"><a href="/data/manc-walking.json" target="_blank" rel="noopener">Download the complete node/edge ledger ↗</a> · <a href="/model/walking-manifest.json" target="_blank" rel="noopener">Derived body manifest ↗</a> · <a href="https://github.com/YesterdaysLemon/dmelanogaster/blob/main/docs/wiring.md" target="_blank" rel="noopener">Methods, assumptions and assays ↗</a></p>
@@ -91,16 +100,22 @@ export function initTerrarium() {
   const sync = () => {
     if (!e || !world) return;
     $("world-clock").textContent = `${e.data.time.toFixed(2)} s simulated`;
-    $("world-travel").textContent = world.travel.toFixed(2) + " mm";
+    $("world-travel").textContent =
+      Math.hypot(e.data.qpos[0], e.data.qpos[1]).toFixed(2) + " mm";
     $("world-cycles").textContent = String(world.cycles);
+    const contact = contactMetrics(e);
+    $("contact-reading").textContent =
+      `${contact.environmentContacts} environment contact points · current solver overlap ${(contact.maxPenetrationMM * 1000).toFixed(1)} µm`;
     $("world-play").textContent = e.running ? "Ⅱ Pause" : "▶ Run";
     $("world-mode").textContent = world.passive
       ? "Passive control · all excitation removed"
-      : !world.bridge
-        ? "Observed network only · missing recruitment remains visible"
-        : world.circuit.silenced.size
-          ? "Candidate CPG silenced · posture bridge remains active"
-          : "Walking bridge enabled · hypotheses remain explicit";
+      : 1 - 2 * (e.data.qpos[4] ** 2 + e.data.qpos[5] ** 2) < 0
+        ? "Fly overturned · self-righting is not implemented. Reset to continue."
+        : !world.bridge
+          ? "Observed network only · missing recruitment remains visible"
+          : world.circuit.silenced.size
+            ? "Candidate CPG silenced · posture bridge remains active"
+            : "Walking bridge enabled · hypotheses remain explicit";
     legs.forEach((l, i) => {
       const idx = wiring!.nodes.findIndex(
         (n) => n.name === "INXXX466" && n.leg === l,
@@ -187,15 +202,25 @@ export function initTerrarium() {
     $("world-xray").classList.toggle("active", active);
     $("world-xray").setAttribute("aria-pressed", String(active));
   };
+  $("world-contacts").onclick = () => {
+    const active = viewer?.toggleContacts() || false;
+    $("world-contacts").classList.toggle("active", active);
+    $("world-contacts").setAttribute("aria-pressed", String(active));
+  };
   $("food-ahead").onclick = () => {
     if (e && world) {
       const q = e.data.qpos;
       const dx = 1 - 2 * (q[5] * q[5] + q[6] * q[6]),
         dy = 2 * (q[4] * q[5] + q[3] * q[6]);
-      world.setSource("yeast", {
-        x: q[0] + 2 * dx - 0.5 * dy,
-        y: q[1] + 2 * dy + 0.5 * dx,
-      });
+      try {
+        world.setSource("yeast", {
+          x: q[0] + 2 * dx - 0.5 * dy,
+          y: q[1] + 2 * dy + 0.5 * dx,
+        });
+      } catch (error) {
+        $("world-mode").textContent = (error as Error).message;
+        return;
+      }
       viewer?.update();
       sync();
     }
@@ -203,7 +228,12 @@ export function initTerrarium() {
   $("repellent-toggle").onclick = () => {
     if (world) {
       const s = world.sources.find((s) => s.id === "geosmin")!;
-      world.setSource(s.id, { enabled: !s.enabled });
+      try {
+        world.setSource(s.id, { enabled: !s.enabled });
+      } catch (error) {
+        $("world-mode").textContent = (error as Error).message;
+        return;
+      }
       $("repellent-toggle").textContent =
         "Repellent: " + (s.enabled ? "on" : "off");
       $("repellent-toggle").setAttribute("aria-pressed", String(s.enabled));
@@ -228,7 +258,7 @@ export function initTerrarium() {
     if (started) return;
     started = true;
     try {
-      const [manifest, w, wasm] = await Promise.all([
+      const [manifest, w, wasm, steps] = await Promise.all([
         fetch("/model/walking-manifest.json").then((r) => {
           if (!r.ok) throw Error("Body manifest unavailable");
           return r.json() as Promise<Manifest>;
@@ -241,6 +271,10 @@ export function initTerrarium() {
           if (!r.ok) throw Error("Physics engine unavailable");
           return new Uint8Array(await r.arrayBuffer());
         }),
+        fetch("/data/nmf-steps.json").then((r) => {
+          if (!r.ok) throw Error("Recorded steps unavailable");
+          return r.json() as Promise<RecordedSteps>;
+        }),
       ]);
       wiring = w;
       $("wiring-count").textContent =
@@ -249,14 +283,15 @@ export function initTerrarium() {
       e = await createEngine(
         manifest,
         async (path) => {
-          const r = await fetch("/model/" + path);
+          const r = await fetch(modelAssetPath(manifest, path));
           if (!r.ok) throw Error("Anatomy unavailable: " + path);
           return new Uint8Array(await r.arrayBuffer());
         },
         wasm,
       );
-      world = new Terrarium(e, w);
+      world = new Terrarium(e, w, steps);
       viewer = new FlyViewer($("habitat-view"), e, world);
+      await viewer.ready;
       $("world-loading").remove();
       document
         .querySelectorAll<HTMLButtonElement | HTMLInputElement>(
@@ -265,7 +300,7 @@ export function initTerrarium() {
         .forEach((el) => (el.disabled = false));
       // Environment actions manipulate stimuli, never a trained motor policy.
       (window as unknown as { flyLab: unknown }).flyLab = {
-        version: 2,
+        version: 3,
         observe: () => world!.observation(),
         reset: () => {
           reset();

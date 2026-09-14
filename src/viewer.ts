@@ -3,6 +3,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import type { FlyEngine } from "./engine";
 import type { Terrarium } from "./terrarium";
 import { addHabitat } from "./habitat";
+import { convexMesh } from "./contact";
 
 type DisplayEngine = Pick<
   FlyEngine,
@@ -22,6 +23,10 @@ export class FlyViewer {
   private observer: ResizeObserver;
   private xray = false;
   private habitatUpdate?: () => void;
+  private habitatDispose?: () => void;
+  readonly ready: Promise<void>;
+  private contactShapes: { id: number; mesh: THREE.Mesh }[] = [];
+  private collisionVisible = false;
   private world?: Terrarium;
   follow = false;
   constructor(
@@ -88,10 +93,15 @@ export class FlyViewer {
     );
     ring.position.z = 0.005;
     if (!world) this.scene.add(ring);
-    if (world) this.habitatUpdate = addHabitat(this.scene, world);
+    if (world) {
+      const habitat = addHabitat(this.scene, world);
+      this.habitatUpdate = habitat.update;
+      this.habitatDispose = habitat.dispose;
+      this.ready = habitat.ready;
+    } else this.ready = Promise.resolve();
     const { model: m, data: d, mujoco: mj } = engine;
     for (let i = 0; i < m.ngeom; i++) {
-      if (m.geom_type[i] !== 7) continue;
+      if (m.geom_type[i] !== 7 || m.geom_group[i] === 3) continue;
       const id = m.geom_dataid[i],
         va = m.mesh_vertadr[id] * 3,
         vn = m.mesh_vertnum[id] * 3,
@@ -141,6 +151,7 @@ export class FlyViewer {
       this.scene.add(mesh);
       this.geoms.push({ id: i, mesh, wing });
     }
+    if (world) this.createContactShapes();
     for (const muscle of engine.manifest.muscles) {
       if (!muscle.sites.length) continue;
       const sites = muscle.sites.map((name) =>
@@ -236,6 +247,65 @@ export class FlyViewer {
     }
     return this.xray;
   }
+  private createContactShapes() {
+    const m = this.engine.model;
+    const vertices = m.mesh_vert;
+    const material = new THREE.MeshBasicMaterial({
+      color: 0x087e88,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.3,
+      depthWrite: false,
+    });
+    const hulls = new Map<number, THREE.BufferGeometry>();
+    for (let i = 0; i < m.ngeom; i++) {
+      if (!m.geom_contype[i]) continue;
+      let geometry: THREE.BufferGeometry;
+      if (m.geom_type[i] === 7) {
+        const id = m.geom_dataid[i];
+        if (!hulls.has(id)) {
+          const start = m.mesh_vertadr[id] * 3,
+            end = start + m.mesh_vertnum[id] * 3;
+          const hull = new THREE.BufferGeometry();
+          hull.setAttribute(
+            "position",
+            new THREE.Float32BufferAttribute(
+              new Float32Array(vertices.slice(start, end)),
+              3,
+            ),
+          );
+          hull.setIndex(convexMesh(m, id).faceIds);
+          hulls.set(id, hull);
+        }
+        geometry = hulls.get(id)!;
+      } else if (m.geom_type[i] === 6) {
+        geometry = new THREE.BoxGeometry(
+          m.geom_size[i * 3] * 2,
+          m.geom_size[i * 3 + 1] * 2,
+          m.geom_size[i * 3 + 2] * 2,
+        );
+      } else if (m.geom_type[i] === 4) {
+        geometry = new THREE.SphereGeometry(1, 16, 10);
+        geometry.scale(
+          m.geom_size[i * 3],
+          m.geom_size[i * 3 + 1],
+          m.geom_size[i * 3 + 2],
+        );
+      } else continue;
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.matrixAutoUpdate = false;
+      mesh.visible = false;
+      this.scene.add(mesh);
+      this.contactShapes.push({ id: i, mesh });
+    }
+  }
+  toggleContacts() {
+    this.collisionVisible = !this.collisionVisible;
+    this.contactShapes.forEach(({ mesh }) => {
+      mesh.visible = this.collisionVisible;
+    });
+    return this.collisionVisible;
+  }
   update() {
     const d = this.engine.data;
     this.habitatUpdate?.();
@@ -245,7 +315,7 @@ export class FlyViewer {
       this.controls.target.add(delta);
       this.camera.position.add(delta);
     }
-    for (const { id: i, mesh } of this.geoms) {
+    for (const { id: i, mesh } of [...this.geoms, ...this.contactShapes]) {
       const p = i * 3,
         r = i * 9,
         a = d.geom_xmat;
@@ -288,6 +358,7 @@ export class FlyViewer {
     this.renderer.render(this.scene, this.camera);
   }
   dispose() {
+    this.habitatDispose?.();
     this.observer.disconnect();
     this.controls.dispose();
     this.scene.traverse((obj) => {
