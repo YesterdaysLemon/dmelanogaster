@@ -1,11 +1,11 @@
-import './style.css';
-import wasmUrl from '@mujoco/mujoco/mujoco.wasm?url';
-import { createEngine, type FlyEngine, type Manifest } from './engine';
-import { FlyViewer } from './viewer';
-import { papers } from './literature';
+import "./style.css";
+import wasmUrl from "@mujoco/mujoco/mujoco.wasm?url";
+import { createEngine, type FlyEngine, type Manifest } from "./engine";
+import { FlyViewer } from "./viewer";
+import { papers } from "./literature";
 
-const app=document.querySelector<HTMLDivElement>('#app')!;
-app.innerHTML=`
+const app = document.querySelector<HTMLDivElement>("#app")!;
+app.innerHTML = `
 <header class="masthead"><a class="identity" href="#specimen" aria-label="D. melanogaster home"><img src="/favicon.svg" alt="" width="38" height="38"><span><strong>D. melanogaster</strong><small>THE OPEN FLY LABORATORY</small></span></a><nav aria-label="Laboratory"><a href="#specimen" data-tab="specimen">Specimen</a><a href="#literature" data-tab="literature">Literature <span>08</span></a><a href="#research" data-tab="research">Research</a></nav><a class="repo-link" href="https://github.com/YesterdaysLemon/dmelanogaster" target="_blank" rel="noopener">Source code ↗</a></header>
 <main>
 <section id="specimen" class="page">
@@ -19,56 +19,355 @@ app.innerHTML=`
   </div>
   <section class="assay" aria-label="Experiment trace"><div class="assay-toolbar"><div><span class="tiny-label">03 / LIVE RESPONSE</span><h3>What did the muscle do?</h3></div><div class="transport"><button class="secondary" id="play" disabled>▶ Run</button><button class="text-button" id="reset" disabled>Reset</button><label class="speed-label">Speed <select id="speed" aria-label="Simulation speed"><option value="0.05">0.05×</option><option value="0.1" selected>0.1×</option><option value="0.25">0.25×</option></select></label><span id="sim-time" class="clock">0.000 s</span><button class="text-button" id="export" disabled>Export trial ↓</button></div></div><div class="trace-row"><div class="chart"><div class="chart-label"><span><i class="line-key"></i> Activation</span><span>normalized · 0–1</span></div><canvas id="trace" aria-label="Selected muscle activation versus simulation time"></canvas><div class="chart-axis"><span id="trace-start">0.000 s</span><span>Simulation time</span><span id="trace-end">0.000 s</span></div></div><div class="joint-readout"><span>FEMUR–TIBIA COORDINATE</span><strong><span id="angle">106.7</span><small>°</small></strong><p>Source joint coordinate, not yet calibrated to the anatomical angle convention.</p></div></div></section>
 </section>
-<section id="literature" class="page" hidden><div class="page-heading"><div><div class="eyebrow">THE EVIDENCE ATLAS</div><h1>Every mechanism has a source.</h1><p>A living record of what was observed, what was modelled, and what remains open.</p></div></div><div class="literature-controls"><label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Search muscles, neurons, papers…" aria-label="Search literature"></label><div id="filters" class="filter-row"><button class="chip active" data-filter="All">All sources</button>${['Anatomy','Physiology','Connectomics','Modelling'].map(x=>`<button class="chip" data-filter="${x}">${x}</button>`).join('')}</div></div><p class="atlas-note">Eight starting references · curated 14 September 2026. These are scoped reading notes; figure-level parameter extraction is the next research task. Source-model fits are never presented as direct measurements.</p><div id="paper-list" class="paper-list"></div></section>
+<section id="literature" class="page" hidden><div class="page-heading"><div><div class="eyebrow">THE EVIDENCE ATLAS</div><h1>Every mechanism has a source.</h1><p>A living record of what was observed, what was modelled, and what remains open.</p></div></div><div class="literature-controls"><label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Search muscles, neurons, papers…" aria-label="Search literature"></label><div id="filters" class="filter-row"><button class="chip active" data-filter="All">All sources</button>${["Anatomy", "Physiology", "Connectomics", "Modelling"].map((x) => `<button class="chip" data-filter="${x}">${x}</button>`).join("")}</div></div><p class="atlas-note">Eight starting references · curated 14 September 2026. These are scoped reading notes; figure-level parameter extraction is the next research task. Source-model fits are never presented as direct measurements.</p><div id="paper-list" class="paper-list"></div></section>
 <section id="research" class="page" hidden><div class="page-heading"><div><div class="eyebrow">PURPOSE & FRONTIER</div><h1>Reconstruct the animal.<br>Let behaviour be a result.</h1><p>Build a fly whose actions can be traced through documented biological mechanisms.</p></div></div><div class="research-layout"><article class="research-main"><p class="lead">A terrarium is the destination. A falsifiable connection between one neuron and one muscle is the next step.</p><div class="mechanism-chain"><span>Sensory organ</span><b>→</b><span>Neural circuit</span><b>→</b><span>Motor unit</span><b>→</b><span class="implemented">Muscle & body</span><b>↺</b></div><p class="chain-note">Only the highlighted mechanical substrate is implemented in v0. Its biological parameters still need independent validation.</p><h2>Our working contract</h2><p>Connections, attachment sites and physiology come from observations wherever available. Every gap stays visible as a hypothesis with a source, uncertainty range and a test that could disprove it.</p><p>There is no pretrained policy, imitation objective or task-reward optimizer in the control path. Fitting an explicit biological model to fly measurements is allowed, with the fitted parameters and held-out validation identified.</p><p>We will model muscles and organs at the level needed to preserve their causal role. The exoskeleton needs geometry, joints, stiffness and contact; the flight system needs thorax mechanics and muscle dynamics. A complete cellular simulation of every tissue is not the starting requirement.</p><h2>The next four experiments</h2><ol class="roadmap"><li><span>01</span><div><h3>Calibrate this bench</h3><p>Audit units, moment arms, joint conventions and the provenance of each fitted parameter. Reproduce source mechanical responses before adding circuitry.</p><small>Acceptance: dimensional audit + reproducible force–angle assays.</small></div></li><li><span>02</span><div><h3>Reconstruct an identified motor unit</h3><p>Trace a front-leg motor neuron to its muscle fibres. Separate slow, intermediate and fast units where evidence supports them; simulate excitation and contraction against recorded responses.</p><small>Acceptance: held-out spike-to-force predictions with uncertainty.</small></div></li><li><span>03</span><div><h3>Close a proprioceptive loop</h3><p>Make joint motion reach a documented sensory model, then a local nerve-cord circuit. Perturb the joint and compare the loop’s response with biological observations.</p><small>Acceptance: an intervention result that a disconnected control fails.</small></div></li><li><span>04</span><div><h3>Grow into a terrarium</h3><p>Expand supported mechanisms across legs, body and sensory organs. Add feeding and internal state, then a separate flight-muscle and thorax bench before free flight.</p><small>Acceptance: independent subsystem assays before whole-animal claims.</small></div></li></ol></article><aside class="research-aside"><span class="tiny-label">V0 / WHAT IS HERE</span><h3>A small, real starting point.</h3><ul><li>Original anatomical body meshes</li><li>15 foreleg muscle–tendon units</li><li>MuJoCo dynamics at 0.1 ms steps</li><li>Direct excitation and response traces</li><li>Source hashes and trial export</li><li>A public literature atlas</li></ul><div class="section-rule"></div><span class="tiny-label">OPEN LIMITS</span><p>The thorax is fixed. Other legs are passive or constrained. Wings are visual anatomy only. There is no active brain, sensory loop or organ physiology.</p><p>Muscle parameters are inherited from a fitted model. Force units and anatomical angle conventions are not independently calibrated.</p><a href="https://github.com/YesterdaysLemon/dmelanogaster" target="_blank" rel="noopener">Inspect the repository ↗</a><a href="/model/manifest.json" target="_blank" rel="noopener">Download model provenance ↗</a></aside></div></section>
 </main><footer><span><i>D. melanogaster</i> · an open reconstruction</span><span id="build-label">v0.1 · research in progress</span><a href="https://github.com/gizemozd/FlyMimic" target="_blank" rel="noopener">Anatomy & mechanics: FlyMimic ↗</a></footer>`;
 
-const $=<T extends HTMLElement=HTMLElement>(id:string)=>document.getElementById(id) as T;
-let engine:FlyEngine|undefined,viewer:FlyViewer|undefined,filter='All',failure=false;
-const events:{time:number;action:string;muscle?:number;value?:number;duration?:number}[]=[];
-let build:{sha?:string;version?:string}={};
-const fmt=(n:number,d=3)=>n.toFixed(d);
-function route(){
-  const [requested,id]=location.hash.slice(1).split('/');const page=['specimen','literature','research'].includes(requested)?requested:'specimen';
-  document.querySelectorAll<HTMLElement>('.page').forEach(el=>el.hidden=el.id!==page);
-  document.querySelectorAll<HTMLAnchorElement>('[data-tab]').forEach(el=>{const active=el.dataset.tab===page;el.classList.toggle('active',active);if(active)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');});
-  if(page==='literature'&&id){filter='All';$<HTMLInputElement>('search').value='';renderPapers();const card=document.getElementById('paper-'+id);if(card){(card.querySelector('details') as HTMLDetailsElement).open=true;requestAnimationFrame(()=>card.scrollIntoView({behavior:'smooth',block:'center'}));}}
+const $ = <T extends HTMLElement = HTMLElement>(id: string) =>
+  document.getElementById(id) as T;
+let engine: FlyEngine | undefined,
+  viewer: FlyViewer | undefined,
+  filter = "All",
+  failure = false;
+const events: {
+  time: number;
+  action: string;
+  muscle?: number;
+  value?: number;
+  duration?: number;
+}[] = [];
+let build: { sha?: string; version?: string } = {};
+const fmt = (n: number, d = 3) => n.toFixed(d);
+function route() {
+  const [requested, id] = location.hash.slice(1).split("/");
+  const page = ["specimen", "literature", "research"].includes(requested)
+    ? requested
+    : "specimen";
+  document
+    .querySelectorAll<HTMLElement>(".page")
+    .forEach((el) => (el.hidden = el.id !== page));
+  document.querySelectorAll<HTMLAnchorElement>("[data-tab]").forEach((el) => {
+    const active = el.dataset.tab === page;
+    el.classList.toggle("active", active);
+    if (active) el.setAttribute("aria-current", "page");
+    else el.removeAttribute("aria-current");
+  });
+  if (page === "literature" && id) {
+    filter = "All";
+    $<HTMLInputElement>("search").value = "";
+    renderPapers();
+    const card = document.getElementById("paper-" + id);
+    if (card) {
+      (card.querySelector("details") as HTMLDetailsElement).open = true;
+      requestAnimationFrame(() =>
+        card.scrollIntoView({ behavior: "smooth", block: "center" }),
+      );
+    }
+  }
 }
-window.addEventListener('hashchange',route);
-function renderPapers(){
-  const term=$<HTMLInputElement>('search').value.toLowerCase();
-  const result=papers.filter(p=>(filter==='All'||p.type===filter||(filter==='Anatomy'&&p.id==='flymimic'))&&JSON.stringify(p).toLowerCase().includes(term));
-  $('paper-list').innerHTML=result.length?result.map((p,i)=>`<article class="paper" id="paper-${p.id}"><div class="paper-number">${String(papers.indexOf(p)+1).padStart(2,'0')}</div><div class="paper-body"><div class="paper-meta"><span>${p.type} · ${p.year}</span><span>${p.status}</span></div><h2><a href="${p.url}" target="_blank" rel="noopener">${p.title} <span>↗</span></a></h2><p class="authors">${p.authors}</p><p>${p.claim}</p><details ${i===0?'open':''}><summary>How this informs the reconstruction</summary><div class="evidence-grid"><div><b>IN THIS PROJECT</b><p>${p.use}</p></div><div><b>BOUNDARY OF THE EVIDENCE</b><p>${p.limit}</p></div></div><p class="next-extraction"><b>Next extraction</b> ${p.next}</p><a class="text-link" href="${p.url}" target="_blank" rel="noopener">Open primary source ↗</a></details></div></article>`).join(''):'<div class="empty-state">No sources match this search. Try a muscle, a paper title or a broader term.</div>';
-  document.querySelectorAll<HTMLElement>('[data-filter]').forEach(el=>el.classList.toggle('active',el.dataset.filter===filter));
+window.addEventListener("hashchange", route);
+function renderPapers() {
+  const term = $<HTMLInputElement>("search").value.toLowerCase();
+  const result = papers.filter(
+    (p) =>
+      (filter === "All" ||
+        p.type === filter ||
+        (filter === "Anatomy" && p.id === "flymimic")) &&
+      JSON.stringify(p).toLowerCase().includes(term),
+  );
+  $("paper-list").innerHTML = result.length
+    ? result
+        .map(
+          (p, i) =>
+            `<article class="paper" id="paper-${p.id}"><div class="paper-number">${String(papers.indexOf(p) + 1).padStart(2, "0")}</div><div class="paper-body"><div class="paper-meta"><span>${p.type} · ${p.year}</span><span>${p.status}</span></div><h2><a href="${p.url}" target="_blank" rel="noopener">${p.title} <span>↗</span></a></h2><p class="authors">${p.authors}</p><p>${p.claim}</p><details ${i === 0 ? "open" : ""}><summary>How this informs the reconstruction</summary><div class="evidence-grid"><div><b>IN THIS PROJECT</b><p>${p.use}</p></div><div><b>BOUNDARY OF THE EVIDENCE</b><p>${p.limit}</p></div></div><p class="next-extraction"><b>Next extraction</b> ${p.next}</p><a class="text-link" href="${p.url}" target="_blank" rel="noopener">Open primary source ↗</a></details></div></article>`,
+        )
+        .join("")
+    : '<div class="empty-state">No sources match this search. Try a muscle, a paper title or a broader term.</div>';
+  document
+    .querySelectorAll<HTMLElement>("[data-filter]")
+    .forEach((el) =>
+      el.classList.toggle("active", el.dataset.filter === filter),
+    );
 }
-$('search').addEventListener('input',renderPapers);$('filters').addEventListener('click',event=>{const button=(event.target as HTMLElement).closest<HTMLElement>('[data-filter]');if(button){filter=button.dataset.filter!;renderPapers();}});renderPapers();route();
-function syncSelection(){if(!engine)return;const muscle=engine.manifest.muscles[engine.selected];$('muscle-title').textContent=muscle.region+' '+muscle.label;$('source-id').textContent=muscle.id;$('sites').textContent=muscle.sites.join(' → ');$('constants').textContent=`${muscle.dynprm[0]*1000} / ${muscle.dynprm[1]*1000} ms (source fit)`;}
-function syncReadouts(){if(!engine)return;const sample=engine.sample();$('activation').textContent=fmt(sample.activation);$('force').textContent=fmt(sample.force,2);$('angle').textContent=fmt(sample.angle,1);$('sim-time').textContent=fmt(sample.time)+' s';$('play').textContent=engine.running?'Ⅱ Pause':'▶ Run';}
-function chart(){if(!engine)return;const canvas=$<HTMLCanvasElement>('trace'),box=canvas.getBoundingClientRect();if(!box.width)return;const ratio=Math.min(devicePixelRatio,2),w=Math.round(box.width*ratio),h=Math.round(box.height*ratio);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}const ctx=canvas.getContext('2d')!;ctx.clearRect(0,0,w,h);ctx.lineWidth=ratio;ctx.strokeStyle='#dce0d5';for(let j=0;j<=4;j++){const y=8*ratio+(h-16*ratio)*j/4;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();}const samples=engine.history,t0=samples[0]?.time||0,t1=Math.max(t0+.2,samples.at(-1)?.time||0);ctx.strokeStyle='#b4512e';ctx.lineWidth=2*ratio;ctx.beginPath();samples.forEach((s,i)=>{const x=(s.time-t0)/(t1-t0)*w,y=h-8*ratio-s.activation*(h-16*ratio);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);});ctx.stroke();$('trace-start').textContent=fmt(t0)+' s';$('trace-end').textContent=fmt(t1)+' s';}
-$('excitation').addEventListener('input',()=>{$('excitation-value').textContent=$<HTMLInputElement>('excitation').value+'%';});
-$('pulse').addEventListener('click',()=>{if(!engine)return;const value=Number($<HTMLInputElement>('excitation').value)/100;events.push({time:engine.data.time,action:'pulse',muscle:engine.selected,value,duration:.05});engine.pulse(value);syncReadouts();});
-$('release').addEventListener('click',()=>{if(!engine)return;events.push({time:engine.data.time,action:'release'});engine.release();syncReadouts();});
-$('play').addEventListener('click',()=>{if(engine){engine.running=!engine.running;syncReadouts();}});
-$('reset').addEventListener('click',()=>{if(engine){engine.running=false;engine.reset();events.length=0;syncReadouts();chart();viewer?.update();}});
-$('speed').addEventListener('change',()=>{if(engine)engine.speed=Number($<HTMLSelectElement>('speed').value);});
-$('muscle').addEventListener('change',()=>{if(engine){engine.select(Number($<HTMLSelectElement>('muscle').value));syncSelection();syncReadouts();chart();}});
-$('whole-view').addEventListener('click',()=>{viewer?.focus('body');$('whole-view').classList.add('active');$('leg-view').classList.remove('active');});
-$('leg-view').addEventListener('click',()=>{viewer?.focus('leg');$('leg-view').classList.add('active');$('whole-view').classList.remove('active');});
-$('xray').addEventListener('click',()=>{const active=viewer?.toggleXray()||false;$('xray').classList.toggle('active',active);$('xray').setAttribute('aria-pressed',String(active));});
-$('export').addEventListener('click',()=>{if(!engine)return;const trial={schema:1,exportedAt:new Date().toISOString(),build,model:{source:engine.manifest.source,commit:engine.manifest.commit,files:engine.manifest.files},scope:engine.manifest.physics,engine:'MuJoCo 3.13.0',timestep:engine.model.opt.timestep,initialState:'source keyframe 0; all controls = 0.0001',simulatedUntil:engine.data.time,selectedMuscle:engine.manifest.muscles[engine.selected],events,traceNote:'Last 4 simulated seconds since most recent muscle selection; sampled at 1 ms.',trace:engine.history,finalQpos:Array.from(engine.data.qpos)};const url=URL.createObjectURL(new Blob([JSON.stringify(trial,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='dmelanogaster-trial.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);});
-async function boot(){try{
-  const manifest:Manifest=await fetch('/model/manifest.json').then(r=>{if(!r.ok)throw new Error('Model manifest unavailable');return r.json();});
-  const wasmResponse=await fetch(wasmUrl);if(!wasmResponse.ok)throw new Error('Physics engine unavailable');
-  const wasm=new Uint8Array(await wasmResponse.arrayBuffer());
-  let loaded=0;
-  engine=await createEngine(manifest,async path=>{const response=await fetch('/model/'+path);if(!response.ok)throw new Error('Model asset unavailable: '+path);const bytes=new Uint8Array(await response.arrayBuffer());$('load-detail').textContent=`Loading anatomy · ${++loaded} / ${manifest.files.length} assets`;return bytes;},wasm);
-  viewer=new FlyViewer($('viewport'),engine);$('loading').remove();
-  $<HTMLSelectElement>('muscle').innerHTML=['Tibia','Trochanter','Coxa'].map(region=>`<optgroup label="${region}">${manifest.muscles.filter(m=>m.region===region).map(m=>`<option value="${m.index}" ${m.index===13?'selected':''}>${m.region} · ${m.label}</option>`).join('')}</optgroup>`).join('');
-  document.querySelectorAll<HTMLButtonElement|HTMLInputElement|HTMLSelectElement>('#specimen [disabled]').forEach(el=>el.disabled=false);syncSelection();syncReadouts();chart();
-  // A bounded read-only probe supports runtime inspection without exposing control overrides.
-  Object.defineProperty(window,'flyLab',{value:{snapshot:()=>({sample:engine!.sample(),nq:engine!.model.nq,nu:engine!.model.nu,running:engine!.running,modelCommit:manifest.commit})},writable:false});
-  let previous=performance.now(),lastUI=0;const frame=(now:number)=>{try{engine!.advance((now-previous)/1000);previous=now;if(!$('specimen').hidden){viewer!.update();if(now-lastUI>60){syncReadouts();chart();lastUI=now;}}if(!failure)requestAnimationFrame(frame);}catch(error){showError(error);}};requestAnimationFrame(frame);
-}catch(error){showError(error);}}
-function showError(error:unknown){failure=true;console.error(error);if(engine)engine.running=false;const loading=$('loading');const message='The simulation could not start or became unstable. Reload to reset the bench. Literature and research notes remain available.';if(loading){loading.innerHTML='';const text=document.createElement('p');text.textContent=message;loading.append(text);}else {const banner=document.createElement('div');banner.className='error-banner';banner.setAttribute('role','alert');banner.textContent=message;$('specimen').prepend(banner);}document.querySelectorAll<HTMLButtonElement>('#pulse,#play,#release').forEach(el=>el.disabled=true);}
-fetch('/build.json').then(async r=>r.ok?await r.json() as {sha?:string;version?:string}:{}).then(data=>{build=data;if(data.sha)$('build-label').textContent=`v${data.version||'0.1'} · ${data.sha.slice(0,7)}`;}).catch(()=>{});
+$("search").addEventListener("input", renderPapers);
+$("filters").addEventListener("click", (event) => {
+  const button = (event.target as HTMLElement).closest<HTMLElement>(
+    "[data-filter]",
+  );
+  if (button) {
+    filter = button.dataset.filter!;
+    renderPapers();
+  }
+});
+renderPapers();
+route();
+function syncSelection() {
+  if (!engine) return;
+  const muscle = engine.manifest.muscles[engine.selected];
+  $("muscle-title").textContent = muscle.region + " " + muscle.label;
+  $("source-id").textContent = muscle.id;
+  $("sites").textContent = muscle.sites.join(" → ");
+  $("constants").textContent =
+    `${muscle.dynprm[0] * 1000} / ${muscle.dynprm[1] * 1000} ms (source fit)`;
+}
+function syncReadouts() {
+  if (!engine) return;
+  const sample = engine.sample();
+  $("activation").textContent = fmt(sample.activation);
+  $("force").textContent = fmt(sample.force, 2);
+  $("angle").textContent = fmt(sample.angle, 1);
+  $("sim-time").textContent = fmt(sample.time) + " s";
+  $("play").textContent = engine.running ? "Ⅱ Pause" : "▶ Run";
+}
+function chart() {
+  if (!engine) return;
+  const canvas = $<HTMLCanvasElement>("trace"),
+    box = canvas.getBoundingClientRect();
+  if (!box.width) return;
+  const ratio = Math.min(devicePixelRatio, 2),
+    w = Math.round(box.width * ratio),
+    h = Math.round(box.height * ratio);
+  if (canvas.width !== w || canvas.height !== h) {
+    canvas.width = w;
+    canvas.height = h;
+  }
+  const ctx = canvas.getContext("2d")!;
+  ctx.clearRect(0, 0, w, h);
+  ctx.lineWidth = ratio;
+  ctx.strokeStyle = "#dce0d5";
+  for (let j = 0; j <= 4; j++) {
+    const y = 8 * ratio + ((h - 16 * ratio) * j) / 4;
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(w, y);
+    ctx.stroke();
+  }
+  const samples = engine.history,
+    t0 = samples[0]?.time || 0,
+    t1 = Math.max(t0 + 0.2, samples.at(-1)?.time || 0);
+  ctx.strokeStyle = "#b4512e";
+  ctx.lineWidth = 2 * ratio;
+  ctx.beginPath();
+  samples.forEach((s, i) => {
+    const x = ((s.time - t0) / (t1 - t0)) * w,
+      y = h - 8 * ratio - s.activation * (h - 16 * ratio);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+  $("trace-start").textContent = fmt(t0) + " s";
+  $("trace-end").textContent = fmt(t1) + " s";
+}
+$("excitation").addEventListener("input", () => {
+  $("excitation-value").textContent =
+    $<HTMLInputElement>("excitation").value + "%";
+});
+$("pulse").addEventListener("click", () => {
+  if (!engine) return;
+  const value = Number($<HTMLInputElement>("excitation").value) / 100;
+  events.push({
+    time: engine.data.time,
+    action: "pulse",
+    muscle: engine.selected,
+    value,
+    duration: 0.05,
+  });
+  engine.pulse(value);
+  syncReadouts();
+});
+$("release").addEventListener("click", () => {
+  if (!engine) return;
+  events.push({ time: engine.data.time, action: "release" });
+  engine.release();
+  syncReadouts();
+});
+$("play").addEventListener("click", () => {
+  if (engine) {
+    engine.running = !engine.running;
+    syncReadouts();
+  }
+});
+$("reset").addEventListener("click", () => {
+  if (engine) {
+    engine.running = false;
+    engine.reset();
+    events.length = 0;
+    syncReadouts();
+    chart();
+    viewer?.update();
+  }
+});
+$("speed").addEventListener("change", () => {
+  if (engine) engine.speed = Number($<HTMLSelectElement>("speed").value);
+});
+$("muscle").addEventListener("change", () => {
+  if (engine) {
+    engine.select(Number($<HTMLSelectElement>("muscle").value));
+    syncSelection();
+    syncReadouts();
+    chart();
+  }
+});
+$("whole-view").addEventListener("click", () => {
+  viewer?.focus("body");
+  $("whole-view").classList.add("active");
+  $("leg-view").classList.remove("active");
+});
+$("leg-view").addEventListener("click", () => {
+  viewer?.focus("leg");
+  $("leg-view").classList.add("active");
+  $("whole-view").classList.remove("active");
+});
+$("xray").addEventListener("click", () => {
+  const active = viewer?.toggleXray() || false;
+  $("xray").classList.toggle("active", active);
+  $("xray").setAttribute("aria-pressed", String(active));
+});
+$("export").addEventListener("click", () => {
+  if (!engine) return;
+  const trial = {
+    schema: 1,
+    exportedAt: new Date().toISOString(),
+    build,
+    model: {
+      source: engine.manifest.source,
+      commit: engine.manifest.commit,
+      files: engine.manifest.files,
+    },
+    scope: engine.manifest.physics,
+    engine: "MuJoCo 3.13.0",
+    timestep: engine.model.opt.timestep,
+    initialState: "source keyframe 0; all controls = 0.0001",
+    simulatedUntil: engine.data.time,
+    selectedMuscle: engine.manifest.muscles[engine.selected],
+    events,
+    traceNote:
+      "Last 4 simulated seconds since most recent muscle selection; sampled at 1 ms.",
+    trace: engine.history,
+    finalQpos: Array.from(engine.data.qpos),
+  };
+  const url = URL.createObjectURL(
+    new Blob([JSON.stringify(trial, null, 2)], { type: "application/json" }),
+  );
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "dmelanogaster-trial.json";
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+});
+async function boot() {
+  try {
+    const manifest: Manifest = await fetch("/model/manifest.json").then((r) => {
+      if (!r.ok) throw new Error("Model manifest unavailable");
+      return r.json();
+    });
+    const wasmResponse = await fetch(wasmUrl);
+    if (!wasmResponse.ok) throw new Error("Physics engine unavailable");
+    const wasm = new Uint8Array(await wasmResponse.arrayBuffer());
+    let loaded = 0;
+    engine = await createEngine(
+      manifest,
+      async (path) => {
+        const response = await fetch("/model/" + path);
+        if (!response.ok) throw new Error("Model asset unavailable: " + path);
+        const bytes = new Uint8Array(await response.arrayBuffer());
+        $("load-detail").textContent =
+          `Loading anatomy · ${++loaded} / ${manifest.files.length} assets`;
+        return bytes;
+      },
+      wasm,
+    );
+    viewer = new FlyViewer($("viewport"), engine);
+    $("loading").remove();
+    $<HTMLSelectElement>("muscle").innerHTML = ["Tibia", "Trochanter", "Coxa"]
+      .map(
+        (region) =>
+          `<optgroup label="${region}">${manifest.muscles
+            .filter((m) => m.region === region)
+            .map(
+              (m) =>
+                `<option value="${m.index}" ${m.index === 13 ? "selected" : ""}>${m.region} · ${m.label}</option>`,
+            )
+            .join("")}</optgroup>`,
+      )
+      .join("");
+    document
+      .querySelectorAll<
+        HTMLButtonElement | HTMLInputElement | HTMLSelectElement
+      >("#specimen [disabled]")
+      .forEach((el) => (el.disabled = false));
+    syncSelection();
+    syncReadouts();
+    chart();
+    // A bounded read-only probe supports runtime inspection without exposing control overrides.
+    Object.defineProperty(window, "flyLab", {
+      value: {
+        snapshot: () => ({
+          sample: engine!.sample(),
+          nq: engine!.model.nq,
+          nu: engine!.model.nu,
+          running: engine!.running,
+          modelCommit: manifest.commit,
+        }),
+      },
+      writable: false,
+    });
+    let previous = performance.now(),
+      lastUI = 0;
+    const frame = (now: number) => {
+      try {
+        engine!.advance((now - previous) / 1000);
+        previous = now;
+        if (!$("specimen").hidden) {
+          viewer!.update();
+          if (now - lastUI > 60) {
+            syncReadouts();
+            chart();
+            lastUI = now;
+          }
+        }
+        if (!failure) requestAnimationFrame(frame);
+      } catch (error) {
+        showError(error);
+      }
+    };
+    requestAnimationFrame(frame);
+  } catch (error) {
+    showError(error);
+  }
+}
+function showError(error: unknown) {
+  failure = true;
+  console.error(error);
+  if (engine) engine.running = false;
+  const loading = $("loading");
+  const message =
+    "The simulation could not start or became unstable. Reload to reset the bench. Literature and research notes remain available.";
+  if (loading) {
+    loading.innerHTML = "";
+    const text = document.createElement("p");
+    text.textContent = message;
+    loading.append(text);
+  } else {
+    const banner = document.createElement("div");
+    banner.className = "error-banner";
+    banner.setAttribute("role", "alert");
+    banner.textContent = message;
+    $("specimen").prepend(banner);
+  }
+  document
+    .querySelectorAll<HTMLButtonElement>("#pulse,#play,#release")
+    .forEach((el) => (el.disabled = true));
+}
+fetch("/build.json")
+  .then(async (r) =>
+    r.ok ? ((await r.json()) as { sha?: string; version?: string }) : {},
+  )
+  .then((data) => {
+    build = data;
+    if (data.sha)
+      $("build-label").textContent =
+        `v${data.version || "0.1"} · ${data.sha.slice(0, 7)}`;
+  })
+  .catch(() => {});
 void boot();
